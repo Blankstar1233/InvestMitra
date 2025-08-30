@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { handleDemo } from "./routes/demo";
-import { ensureSchema } from "./db";
+import { ensureSchema, isDbConfigured } from "./db";
 import { login, register, me, logout } from "./routes/auth";
 import { getPortfolio, placeOrder, getOrders, resetPortfolio, requireUser } from "./routes/trading";
 
@@ -10,15 +10,34 @@ export function createServer() {
   const app = express();
 
   // Middleware
-  app.use(cors());
-  app.use(express.json());
+  app.use(cors({ origin: true, credentials: true }));
+  app.use(express.json({ type: "*/*" }));
   app.use(express.urlencoded({ extended: true }));
+  app.use((req, _res, next) => {
+    const anyReq: any = req as any;
+    if (Buffer.isBuffer(anyReq.body)) {
+      try { anyReq.body = JSON.parse(anyReq.body.toString("utf8") || "{}"); } catch { anyReq.body = {}; }
+    } else if (typeof anyReq.body === "string") {
+      try { anyReq.body = JSON.parse(anyReq.body || "{}"); } catch { anyReq.body = {}; }
+    }
+    next();
+  });
   app.use(cookieParser());
 
-  // Ensure DB schema (no-op if already created)
-  ensureSchema().catch((e) => {
-    // eslint-disable-next-line no-console
-    console.error("Schema init failed:", e?.message || e);
+  // Ensure DB schema once and block first request until ready
+  let schemaReady: Promise<void> | null = null;
+  async function ensureSchemaOnce() {
+    if (!schemaReady) schemaReady = ensureSchema().catch((e) => { schemaReady = null; throw e; });
+    return schemaReady;
+  }
+  app.use(async (_req, _res, next) => {
+    try {
+      if (isDbConfigured()) await ensureSchemaOnce();
+    } catch (e: any) {
+      // eslint-disable-next-line no-console
+      console.error("Schema init failed:", e?.message || e);
+    }
+    next();
   });
 
   // Build API router once
@@ -31,6 +50,11 @@ export function createServer() {
   });
 
   api.get("/demo", handleDemo);
+
+  // Echo endpoint for debugging body parsing
+  api.post("/echo", (req, res) => {
+    res.json({ ok: true, headers: req.headers, body: (req as any).body ?? null });
+  });
 
   // Auth
   api.post("/auth/register", register);

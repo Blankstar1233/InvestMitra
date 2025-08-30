@@ -3,10 +3,30 @@ import { neon } from "@neondatabase/serverless";
 // Lazy singleton for SQL client
 let _sql: ReturnType<typeof neon> | null = null;
 
+export function getDatabaseUrl() {
+  const candidates = [
+    "DATABASE_URL",
+    "NEON_DATABASE_URL",
+    "NETLIFY_DATABASE_URL",
+    "NETLIFY_DATABASE_URL_UNPOOLED",
+    "POSTGRES_URL",
+    "PG_CONNECTION_STRING",
+  ] as const;
+  for (const key of candidates) {
+    const val = process.env[key];
+    if (val && typeof val === "string" && val.trim().length > 0) return val.trim();
+  }
+  return "";
+}
+
+export function isDbConfigured() {
+  return Boolean(getDatabaseUrl());
+}
+
 export function getSql() {
-  const url = process.env.DATABASE_URL;
+  const url = getDatabaseUrl();
   if (!url) {
-    throw new Error("DATABASE_URL is not set. Provide your Neon connection string in env.");
+    throw new Error("Database connection string not set. Set DATABASE_URL or NEON_DATABASE_URL.");
   }
   if (!_sql) _sql = neon(url);
   return _sql;
@@ -14,13 +34,10 @@ export function getSql() {
 
 export async function ensureSchema() {
   const sql = getSql();
-  // Enable pgcrypto for gen_random_uuid()
-  await sql`CREATE EXTENSION IF NOT EXISTS pgcrypto`;
-
   // Users
   await sql`
     CREATE TABLE IF NOT EXISTS users (
-      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+      id UUID PRIMARY KEY,
       email TEXT UNIQUE NOT NULL,
       password_hash TEXT NOT NULL,
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
@@ -30,8 +47,8 @@ export async function ensureSchema() {
   // Portfolio cash per user
   await sql`
     CREATE TABLE IF NOT EXISTS portfolios (
-      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-      user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      id UUID PRIMARY KEY,
+      user_id UUID NOT NULL,
       available_cash NUMERIC NOT NULL DEFAULT 100000,
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
     )
@@ -40,8 +57,8 @@ export async function ensureSchema() {
   // Positions
   await sql`
     CREATE TABLE IF NOT EXISTS positions (
-      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-      user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      id UUID PRIMARY KEY,
+      user_id UUID NOT NULL,
       symbol TEXT NOT NULL,
       name TEXT NOT NULL,
       quantity INTEGER NOT NULL,
@@ -56,8 +73,8 @@ export async function ensureSchema() {
   // Orders
   await sql`
     CREATE TABLE IF NOT EXISTS orders (
-      id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-      user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+      id UUID PRIMARY KEY,
+      user_id UUID NOT NULL,
       symbol TEXT NOT NULL,
       name TEXT NOT NULL,
       type TEXT NOT NULL,

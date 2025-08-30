@@ -1,8 +1,9 @@
 import type { RequestHandler } from "express";
 import { z } from "zod";
-import { getSql } from "../db";
+import { getSql, isDbConfigured } from "../db";
 import bcrypt from "bcryptjs";
 import { SignJWT, jwtVerify } from "jose";
+import { randomUUID } from "crypto";
 
 const EMAIL_MIN = 5;
 const PASSWORD_MIN = 8;
@@ -21,29 +22,33 @@ function getJwtSecret() {
   return new TextEncoder().encode(secret);
 }
 
-function isDbConfigured() { return Boolean(process.env.DATABASE_URL); }
 function isJwtConfigured() { return Boolean(process.env.JWT_SECRET); }
 
 export const register: RequestHandler = async (req, res) => {
   try {
     if (!isDbConfigured()) return res.status(200).json({ ok: false, error: "db_not_configured" });
     if (!isJwtConfigured()) return res.status(200).json({ ok: false, error: "jwt_not_configured" });
-    const body = registerSchema.parse(req.body);
+    const raw: any = (req as any).body;
+    let input: any = raw ?? {};
+    if (Buffer.isBuffer(raw)) { try { input = JSON.parse(raw.toString("utf8") || "{}"); } catch { input = {}; } }
+    else if (typeof raw === "string") { try { input = JSON.parse(raw || "{}"); } catch { input = {}; } }
+    const body = registerSchema.parse(input);
     const sql = getSql();
 
     const existing = (await sql`SELECT id FROM users WHERE email = ${body.email}`) as any[];
     if (Array.isArray(existing) && existing.length > 0) return res.status(409).json({ ok: false, error: "email_in_use" });
 
+    const userId = randomUUID();
     const password_hash = await bcrypt.hash(body.password, 10);
-    const rows = (await sql`
-      INSERT INTO users (email, password_hash)
-      VALUES (${body.email}, ${password_hash})
-      RETURNING id
-    `) as any[];
-    const userId = rows[0].id as string;
+    await sql`
+      INSERT INTO users (id, email, password_hash)
+      VALUES (${userId}, ${body.email}, ${password_hash})
+      ON CONFLICT (email) DO NOTHING
+    `;
 
     // create default portfolio row
-    await sql`INSERT INTO portfolios (user_id) VALUES (${userId}) ON CONFLICT DO NOTHING`;
+    const portfolioId = randomUUID();
+    await sql`INSERT INTO portfolios (id, user_id) VALUES (${portfolioId}, ${userId}) ON CONFLICT DO NOTHING`;
 
     const token = await new SignJWT({ uid: userId })
       .setProtectedHeader({ alg: "HS256" })
@@ -61,7 +66,7 @@ export const register: RequestHandler = async (req, res) => {
 
     res.status(201).json({ ok: true, user: { id: userId, email: body.email } });
   } catch (err) {
-    if (err instanceof z.ZodError) return res.status(400).json({ ok: false, error: "bad_request" });
+    if (err instanceof z.ZodError) return res.status(400).json({ ok: false, error: "bad_request", issues: err.issues });
     res.status(500).json({ ok: false, error: "server_error" });
   }
 };
@@ -70,7 +75,11 @@ export const login: RequestHandler = async (req, res) => {
   try {
     if (!isDbConfigured()) return res.status(200).json({ ok: false, error: "db_not_configured" });
     if (!isJwtConfigured()) return res.status(200).json({ ok: false, error: "jwt_not_configured" });
-    const body = loginSchema.parse(req.body);
+    const raw: any = (req as any).body;
+    let input: any = raw ?? {};
+    if (Buffer.isBuffer(raw)) { try { input = JSON.parse(raw.toString("utf8") || "{}"); } catch { input = {}; } }
+    else if (typeof raw === "string") { try { input = JSON.parse(raw || "{}"); } catch { input = {}; } }
+    const body = loginSchema.parse(input);
     const sql = getSql();
 
     const users = (await sql`
@@ -98,7 +107,7 @@ export const login: RequestHandler = async (req, res) => {
 
     res.json({ ok: true, user: { id: user.id, email: body.email } });
   } catch (err) {
-    if (err instanceof z.ZodError) return res.status(400).json({ ok: false, error: "bad_request" });
+    if (err instanceof z.ZodError) return res.status(400).json({ ok: false, error: "bad_request", issues: err.issues });
     res.status(500).json({ ok: false, error: "server_error" });
   }
 };
