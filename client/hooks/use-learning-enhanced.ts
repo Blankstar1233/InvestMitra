@@ -778,6 +778,869 @@ Indian markets are connected globally through:
       ],
     },
   },
+
+  // TIER 2: INTERMEDIATE MODULES
+  {
+    id: "market-analysis",
+    title: "Market Analysis",
+    description:
+      "Master fundamental and technical analysis to make informed investment decisions in the Indian market",
+    category: "ANALYSIS",
+    difficulty: "INTERMEDIATE",
+    duration: 60,
+    reward: 800,
+    completed: false,
+    progress: 0,
+    unlocked: false,
+    prerequisites: ["investing-fundamentals", "indian-markets-mastery"],
+    tier: "INTERMEDIATE",
+    lessons: [
+      {
+        id: "fundamental-analysis",
+        title: "Fundamental Analysis: Understanding Company Value",
+        type: "TEXT",
+        duration: 15,
+        completed: false,
+        content: `
+# Fundamental Analysis: Understanding Company Value
+
+Imagine you're buying a house. You wouldn't just look at the asking price, right? You'd check the neighborhood, structural condition, market trends, and compare similar properties. **Fundamental analysis works the same way for stocks** - it's about determining the true value of a company.
+
+## What is Fundamental Analysis?
+
+Fundamental analysis is the method of evaluating a company's intrinsic value by examining its financial health, business model, competitive position, and growth prospects. It answers the question: "Is this stock worth its current price?"
+
+## Key Financial Ratios to Master
+
+### Price-to-Earnings (P/E) Ratio
+**Formula**: Current Share Price ÷ Earnings Per Share (EPS)
+
+**Real Example**: If Infosys trades at ₹1,500 and has an EPS of ₹60, its P/E ratio is 25. This means investors are willing to pay ₹25 for every ₹1 of earnings.
+
+**Industry Comparison**:
+- IT Sector Average P/E: 20-25
+- Banking Sector Average P/E: 12-18
+- FMCG Sector Average P/E: 30-40
+
+### Return on Equity (ROE)
+**Formula**: Net Income ÷ Shareholders' Equity × 100
+
+**What it means**: How efficiently a company generates profits from shareholders' investments.
+
+**Benchmark**: ROE > 15% is considered excellent in Indian markets.
+
+### Debt-to-Equity Ratio
+**Formula**: Total Debt ÷ Total Equity
+
+**Red Flags**: D/E ratio > 2 indicates high leverage and potential risk.
+
+## Real-World Case Study: HDFC Bank vs Competitors
+
+Let's analyze HDFC Bank using fundamental analysis:
+
+**Financial Strength (2023 data)**:
+- ROE: 17.2% (Excellent - above 15% benchmark)
+- Net NPA: 0.31% (Very Low - indicates good asset quality)
+- CASA Ratio: 41% (Strong - low-cost deposits)
+- Credit Growth: 20% YoY (Healthy expansion)
+
+**Competitive Moats**:
+- Strong brand recognition and customer trust
+- Extensive branch and digital network
+- Superior risk management practices
+- Consistent dividend payment history
+
+**Valuation Analysis**:
+- P/E Ratio: 18x (Reasonable for a quality bank)
+- P/B Ratio: 3.2x (Premium but justified by quality)
+- Dividend Yield: 1.2% (Consistent payout)
+
+**Investment Thesis**: HDFC Bank demonstrates strong fundamentals with consistent profitability, low NPAs, and robust capital adequacy, justifying its premium valuation.
+
+## The 5-Step Fundamental Analysis Process
+
+### Step 1: Industry Analysis
+Understand the sector dynamics, growth prospects, and regulatory environment.
+
+### Step 2: Company Business Model
+Analyze revenue streams, competitive advantages, and market position.
+
+### Step 3: Financial Statement Analysis
+Deep dive into Income Statement, Balance Sheet, and Cash Flow Statement.
+
+### Step 4: Management Quality Assessment
+Evaluate leadership track record, corporate governance, and strategic vision.
+
+### Step 5: Valuation and Price Target
+Calculate intrinsic value using DCF, P/E multiples, and peer comparison.
+
+## Fundamental Analysis Tools for Indian Markets
+
+### Free Resources:
+- **BSE/NSE websites**: Annual reports and financial data
+- **Screener.in**: Comprehensive ratio analysis
+- **MoneyControl**: Industry comparisons and peer analysis
+- **Value Research**: Mutual fund and stock research
+
+### Key Documents to Read:
+- Annual Report (comprehensive business overview)
+- Quarterly Results (recent performance trends)
+- Investor Presentations (management outlook)
+- Credit Rating Reports (debt assessment)
+        `,
+        keyTakeaways: [
+          "Fundamental analysis determines intrinsic value by examining financial health and business fundamentals",
+          "Key ratios include P/E (valuation), ROE (profitability), and D/E (leverage) for comprehensive assessment",
+          "Industry comparison is crucial - same P/E ratio means different things in different sectors",
+          "Quality companies with strong moats can justify premium valuations over time",
+          "Combine quantitative metrics with qualitative factors like management quality and competitive position"
+        ],
+        actionItems: [
+          "Practice calculating P/E, ROE, and D/E ratios for 3 companies in different sectors",
+          "Read the annual report of one company you're interested in investing in",
+          "Compare financial ratios of 3 companies within the same industry",
+          "Set up stock screeners to filter companies based on fundamental criteria"
+        ],
+      },
+      {
+        id: "technical-analysis",
+        title: "Technical Analysis: Reading Market Patterns",
+        type: "INTERACTIVE",
+        duration: 18,
+        completed: false,
+        content: `
+# Technical Analysis: Reading Market Patterns
+
+While fundamental analysis tells you **what** to buy, technical analysis tells you **when** to buy. Think of it as reading the market's pulse - understanding crowd psychology and price movements through charts and patterns.
+
+## Core Principles of Technical Analysis
+
+### 1. Price Discounts Everything
+All known information - earnings, news, sentiment - is already reflected in the stock price. The chart tells the complete story.
+
+### 2. Price Moves in Trends
+Markets move in predictable patterns: uptrends, downtrends, and sideways trends. The key is identifying and riding these trends.
+
+### 3. History Repeats Itself
+Human psychology drives market behavior, and patterns tend to repeat because emotions like fear and greed are constant.
+
+## Essential Technical Indicators
+
+### Moving Averages (MA)
+**Simple Moving Average (SMA)**: Average price over a specific period
+**Exponential Moving Average (EMA)**: Gives more weight to recent prices
+
+**Trading Signals**:
+- **Golden Cross**: 50-day MA crosses above 200-day MA (Bullish)
+- **Death Cross**: 50-day MA crosses below 200-day MA (Bearish)
+
+**Real Example**: Reliance Industries in 2020
+- Golden Cross in June 2020 at ₹1,200 level
+- Stock rallied to ₹2,400 by August 2020 (100% gain)
+- Death Cross in February 2021, followed by correction to ₹1,800
+
+### Relative Strength Index (RSI)
+**Purpose**: Measures momentum and identifies overbought/oversold conditions
+**Range**: 0-100
+**Signals**:
+- RSI > 70: Overbought (potential selling opportunity)
+- RSI < 30: Oversold (potential buying opportunity)
+
+### MACD (Moving Average Convergence Divergence)
+**Components**:
+- MACD Line: 12-day EMA minus 26-day EMA
+- Signal Line: 9-day EMA of MACD line
+- Histogram: MACD minus Signal line
+
+**Trading Signals**:
+- MACD crosses above Signal line: Bullish
+- MACD crosses below Signal line: Bearish
+
+## Chart Patterns that Work in Indian Markets
+
+### 1. Head and Shoulders (Reversal Pattern)
+**Formation**: Three peaks with the middle one being the highest
+**Significance**: Strong bearish reversal signal
+**Target**: Distance from head to neckline, projected downward
+
+**Case Study**: Bajaj Finance in 2021
+- Formed Head and Shoulders pattern at ₹6,500 levels
+- Neckline break at ₹5,800 triggered selling
+- Target achieved at ₹4,500 (18% decline as projected)
+
+### 2. Double Bottom (Reversal Pattern)
+**Formation**: Two equal lows with a peak in between
+**Significance**: Bullish reversal after downtrend
+**Target**: Distance from bottom to peak, projected upward
+
+### 3. Ascending Triangle (Continuation Pattern)
+**Formation**: Horizontal resistance with rising support
+**Significance**: Bullish continuation pattern
+**Entry**: Breakout above resistance with volume
+
+## Support and Resistance: The Foundation
+
+### Support Levels
+Price levels where buying interest emerges, preventing further decline.
+
+**Psychological Levels**: Round numbers like ₹100, ₹500, ₹1,000
+**Previous Highs/Lows**: Historical turning points
+**Moving Average Levels**: Dynamic support/resistance
+
+### Resistance Levels
+Price levels where selling pressure emerges, preventing further rise.
+
+**Example**: Nifty 50 Resistance Levels
+- 18,000 (Psychological resistance - round number)
+- 17,850 (Previous all-time high)
+- 200-day MA at 17,650 (Dynamic resistance)
+
+## Volume Analysis: The Secret Ingredient
+
+Volume confirms price movements and pattern validity.
+
+**Key Principles**:
+- **Breakouts with high volume**: More reliable
+- **Price rise with increasing volume**: Healthy uptrend
+- **Price rise with decreasing volume**: Weak rally (potential reversal)
+
+**Real-World Application**:
+When Titan Company broke above ₹2,800 resistance:
+- With high volume: Rally continued to ₹3,200 (14% gain)
+- With low volume: False breakout, fell back to ₹2,600
+
+## Risk Management in Technical Trading
+
+### Position Sizing
+Never risk more than 2% of your portfolio on a single trade.
+
+**Example**: ₹1,00,000 portfolio
+- Maximum risk per trade: ₹2,000
+- If stop-loss is 5%, position size = ₹40,000
+
+### Stop-Loss Placement
+- **Support/Resistance**: Place stop-loss below support or above resistance
+- **Percentage Rule**: 3-5% for short-term trades, 10-15% for swing trades
+- **ATR-based**: Use Average True Range for dynamic stop-losses
+
+## Technical Analysis Tools and Platforms
+
+### Free Platforms:
+- **TradingView**: Advanced charting with Indian market data
+- **NSE/BSE Charts**: Basic technical analysis tools
+- **Screener.in**: Technical screeners and charts
+
+### Popular Indicators Combo:
+- Moving Averages + RSI + Volume (for trend following)
+- MACD + Bollinger Bands + Support/Resistance (for momentum trading)
+        `,
+        keyTakeaways: [
+          "Technical analysis focuses on price action and timing rather than company fundamentals",
+          "Moving averages help identify trends, while RSI and MACD provide momentum signals",
+          "Chart patterns like Head & Shoulders and Double Bottom offer high-probability trading setups",
+          "Support and resistance levels act as key decision points for entry and exit",
+          "Volume confirmation is crucial for validating breakouts and pattern reliability",
+          "Proper risk management with stop-losses is essential for technical trading success"
+        ],
+        actionItems: [
+          "Practice identifying support and resistance levels on 5 different stock charts",
+          "Set up moving average crossover alerts for stocks in your watchlist",
+          "Study one major chart pattern formation in recent Indian market history",
+          "Calculate position sizes using the 2% risk rule for your portfolio"
+        ],
+      },
+      {
+        id: "market-cycles",
+        title: "Understanding Market Cycles and Timing",
+        type: "TEXT",
+        duration: 12,
+        completed: false,
+        content: `
+# Understanding Market Cycles and Timing
+
+Markets don't move in straight lines. Like seasons in nature, financial markets follow predictable cycles driven by economic factors, investor psychology, and liquidity flows. Understanding these cycles can significantly improve your investment timing and returns.
+
+## The Four Phases of Market Cycles
+
+### Phase 1: Accumulation (Market Bottom)
+**Characteristics**:
+- Pessimism is widespread, media coverage is negative
+- Valuations are attractive, but few investors are buying
+- Trading volumes are low, institutional buying begins quietly
+- Economic indicators start showing early signs of recovery
+
+**Indian Market Example**: March 2020 COVID Crash
+- Nifty fell from 12,400 to 7,600 (39% decline)
+- PE ratio dropped to 14x (significantly below historical average of 20x)
+- FII selling was ₹61,000 crores, but smart money started accumulating
+- Companies like Reliance, TCS were available at 30-40% discounts
+
+**Investment Strategy**: This is the best time to invest for long-term wealth creation.
+
+### Phase 2: Markup (Bull Market)
+**Characteristics**:
+- Prices begin to rise, economic data improves
+- Media sentiment shifts from negative to cautiously optimistic
+- Retail participation increases, mutual fund inflows surge
+- Corporate earnings growth accelerates
+
+**Indian Market Example**: April 2020 - October 2021
+- Nifty rallied from 7,600 to 18,600 (145% gain in 18 months)
+- New demat accounts opened: 14 million (record high)
+- SIP inflows reached ₹10,000 crores monthly
+- IPO market boomed with 63 listings raising ₹1.2 lakh crores
+
+**Investment Strategy**: Continue systematic investments, book partial profits on overvalued stocks.
+
+### Phase 3: Distribution (Market Top)
+**Characteristics**:
+- Euphoria peaks, everyone is talking about stock markets
+- Valuations become stretched, PE ratios above historical averages
+- New investors enter market at high prices
+- Institutional investors start taking profits
+
+**Indian Market Example**: October 2021 - January 2022
+- Nifty PE reached 24x (20% above long-term average)
+- Retail investor participation at all-time high
+- Small-cap and mid-cap valuations became extremely expensive
+- FII started net selling ₹1.1 lakh crores in 2022
+
+**Investment Strategy**: Be cautious, book profits, increase cash allocation.
+
+### Phase 4: Decline (Bear Market)
+**Characteristics**:
+- Prices fall significantly, panic selling emerges
+- Economic concerns dominate headlines
+- Retail investors suffer losses and exit markets
+- Liquidity dries up, forced selling by leveraged investors
+
+**Indian Market Example**: January 2022 - June 2022
+- Nifty corrected from 18,600 to 15,200 (18% decline)
+- Mid-cap and small-cap fell 25-35%
+- Inflation fears, FII selling, and global recession worries
+- Many retail investors exited at losses
+
+**Investment Strategy**: Prepare shopping lists, accumulate quality stocks at discounts.
+
+## Economic Indicators to Track Market Cycles
+
+### Leading Indicators (Predict Future Trends)
+1. **Yield Curve**: Inverted curve often signals recession
+2. **Credit Growth**: Slowing credit indicates economic weakness
+3. **Currency Trends**: INR weakness can signal foreign outflows
+4. **Commodity Prices**: Oil, gold trends impact inflation and growth
+
+### Coincident Indicators (Current State)
+1. **GDP Growth Rate**: Quarterly economic performance
+2. **Industrial Production**: Manufacturing sector health
+3. **Corporate Earnings**: Aggregate profit growth trends
+4. **Employment Data**: Job market conditions
+
+### Lagging Indicators (Confirm Trends)
+1. **Inflation Rate**: CPI and WPI trends
+2. **Interest Rates**: RBI policy rate changes
+3. **Bank NPAs**: Asset quality deterioration
+4. **Fiscal Deficit**: Government spending patterns
+
+## Psychological Phases of Market Cycles
+
+### Bull Market Psychology
+1. **Optimism**: "This time is different"
+2. **Excitement**: Easy money attracts new investors
+3. **Thrill**: Everyone has success stories
+4. **Euphoria**: Markets can only go up
+5. **Anxiety**: First signs of trouble
+6. **Denial**: "It's just a correction"
+
+### Bear Market Psychology
+1. **Fear**: Panic selling begins
+2. **Desperation**: Trying to recover losses
+3. **Panic**: Indiscriminate selling
+4. **Capitulation**: Giving up and exiting
+5. **Despondency**: Markets are rigged
+6. **Depression**: Swearing off investing forever
+
+## Sector Rotation During Market Cycles
+
+### Early Bull Market
+**Defensive Sectors Rally First**:
+- Banking and Financial Services
+- Infrastructure and Capital Goods
+- Metals and Mining
+
+### Mid Bull Market
+**Growth Sectors Take Over**:
+- Technology and IT Services
+- Consumer Discretionary
+- Healthcare and Pharma
+
+### Late Bull Market
+**Speculative Sectors Peak**:
+- Small-cap and Mid-cap stocks
+- New-age companies (EV, Renewable Energy)
+- IPOs and startup listings
+
+### Bear Market
+**Quality and Defensive Sectors Outperform**:
+- FMCG and Consumer Staples
+- Utilities and Power
+- Dividend-yielding stocks
+
+## Practical Market Timing Strategies
+
+### Dollar Cost Averaging (DCA)
+Invest fixed amounts regularly regardless of market conditions.
+
+**Example**: ₹10,000 monthly SIP in Nifty Index Fund
+- Bear Market (2022): Bought more units at lower NAV
+- Bull Market (2023): Benefited from earlier accumulation
+- Result: Average cost smoothened, emotions removed
+
+### Value Averaging
+Increase investments when markets fall, reduce when markets rise.
+
+**Strategy**: Target portfolio value growth of 12% annually
+- If portfolio underperforms, invest more
+- If portfolio outperforms, invest less or book profits
+
+### Market Valuation-Based Allocation
+
+**PE-Based Strategy for Nifty Allocation**:
+- PE < 16: 80% equity allocation (Undervalued)
+- PE 16-20: 60% equity allocation (Fair Value)
+- PE 20-24: 40% equity allocation (Overvalued)
+- PE > 24: 20% equity allocation (Expensive)
+
+## Global Factors Affecting Indian Market Cycles
+
+### Federal Reserve Policy
+- **Rate Hikes**: Dollar strengthens, FII outflows from India
+- **Rate Cuts**: Dollar weakens, FII inflows to India
+
+### China Economic Data
+- **Growth Acceleration**: Commodity demand increases, benefits Indian exporters
+- **Growth Deceleration**: Global supply chain disruption affects Indian companies
+
+### Crude Oil Prices
+- **Rising Oil**: Inflation concerns, INR weakness, negative for India
+- **Falling Oil**: Lower inflation, fiscal benefit, positive for markets
+        `,
+        keyTakeaways: [
+          "Market cycles have four predictable phases: Accumulation, Markup, Distribution, and Decline",
+          "The best investment opportunities occur during accumulation phase when pessimism is high",
+          "Economic indicators help identify current cycle phase and predict transitions",
+          "Investor psychology drives market extremes - fear at bottoms, greed at tops",
+          "Sector rotation patterns are predictable across different market cycle phases",
+          "Global factors like Fed policy and oil prices significantly impact Indian market cycles"
+        ],
+        actionItems: [
+          "Track Nifty PE ratio monthly to assess market valuation levels",
+          "Create watchlists of quality stocks to buy during market corrections",
+          "Monitor key economic indicators like GDP growth, inflation, and credit growth",
+          "Implement systematic investment plans to benefit from market volatility"
+        ],
+      },
+      {
+        id: "portfolio-diversification",
+        title: "Portfolio Diversification Strategies",
+        type: "INTERACTIVE",
+        duration: 15,
+        completed: false,
+        content: `
+# Portfolio Diversification: Building a Resilient Investment Portfolio
+
+"Don't put all your eggs in one basket" - this age-old wisdom forms the foundation of portfolio diversification. But effective diversification goes beyond just buying different stocks. It's about creating a portfolio that can weather various market conditions while optimizing returns.
+
+## The Science Behind Diversification
+
+### Correlation and Risk Reduction
+When you combine assets that don't move in perfect harmony, the overall portfolio risk reduces without necessarily compromising returns.
+
+**Mathematical Principle**: Portfolio risk is less than the weighted average of individual asset risks when correlations are below 1.0.
+
+**Real Example**: During COVID-19 (March 2020)
+- Technology stocks (Infosys, TCS): +15% to +30%
+- Aviation stocks (IndiGo, SpiceJet): -60% to -70%
+- Pharma stocks (Dr. Reddy's, Cipla): +40% to +50%
+- Banking stocks (HDFC Bank, ICICI): -25% to -35%
+
+A diversified portfolio containing all these sectors would have significantly lower volatility than holding only aviation or only banking stocks.
+
+## Types of Diversification
+
+### 1. Asset Class Diversification
+Spread investments across different asset classes with varying risk-return profiles.
+
+**Optimal Asset Allocation by Age**:
+
+**Age 25-35 (Aggressive Growth)**:
+- Equity: 70-80%
+- Debt: 15-25%
+- Gold: 5-10%
+- Real Estate: 0-10%
+
+**Age 35-50 (Balanced Growth)**:
+- Equity: 60-70%
+- Debt: 20-30%
+- Gold: 5-10%
+- Real Estate: 5-15%
+
+**Age 50+ (Conservative)**:
+- Equity: 40-50%
+- Debt: 40-50%
+- Gold: 5-10%
+- Real Estate: 0-10%
+
+### 2. Sector Diversification
+Spread equity investments across different industry sectors.
+
+**Recommended Sector Allocation for Indian Portfolio**:
+- Financial Services: 25-30%
+- Information Technology: 15-20%
+- FMCG: 10-15%
+- Healthcare: 8-12%
+- Energy: 8-12%
+- Infrastructure: 5-10%
+- Metals: 5-8%
+- Auto: 5-8%
+- Others: 10-15%
+
+**Sector Correlation Analysis**:
+- IT and Banking: Low correlation (0.3)
+- FMCG and Healthcare: Moderate correlation (0.6)
+- Metals and Energy: High correlation (0.8)
+
+### 3. Market Cap Diversification
+Balance between large-cap stability and small/mid-cap growth potential.
+
+**Market Cap Allocation Strategy**:
+- Large Cap (>₹20,000 cr): 60-70% (Stability and dividends)
+- Mid Cap (₹5,000-20,000 cr): 20-25% (Growth potential)
+- Small Cap (<₹5,000 cr): 10-15% (High growth, high risk)
+
+**Performance Comparison (2018-2023 CAGR)**:
+- Large Cap: 11.2%
+- Mid Cap: 13.8%
+- Small Cap: 15.4%
+- Volatility: Small Cap > Mid Cap > Large Cap
+
+### 4. Geographic Diversification
+Include international exposure to reduce country-specific risks.
+
+**International Allocation Options**:
+- US Markets: 10-15% (via Feeder funds, ETFs)
+- Developed Markets: 5-10% (Europe, Japan)
+- Emerging Markets: 3-5% (China, Brazil, excluding India)
+
+**Benefits of International Diversification**:
+- Currency diversification (USD exposure)
+- Access to global leaders (Apple, Microsoft, Google)
+- Different economic cycles
+- Technology and innovation exposure
+
+## Building a Core-Satellite Portfolio
+
+### Core Holdings (70-80% of Portfolio)
+**Characteristics**: Low-cost, diversified, stable returns
+**Examples**:
+- Nifty 50 Index Fund
+- Large-cap mutual funds
+- Multi-cap funds
+- Debt funds for fixed income
+
+### Satellite Holdings (20-30% of Portfolio)
+**Characteristics**: Higher risk/return, active management, specific themes
+**Examples**:
+- Sector-specific funds (IT, Pharma, Banking)
+- Small/Mid-cap funds
+- International funds
+- Individual high-conviction stocks
+
+**Sample Core-Satellite Allocation**:
+
+**Core (75%)**:
+- Nifty 50 Index Fund: 40%
+- Multi-cap Fund: 20%
+- Corporate Bond Fund: 15%
+
+**Satellite (25%)**:
+- Small Cap Fund: 8%
+- International Fund: 7%
+- Sectoral Fund (IT): 5%
+- High-conviction stocks: 5%
+
+## Risk Management Through Diversification
+
+### Systematic vs Unsystematic Risk
+
+**Systematic Risk (Market Risk)**:
+- Cannot be diversified away
+- Affects entire market
+- Examples: Interest rate changes, inflation, recession
+
+**Unsystematic Risk (Specific Risk)**:
+- Can be reduced through diversification
+- Company or sector-specific
+- Examples: Management changes, product failures, regulatory issues
+
+**Optimal Number of Stocks**: Research shows 15-20 stocks can eliminate 90% of unsystematic risk.
+
+### Rebalancing Strategy
+
+**Why Rebalance?**
+Over time, winning assets grow to become larger portions of your portfolio, increasing concentration risk.
+
+**Rebalancing Methods**:
+
+1. **Calendar Rebalancing**: Every 6-12 months
+2. **Threshold Rebalancing**: When allocation deviates by 5% from target
+3. **Hybrid Approach**: Calendar + threshold combination
+
+**Example of Rebalancing**:
+**Target Allocation**: 60% Equity, 40% Debt
+**After 1 Year**: 70% Equity (due to market rally), 30% Debt
+**Action**: Sell 10% equity, buy 10% debt to restore balance
+
+## Common Diversification Mistakes
+
+### 1. Over-Diversification (Diworsification)
+**Problem**: Holding too many similar assets
+**Example**: Buying 5 large-cap funds that hold the same top 10 stocks
+**Solution**: Check portfolio overlap, limit to 3-4 mutual funds per category
+
+### 2. Home Bias
+**Problem**: Investing only in familiar markets/companies
+**Example**: Only buying Indian stocks, ignoring international exposure
+**Solution**: Allocate 10-20% to international markets
+
+### 3. False Diversification
+**Problem**: Assets appearing different but moving together
+**Example**: Buying stocks in IT, ITES, Software - all tech-related
+**Solution**: Understand true business correlations, not just sector labels
+
+### 4. Timing-Based Changes
+**Problem**: Constantly changing allocation based on recent performance
+**Example**: Selling small-caps after poor performance, missing recovery
+**Solution**: Stick to strategic allocation, make tactical adjustments only
+
+## Measuring Portfolio Diversification
+
+### Portfolio Metrics to Track
+
+1. **Portfolio Beta**: Measure of systematic risk
+   - Target: 0.8-1.2 for balanced portfolios
+   - >1.2: High market risk
+   - <0.8: Conservative portfolio
+
+2. **Correlation Analysis**: Average correlation between holdings
+   - Target: <0.7 for good diversification
+   - >0.8: Poor diversification
+   - <0.5: Excellent diversification
+
+3. **Maximum Drawdown**: Worst peak-to-trough decline
+   - Target: <20% for diversified portfolios
+   - Monitor during market downturns
+   - Compare with benchmark indices
+
+### Diversification Tools and Platforms
+
+**Portfolio Analysis Tools**:
+- Portfolio Visualizer: Advanced analytics
+- Morningstar X-Ray: Mutual fund overlap analysis
+- Value Research: Indian mutual fund analysis
+- MoneyControl: Portfolio tracker
+
+**Free Diversification Checkers**:
+- Groww Portfolio Analyzer
+- ET Money Portfolio Tracker
+- Kuvera Portfolio X-Ray
+        `,
+        keyTakeaways: [
+          "Effective diversification reduces portfolio risk without necessarily compromising returns",
+          "Diversify across asset classes, sectors, market caps, and geographies for optimal risk management",
+          "Core-satellite approach balances stability with growth opportunities",
+          "15-20 stocks can eliminate 90% of company-specific risk through diversification",
+          "Regular rebalancing maintains target allocation and manages concentration risk",
+          "Avoid over-diversification and false diversification that add complexity without benefits"
+        ],
+        actionItems: [
+          "Analyze your current portfolio for sector and asset class concentration",
+          "Calculate correlation between your top holdings to identify overlap",
+          "Set up a rebalancing schedule (quarterly or semi-annually)",
+          "Allocate 10-15% to international markets for geographic diversification"
+        ],
+      },
+    ],
+    quiz: {
+      id: "market-analysis-quiz",
+      passed: false,
+      score: 0,
+      attempts: 0,
+      minPassingScore: 70,
+      questions: [
+        {
+          id: "q1",
+          question:
+            "What does a P/E ratio of 25 for a stock trading at ₹1,500 indicate?",
+          options: [
+            "The company's earnings per share is ₹60",
+            "The company will grow 25% annually",
+            "The stock is 25% overvalued",
+            "The company has 25 competitors",
+          ],
+          correctAnswer: 0,
+          explanation:
+            "P/E ratio = Price ÷ EPS. If P/E is 25 and price is ₹1,500, then EPS = ₹1,500 ÷ 25 = ₹60. This means investors pay ₹25 for every ₹1 of current earnings.",
+          difficulty: "MEDIUM",
+          type: "CALCULATION",
+        },
+        {
+          id: "q2",
+          question:
+            "In technical analysis, what does a 'Golden Cross' pattern indicate?",
+          options: [
+            "50-day MA crosses below 200-day MA (Bearish signal)",
+            "50-day MA crosses above 200-day MA (Bullish signal)",
+            "RSI crosses above 70 (Overbought signal)",
+            "MACD crosses above signal line (Buy signal)",
+          ],
+          correctAnswer: 1,
+          explanation:
+            "Golden Cross occurs when the 50-day moving average crosses above the 200-day moving average, indicating a potential bullish trend reversal and long-term upward momentum.",
+          difficulty: "EASY",
+          type: "RECALL",
+        },
+        {
+          id: "q3",
+          question:
+            "During which phase of the market cycle should long-term investors typically increase their investment allocation?",
+          options: [
+            "Markup phase (Bull market)",
+            "Distribution phase (Market top)",
+            "Decline phase (Bear market)",
+            "Accumulation phase (Market bottom)",
+          ],
+          correctAnswer: 3,
+          explanation:
+            "The accumulation phase offers the best long-term investment opportunities as valuations are attractive, pessimism is high, and smart money begins accumulating quality assets at discounted prices.",
+          difficulty: "MEDIUM",
+          type: "COMPREHENSION",
+        },
+        {
+          id: "q4",
+          question:
+            "What is the primary benefit of sector diversification in a portfolio?",
+          options: [
+            "Guarantees higher returns than concentrated portfolios",
+            "Eliminates all investment risks completely",
+            "Reduces unsystematic risk specific to individual sectors",
+            "Ensures equal returns from all sectors",
+          ],
+          correctAnswer: 2,
+          explanation:
+            "Sector diversification helps reduce unsystematic (specific) risk by spreading investments across different industries that may perform differently under various economic conditions, though it cannot eliminate systematic market risk.",
+          difficulty: "MEDIUM",
+          type: "COMPREHENSION",
+        },
+        {
+          id: "q5",
+          question:
+            "If RSI of a stock is at 75, what does this typically suggest to technical analysts?",
+          options: [
+            "The stock is oversold and due for a bounce",
+            "The stock is overbought and may face selling pressure",
+            "The stock is fairly valued at current levels",
+            "The stock will definitely fall by 25%",
+          ],
+          correctAnswer: 1,
+          explanation:
+            "RSI above 70 (especially at 75) indicates overbought conditions, suggesting the stock may have risen too quickly and could face selling pressure or a correction in the near term.",
+          difficulty: "EASY",
+          type: "INTERPRETATION",
+        },
+        {
+          id: "q6",
+          question:
+            "What is the recommended portfolio allocation for a 30-year-old investor according to modern portfolio theory?",
+          options: [
+            "40% Equity, 50% Debt, 10% Gold",
+            "70% Equity, 20% Debt, 10% Gold",
+            "90% Equity, 5% Debt, 5% Gold",
+            "50% Equity, 40% Debt, 10% Gold",
+          ],
+          correctAnswer: 1,
+          explanation:
+            "Young investors (25-35 years) can typically allocate 70-80% to equity for growth potential, 15-25% to debt for stability, and 5-10% to gold for diversification, given their long investment horizon.",
+          difficulty: "MEDIUM",
+          type: "APPLICATION",
+        },
+        {
+          id: "q7",
+          question:
+            "Which of the following is considered a leading economic indicator for predicting market cycles?",
+          options: [
+            "Current GDP growth rate",
+            "Last quarter's inflation rate",
+            "Yield curve inversion",
+            "Previous year's corporate earnings",
+          ],
+          correctAnswer: 2,
+          explanation:
+            "Yield curve inversion (when short-term rates exceed long-term rates) is a leading indicator that often predicts economic recession 6-18 months in advance, making it valuable for market cycle analysis.",
+          difficulty: "HARD",
+          type: "ANALYSIS",
+        },
+        {
+          id: "q8",
+          question:
+            "In fundamental analysis, what does a Debt-to-Equity ratio of 2.5 indicate about a company?",
+          options: [
+            "The company is conservatively financed",
+            "The company has high leverage and potential risk",
+            "The company has strong profit margins",
+            "The company is growing at 25% annually",
+          ],
+          correctAnswer: 1,
+          explanation:
+            "A D/E ratio of 2.5 means the company has ₹2.50 of debt for every ₹1 of equity, indicating high leverage. This poses higher financial risk, especially during economic downturns or rising interest rates.",
+          difficulty: "MEDIUM",
+          type: "INTERPRETATION",
+        },
+        {
+          id: "q9",
+          question:
+            "You have a portfolio with 80% allocation to Indian IT stocks. What is the primary risk you face?",
+          options: [
+            "Currency risk from international exposure",
+            "High concentration risk in one sector",
+            "Lack of growth potential in technology",
+            "Too much diversification reducing returns",
+          ],
+          correctAnswer: 1,
+          explanation:
+            "Having 80% allocation in one sector (IT) creates high concentration risk. If the IT sector faces challenges (regulation, outsourcing trends, global recession), the entire portfolio would be severely impacted.",
+          difficulty: "EASY",
+          type: "SCENARIO",
+        },
+        {
+          id: "q10",
+          question:
+            "When should you typically rebalance your investment portfolio?",
+          options: [
+            "Only during bull markets to book profits",
+            "Every day based on market movements",
+            "When asset allocation deviates significantly from target (5%+) or periodically (6-12 months)",
+            "Only during market crashes to buy more",
+          ],
+          correctAnswer: 2,
+          explanation:
+            "Portfolio rebalancing should be done when allocations drift significantly from targets (typically 5% deviation) or on a periodic basis (6-12 months) to maintain desired risk levels and benefit from market volatility.",
+          difficulty: "MEDIUM",
+          type: "APPLICATION",
+        },
+      ],
+    },
+  },
   // Additional modules would continue here following the same comprehensive pattern...
 ];
 
