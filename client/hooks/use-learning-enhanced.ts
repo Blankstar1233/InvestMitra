@@ -1955,6 +1955,415 @@ Consider your age, income, dependents, risk tolerance, and goals. Your investmen
       ],
     },
   },
+
+  // TIER 3: ADVANCED MODULES  
+  {
+    id: "risk-advanced",
+    title: "Risk & Advanced Applications",
+    description:
+      "Master advanced investing topics including risk control, derivatives, and modern applications for sophisticated investors",
+    category: "RISK",
+    difficulty: "ADVANCED",
+    duration: 65,
+    reward: 1000,
+    completed: false,
+    progress: 0,
+    unlocked: false,
+    prerequisites: ["investing-fundamentals", "indian-markets-mastery", "market-analysis", "strategy-planning"],
+    tier: "ADVANCED",
+    lessons: [
+      {
+        id: "types-of-risk",
+        title: "Types of Investment Risk",
+        type: "TEXT",
+        duration: 9,
+        completed: false,
+        content: `
+# Types of Investment Risk: Understanding What Can Go Wrong
+
+Risk is the possibility of losing money or not achieving expected returns. Understanding different types of risk helps investors make informed decisions and implement appropriate protection strategies.
+
+## Systematic Risk (Market Risk)
+Risk that affects the entire market and cannot be diversified away. Examples include recession, inflation changes, interest rate movements, and political instability.
+
+**Indian Example**: COVID-19 pandemic in March 2020 caused systematic risk - Nifty fell 40% affecting all sectors regardless of company quality.
+
+## Unsystematic Risk (Company-Specific Risk)  
+Risk specific to individual companies or sectors that can be reduced through diversification. Examples include management changes, product failures, regulatory issues, and competitive pressures.
+
+**Case Study**: Jet Airways bankruptcy in 2019 was unsystematic risk - while aviation sector faced challenges, other airlines like IndiGo survived and thrived.
+        `,
+        keyTakeaways: [
+          "Systematic risk affects entire markets and cannot be diversified away",
+          "Unsystematic risk is company-specific and can be reduced through diversification",
+          "Understanding risk types helps in building appropriate investment strategies"
+        ],
+      },
+      {
+        id: "stop-loss-hedging",
+        title: "Stop-loss & Hedging Strategies",
+        type: "INTERACTIVE",
+        duration: 11,
+        completed: false,
+        content: `
+# Stop-loss & Hedging: Protecting Your Investment Capital
+
+Stop-loss orders and hedging strategies are essential tools for managing downside risk and preserving capital during adverse market movements.
+
+## Stop-loss Orders
+Automatic sell orders triggered when stock price falls to predetermined level. This limits losses by exiting positions before further decline.
+
+**Types**: Market stop-loss (sells at market price), stop-limit orders (sells at specific price or better), trailing stop-loss (adjusts with price movements).
+
+**Example**: Buy Reliance at ₹2,000, set stop-loss at ₹1,800 (10% loss limit). If price falls to ₹1,800, shares are automatically sold.
+
+## Hedging Strategies
+Using financial instruments to offset potential losses in existing positions. Common hedging tools include options, futures, and inverse ETFs.
+
+**Put Options**: Buying put options provides insurance against stock decline. Like buying insurance for your car - you pay premium for protection.
+
+**Portfolio Hedging**: During market uncertainty, investors may hedge equity positions using Nifty put options or gold investments.
+        `,
+        keyTakeaways: [
+          "Stop-loss orders automatically limit losses at predetermined levels",
+          "Hedging uses derivatives to protect against adverse price movements",
+          "Risk management tools cost money but provide valuable downside protection"
+        ],
+      },
+      {
+        id: "behavioral-biases",
+        title: "Behavioral Biases in Investing",
+        type: "TEXT",
+        duration: 10,
+        completed: false,
+        content: `
+# Behavioral Biases: Your Mind as Your Biggest Enemy
+
+Human psychology often works against successful investing. Understanding and overcoming behavioral biases is crucial for long-term investment success.
+
+## Common Biases That Hurt Returns
+
+**Loss Aversion**: Feeling pain of losses twice as much as pleasure from gains. This leads to holding losing stocks too long and selling winners too early.
+
+**Herd Mentality**: Following crowd behavior rather than independent analysis. Buying during euphoria (market tops) and selling during panic (market bottoms).
+
+**Confirmation Bias**: Seeking information that confirms existing beliefs while ignoring contradictory evidence. This prevents objective investment analysis.
+
+**Overconfidence**: Believing you can predict market movements or pick winning stocks consistently. Studies show overconfident investors trade more and earn less.
+
+## Overcoming Behavioral Biases
+Set investment rules and stick to them, use systematic investment plans (SIPs), focus on long-term goals rather than short-term noise, and regularly review and rebalance portfolio.
+
+**Warren Buffett's Advice**: "Be fearful when others are greedy and greedy when others are fearful" - the opposite of herd mentality.
+        `,
+        keyTakeaways: [
+          "Behavioral biases like loss aversion and herd mentality hurt investment returns",
+          "Systematic approaches like SIPs help overcome emotional decision-making",
+          "Successful investing requires discipline to act contrary to natural instincts"
+        ],
+      },
+      {
+        id: "derivatives-basics",
+        title: "Derivatives: Futures and Options Fundamentals",
+        type: "INTERACTIVE",
+        duration: 12,
+        completed: false,
+        content: `
+# Derivatives: Futures and Options for Advanced Investors
+
+Derivatives are financial contracts whose value depends on underlying assets. They can be used for speculation, hedging, or arbitrage in sophisticated investment strategies.
+
+## Futures Contracts
+Agreement to buy/sell asset at predetermined price on future date. Both parties are obligated to complete the transaction.
+
+**Example**: Nifty futures trading at 18,000 for December expiry. If you buy one lot and Nifty closes at 18,500, you profit ₹12,500 (500 points × 25 lot size).
+
+**Uses**: Speculation on market direction, hedging existing portfolio, arbitrage opportunities between cash and futures markets.
+
+## Options Contracts
+Give the right (not obligation) to buy (call) or sell (put) asset at specific price within certain time period.
+
+**Call Options**: Right to buy. Profitable when underlying asset price rises above strike price plus premium paid.
+
+**Put Options**: Right to sell. Profitable when underlying asset price falls below strike price minus premium paid.
+
+**Risk Management**: Options provide asymmetric payoff - limited loss (premium paid) but unlimited profit potential.
+
+**Indian Market**: NSE offers options on Nifty, Bank Nifty, and individual stocks like Reliance, TCS, HDFC Bank with monthly and weekly expiries.
+        `,
+        keyTakeaways: [
+          "Futures obligate both parties while options provide rights without obligations",
+          "Derivatives can be used for speculation, hedging, or arbitrage strategies",
+          "Options offer asymmetric risk-reward with limited downside and unlimited upside"
+        ],
+      },
+      {
+        id: "algorithmic-trading",
+        title: "Algorithmic Trading and Modern Applications",
+        type: "TEXT",
+        duration: 8,
+        completed: false,
+        content: `
+# Algorithmic Trading: Technology Meets Investment Strategy
+
+Algorithmic trading uses computer programs to execute trades based on predefined criteria. This represents the evolution of investing from manual to systematic approaches.
+
+## What is Algorithmic Trading?
+Computer algorithms analyze market data, identify opportunities, and execute trades automatically without human intervention. Algorithms can process vast amounts of data and execute trades in milliseconds.
+
+**Advantages**: Removes emotions from trading, faster execution, ability to monitor multiple markets simultaneously, backtesting strategies on historical data.
+
+**Popular Strategies**: Mean reversion (buying oversold, selling overbought), momentum trading (following trends), arbitrage (price differences between markets).
+
+## Modern Applications
+**Robo-Advisors**: Automated platforms that create and manage portfolios based on investor profile. Examples include Zerodha Coin, Groww, and ET Money in India.
+
+**Smart Beta ETFs**: Use rules-based strategies instead of market capitalization weighting. Examples include low volatility ETFs, quality factor ETFs.
+
+**AI in Investing**: Machine learning algorithms analyze alternative data sources like satellite imagery, social media sentiment, and credit card transactions for investment insights.
+
+**Retail Access**: Platforms like Zerodha Streak, Upstox Pro allow retail investors to create and deploy algorithmic strategies without programming knowledge.
+        `,
+        keyTakeaways: [
+          "Algorithmic trading removes emotions and enables systematic strategy execution",
+          "Modern technology democratizes access to sophisticated investment strategies",
+          "Robo-advisors and smart beta ETFs bring professional-grade tools to retail investors"
+        ],
+      },
+      {
+        id: "crisis-case-study",
+        title: "Crisis Case Study: 2008 Financial Crisis Lessons",
+        type: "CASE_STUDY",
+        duration: 10,
+        completed: false,
+        content: `
+# Crisis Case Study: Learning from the 2008 Financial Crisis
+
+The 2008 global financial crisis provides invaluable lessons about risk management, market cycles, and the importance of diversification during extreme events.
+
+## What Happened?
+US housing bubble burst triggered global financial meltdown. Banks collapsed, stock markets crashed worldwide, and economies entered recession.
+
+**Timeline**: Lehman Brothers bankruptcy (September 2008), global stock markets fell 50%+, credit markets froze, unemployment soared, governments intervened with massive stimulus.
+
+## Impact on Indian Markets
+**Sensex Performance**: Fell from 21,000 in January 2008 to 8,000 in March 2009 (62% decline). Banking and real estate sectors were worst hit due to global linkages.
+
+**Sector Impact**: IT services companies faced client budget cuts, commodity companies suffered from demand destruction, defensive sectors like FMCG performed relatively better.
+
+## Key Lessons Learned
+
+**Diversification Importance**: Portfolios concentrated in financial stocks suffered massive losses. Geographic and sector diversification provided some protection.
+
+**Liquidity Matters**: During crisis, even quality assets became illiquid. Maintaining cash reserves and liquid investments proved crucial for survival.
+
+**Opportunity in Crisis**: Investors who bought quality stocks at crisis valuations (2009) achieved exceptional returns over subsequent decade.
+
+**Risk Management**: Excessive leverage amplified losses. Conservative debt levels and proper position sizing enabled survival and recovery.
+
+**Government Response**: Coordinated global monetary and fiscal stimulus prevented complete economic collapse, highlighting importance of policy support.
+        `,
+        keyTakeaways: [
+          "Financial crises create both massive risks and exceptional opportunities",
+          "Diversification and liquidity management are crucial during extreme market stress",
+          "Quality investments purchased at crisis valuations often deliver superior long-term returns"
+        ],
+      },
+      {
+        id: "capstone-project",
+        title: "Capstone Project: Build Your Diversified Portfolio",
+        type: "INTERACTIVE",
+        duration: 15,
+        completed: false,
+        content: `
+# Capstone Project: Design Your Complete Investment Portfolio
+
+Apply everything you've learned to create a comprehensive, diversified investment portfolio tailored to your goals, risk tolerance, and investment horizon.
+
+## Project Framework
+
+**Step 1: Define Your Investment Profile**
+Age, income, existing assets, financial goals (short/medium/long-term), risk tolerance assessment, investment timeline, family dependencies.
+
+**Step 2: Asset Allocation Strategy**
+Based on your profile, determine optimal allocation: Equity percentage (large/mid/small cap distribution), debt percentage (government/corporate bonds), alternative investments (gold, REITs, international).
+
+**Step 3: Investment Vehicle Selection**
+Choose specific mutual funds, ETFs, or stocks for each allocation. Consider expense ratios, past performance, fund manager track record, investment philosophy alignment.
+
+**Step 4: Implementation Plan**
+Decide between lump sum vs SIP approach, set up automatic investments, determine rebalancing frequency, establish monitoring and review schedule.
+
+**Step 5: Risk Management Integration**
+Set stop-loss levels for individual holdings, plan hedge strategies for market downturns, maintain emergency fund outside investment portfolio, consider insurance needs.
+
+## Sample Portfolio: 30-Year-Old Professional
+**Profile**: ₹10 lakh annual income, moderate risk tolerance, 30-year investment horizon, goals include house purchase (7 years) and retirement planning.
+
+**Allocation**: 70% Equity (40% large-cap, 20% mid-cap, 10% international), 25% Debt (15% corporate bonds, 10% liquid funds), 5% Gold ETF.
+
+**Implementation**: ₹15,000 monthly SIP across chosen funds, quarterly portfolio review, annual rebalancing, increase SIP by 10% annually.
+
+## Your Assignment
+Create your personalized portfolio using this framework. Document your reasoning for each decision and establish monitoring and review processes.
+        `,
+        keyTakeaways: [
+          "Successful portfolios require clear goals, appropriate allocation, and systematic implementation",
+          "Regular monitoring and rebalancing maintain portfolio alignment with objectives",
+          "Risk management integration protects capital while pursuing long-term growth"
+        ],
+      },
+    ],
+    quiz: {
+      id: "risk-advanced-quiz",
+      passed: false,
+      score: 0,
+      attempts: 0,
+      minPassingScore: 70,
+      questions: [
+        {
+          id: "q1",
+          question: "Which type of risk cannot be eliminated through diversification?",
+          options: [
+            "Company-specific risk",
+            "Systematic risk",
+            "Unsystematic risk",
+            "Management risk"
+          ],
+          correctAnswer: 1,
+          explanation: "Systematic risk affects the entire market and cannot be diversified away, while unsystematic risks are company-specific and can be reduced through diversification.",
+          difficulty: "MEDIUM",
+          type: "RECALL",
+        },
+        {
+          id: "q2",
+          question: "What is the primary purpose of a stop-loss order?",
+          options: [
+            "To guarantee profits on investments",
+            "To automatically limit losses at predetermined levels",
+            "To increase position sizes during rallies",
+            "To eliminate all investment risks"
+          ],
+          correctAnswer: 1,
+          explanation: "Stop-loss orders automatically sell positions when prices fall to predetermined levels, helping limit losses and protect capital.",
+          difficulty: "EASY",
+          type: "COMPREHENSION",
+        },
+        {
+          id: "q3",
+          question: "Which behavioral bias leads investors to hold losing stocks too long?",
+          options: [
+            "Overconfidence bias",
+            "Confirmation bias",
+            "Loss aversion",
+            "Herd mentality"
+          ],
+          correctAnswer: 2,
+          explanation: "Loss aversion causes investors to feel the pain of losses more than the pleasure of gains, leading them to hold losing positions hoping to break even.",
+          difficulty: "MEDIUM",
+          type: "COMPREHENSION",
+        },
+        {
+          id: "q4",
+          question: "What distinguishes futures contracts from options contracts?",
+          options: [
+            "Futures are more expensive than options",
+            "Futures obligate both parties, options provide rights without obligations",
+            "Options are only for stocks, futures are for commodities",
+            "Futures expire monthly, options expire weekly"
+          ],
+          correctAnswer: 1,
+          explanation: "Futures contracts obligate both parties to complete the transaction, while options give the holder the right but not the obligation to buy or sell.",
+          difficulty: "MEDIUM",
+          type: "COMPREHENSION",
+        },
+        {
+          id: "q5",
+          question: "What is the main advantage of algorithmic trading over manual trading?",
+          options: [
+            "Guarantees higher returns in all markets",
+            "Removes emotions and enables systematic execution",
+            "Eliminates all trading risks completely",
+            "Only works during bull markets"
+          ],
+          correctAnswer: 1,
+          explanation: "Algorithmic trading removes human emotions from decision-making and enables systematic execution of predefined strategies without psychological biases.",
+          difficulty: "EASY",
+          type: "COMPREHENSION",
+        },
+        {
+          id: "q6",
+          question: "During the 2008 financial crisis, Indian markets (Sensex) fell approximately:",
+          options: [
+            "25% from peak to trough",
+            "40% from peak to trough", 
+            "62% from peak to trough",
+            "80% from peak to trough"
+          ],
+          correctAnswer: 2,
+          explanation: "The Sensex fell from about 21,000 in January 2008 to around 8,000 in March 2009, representing a decline of approximately 62%.",
+          difficulty: "MEDIUM",
+          type: "RECALL",
+        },
+        {
+          id: "q7",
+          question: "Which strategy helps overcome herd mentality in investing?",
+          options: [
+            "Following popular stock recommendations",
+            "Buying when markets are euphoric",
+            "Systematic investment plans (SIPs)",
+            "Trading based on news headlines"
+          ],
+          correctAnswer: 2,
+          explanation: "SIPs help overcome herd mentality by investing fixed amounts regularly regardless of market conditions, reducing the impact of emotional decisions.",
+          difficulty: "MEDIUM",
+          type: "APPLICATION",
+        },
+        {
+          id: "q8",
+          question: "What type of option would you buy to profit from a falling stock price?",
+          options: [
+            "Call option",
+            "Put option",
+            "Future contract",
+            "Forward contract"
+          ],
+          correctAnswer: 1,
+          explanation: "Put options give you the right to sell at a specific price, making them profitable when the underlying stock price falls below the strike price.",
+          difficulty: "EASY",
+          type: "APPLICATION",
+        },
+        {
+          id: "q9",
+          question: "What is the key lesson about portfolio construction from the 2008 crisis?",
+          options: [
+            "Concentrate in the best performing sector",
+            "Avoid all equity investments during uncertainty",
+            "Diversification and liquidity management are crucial",
+            "Only invest in government bonds for safety"
+          ],
+          correctAnswer: 2,
+          explanation: "The 2008 crisis highlighted the importance of diversification across sectors and geographies, plus maintaining liquidity for opportunities and survival.",
+          difficulty: "MEDIUM",
+          type: "SCENARIO",
+        },
+        {
+          id: "q10",
+          question: "In the capstone portfolio for a 30-year-old, what should be the approximate equity allocation?",
+          options: [
+            "30-40%",
+            "50-60%",
+            "70-80%",
+            "90-100%"
+          ],
+          correctAnswer: 2,
+          explanation: "Young investors with long investment horizons can typically allocate 70-80% to equity for growth potential, balanced with some debt for stability.",
+          difficulty: "MEDIUM",
+          type: "APPLICATION",
+        },
+      ],
+    },
+  },
   // Additional modules would continue here following the same comprehensive pattern...
 ];
 
