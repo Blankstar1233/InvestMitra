@@ -1492,7 +1492,7 @@ Over time, winning assets grow to become larger portions of your portfolio, incr
           explanation:
             "P/E ratio = Price ÷ EPS. If P/E is 25 and price is ₹1,500, then EPS = ₹1,500 ÷ 25 = ₹60. This means investors pay ₹25 for every ₹1 of current earnings.",
           difficulty: "MEDIUM",
-          type: "CALCULATION",
+          type: "APPLICATION",
         },
         {
           id: "q2",
@@ -1556,7 +1556,7 @@ Over time, winning assets grow to become larger portions of your portfolio, incr
           explanation:
             "RSI above 70 (especially at 75) indicates overbought conditions, suggesting the stock may have risen too quickly and could face selling pressure or a correction in the near term.",
           difficulty: "EASY",
-          type: "INTERPRETATION",
+          type: "COMPREHENSION",
         },
         {
           id: "q6",
@@ -1588,7 +1588,7 @@ Over time, winning assets grow to become larger portions of your portfolio, incr
           explanation:
             "Yield curve inversion (when short-term rates exceed long-term rates) is a leading indicator that often predicts economic recession 6-18 months in advance, making it valuable for market cycle analysis.",
           difficulty: "HARD",
-          type: "ANALYSIS",
+          type: "COMPREHENSION",
         },
         {
           id: "q8",
@@ -1604,7 +1604,7 @@ Over time, winning assets grow to become larger portions of your portfolio, incr
           explanation:
             "A D/E ratio of 2.5 means the company has ₹2.50 of debt for every ₹1 of equity, indicating high leverage. This poses higher financial risk, especially during economic downturns or rising interest rates.",
           difficulty: "MEDIUM",
-          type: "INTERPRETATION",
+          type: "COMPREHENSION",
         },
         {
           id: "q9",
@@ -1637,6 +1637,320 @@ Over time, winning assets grow to become larger portions of your portfolio, incr
             "Portfolio rebalancing should be done when allocations drift significantly from targets (typically 5% deviation) or on a periodic basis (6-12 months) to maintain desired risk levels and benefit from market volatility.",
           difficulty: "MEDIUM",
           type: "APPLICATION",
+        },
+      ],
+    },
+  },
+
+  // TIER 2: INTERMEDIATE/ADVANCED MODULES
+  {
+    id: "strategy-planning",
+    title: "Strategy & Planning",
+    description:
+      "Learn how to design and apply investment strategies effectively for long-term wealth creation",
+    category: "STRATEGY",
+    difficulty: "ADVANCED",
+    duration: 55,
+    reward: 900,
+    completed: false,
+    progress: 0,
+    unlocked: false,
+    prerequisites: ["investing-fundamentals", "indian-markets-mastery", "market-analysis"],
+    tier: "INTERMEDIATE",
+    lessons: [
+      {
+        id: "longterm-vs-shortterm",
+        title: "Long-term vs Short-term Investing",
+        type: "TEXT",
+        duration: 10,
+        completed: false,
+        content: `
+# Long-term vs Short-term Investing: Choose Your Investment Horizon
+
+The difference between wealth creation and wealth destruction often lies in your investment time horizon. Long-term investing harnesses the power of compounding, while short-term trading requires exceptional skill and often leads to losses for retail investors.
+
+## Long-term Investing (5+ years)
+Long-term investing focuses on buying quality assets and holding them through market cycles. Warren Buffett's famous quote captures this perfectly: "Time in the market beats timing the market."
+
+**Benefits**: Compounding returns, reduced transaction costs, tax efficiency, lower stress, historically proven wealth creation.
+
+**Real Example**: An investor who bought Infosys shares in 2000 at ₹200 and held until 2023 saw their investment grow to ₹1,600+ (700% return) despite multiple market crashes.
+
+## Short-term Trading (Days to months)
+Short-term trading involves frequent buying and selling to profit from price fluctuations. This requires technical analysis skills, market timing, and constant monitoring.
+
+**Challenges**: High transaction costs, frequent taxes, emotional stress, requires expertise, statistically most traders lose money.
+
+**Statistics**: Studies show 80-90% of day traders lose money over time, while long-term investors have historically made profits.
+        `,
+        keyTakeaways: [
+          "Long-term investing leverages compounding and reduces the impact of market volatility",
+          "Short-term trading requires exceptional skill and most retail traders lose money",
+          "Time in the market generally beats timing the market for wealth creation"
+        ],
+      },
+      {
+        id: "sips-etfs",
+        title: "SIPs & ETFs: Systematic Investment Tools",
+        type: "INTERACTIVE",
+        duration: 12,
+        completed: false,
+        content: `
+# SIPs & ETFs: Building Wealth Systematically
+
+Systematic Investment Plans (SIPs) and Exchange Traded Funds (ETFs) are powerful tools that make investing accessible, disciplined, and cost-effective for retail investors.
+
+## Systematic Investment Plans (SIPs)
+SIPs allow you to invest a fixed amount regularly in mutual funds, regardless of market conditions. This approach eliminates the need to time the market and builds investing discipline.
+
+**Key Benefits**: Rupee cost averaging (buying more units when prices are low, fewer when high), builds discipline, starts with as little as ₹500, automatic investment reduces emotional decisions.
+
+**Real Example**: ₹5,000 monthly SIP in Nifty 50 index fund over 10 years would have grown to approximately ₹9.5 lakhs (invested: ₹6 lakhs, returns: ₹3.5 lakhs assuming 12% CAGR).
+
+## Exchange Traded Funds (ETFs)
+ETFs are mutual funds that trade like stocks on exchanges. They typically track an index (like Nifty 50) and offer broad market exposure at low costs.
+
+**Advantages**: Very low expense ratios (0.05-0.5%), instant diversification, high liquidity, transparent holdings, tax efficiency.
+
+**Popular Indian ETFs**: Nifty 50 ETF, Bank Nifty ETF, Gold ETF, International ETFs tracking US markets.
+        `,
+        keyTakeaways: [
+          "SIPs enable rupee cost averaging and build investing discipline automatically",
+          "ETFs provide low-cost, diversified market exposure with high liquidity",
+          "Both tools make investing accessible to retail investors with small amounts"
+        ],
+      },
+      {
+        id: "value-vs-growth",
+        title: "Value vs Growth Investing Approaches",
+        type: "TEXT",
+        duration: 11,
+        completed: false,
+        content: `
+# Value vs Growth Investing: Two Proven Wealth Creation Philosophies
+
+Value and Growth are two fundamental investment approaches that have created enormous wealth over decades. Understanding both helps you choose the right strategy for your goals and temperament.
+
+## Value Investing
+Value investing involves buying stocks that appear underpriced relative to their intrinsic value. Value investors look for companies trading below their fair value due to temporary problems or market pessimism.
+
+**Key Metrics**: Low P/E ratios, low P/B ratios, high dividend yields, strong balance sheets, consistent earnings.
+
+**Famous Practitioners**: Warren Buffett, Benjamin Graham. Buffett's Berkshire Hathaway has delivered 20%+ annual returns for 50+ years using value principles.
+
+**Indian Example**: Buying banking stocks during 2018-2019 NPA crisis when they were trading at 8-10x P/E despite strong underlying businesses.
+
+## Growth Investing
+Growth investing focuses on companies with above-average earnings growth potential, even if they appear expensive on traditional metrics. Growth investors pay premium prices for superior growth prospects.
+
+**Key Characteristics**: High revenue/earnings growth, expanding market share, innovative products/services, reinvestment in business growth.
+
+**Success Stories**: Amazon, Google, Microsoft. In India: companies like Asian Paints, HDFC Bank in their growth phases delivered exceptional returns despite appearing expensive.
+
+**Trade-off**: Growth stocks often carry higher valuations and greater volatility but offer potential for superior long-term returns.
+        `,
+        keyTakeaways: [
+          "Value investing focuses on buying underpriced assets with strong fundamentals",
+          "Growth investing targets companies with superior earnings growth potential",
+          "Both approaches have created substantial wealth when applied with discipline"
+        ],
+      },
+      {
+        id: "investment-plan",
+        title: "Building Your Personal Investment Plan",
+        type: "INTERACTIVE",
+        duration: 13,
+        completed: false,
+        content: `
+# Building Your Personal Investment Plan: A Step-by-Step Framework
+
+A well-structured investment plan acts as your roadmap to financial success. It aligns your investments with your goals, risk tolerance, and time horizon while maintaining discipline during market volatility.
+
+## Step 1: Define Your Financial Goals
+**Short-term (1-3 years)**: Emergency fund, vacation, down payment. **Medium-term (3-10 years)**: Car purchase, home down payment, children's education. **Long-term (10+ years)**: Retirement, children's higher education, wealth building.
+
+**SMART Goals Example**: "Accumulate ₹25 lakhs for home down payment in 7 years" - Specific, Measurable, Achievable, Relevant, Time-bound.
+
+## Step 2: Assess Risk Tolerance
+**Conservative**: Prefer stability, can't afford major losses, nearing retirement. **Moderate**: Balanced approach, some volatility acceptable for better returns. **Aggressive**: Young investors, high risk tolerance, long investment horizon.
+
+**Risk Assessment**: Age, income stability, existing financial cushion, investment experience, emotional comfort with volatility.
+
+## Step 3: Asset Allocation Strategy
+**Age-based Rule**: Equity % = 100 - Age. A 30-year-old could have 70% equity, 30% debt. **Goal-based Allocation**: Emergency fund (liquid funds), short-term goals (debt funds), long-term goals (equity funds).
+
+## Step 4: Investment Vehicle Selection
+**Equity Exposure**: Large-cap funds (stability), multi-cap funds (diversification), index funds (low cost). **Debt Exposure**: Short-duration funds (liquidity), long-duration funds (higher returns), PPF/EPF (tax benefits).
+
+## Step 5: Implementation and Review
+Start SIPs, set automatic investments, review quarterly, rebalance annually, increase SIP amounts with income growth.
+        `,
+        keyTakeaways: [
+          "Investment plans should align with specific financial goals and timelines",
+          "Risk tolerance determines appropriate asset allocation between equity and debt",
+          "Regular review and rebalancing ensures the plan stays on track"
+        ],
+      },
+      {
+        id: "strategy-roleplay",
+        title: "Roleplay Scenario: Choosing Your Investment Strategy",
+        type: "CASE_STUDY",
+        duration: 9,
+        completed: false,
+        content: `
+# Roleplay Scenario: Meet Three Investors - Choose Your Strategy
+
+Let's examine three different investor profiles and determine the most suitable investment strategy for each. This exercise helps you understand how personal circumstances drive investment decisions.
+
+## Investor Profile 1: Raj (Age 25, Software Engineer)
+**Situation**: Fresh graduate, ₹8 lakh annual salary, no dependents, aggressive growth mindset, 40-year investment horizon.
+
+**Recommended Strategy**: 80% equity (mix of large-cap and mid-cap funds), 15% debt (for stability), 5% gold (diversification). Focus on growth investing with long-term SIPs.
+
+**Rationale**: Young age allows high risk tolerance, long time horizon enables equity wealth creation, systematic investing builds discipline.
+
+## Investor Profile 2: Priya (Age 40, Marketing Manager)
+**Situation**: ₹15 lakh annual income, two children, moderate risk tolerance, planning for children's education and retirement.
+
+**Recommended Strategy**: 60% equity (predominantly large-cap for stability), 35% debt (target-date funds for education goals), 5% gold. Balanced value and growth approach.
+
+**Rationale**: Balanced approach manages multiple goals, moderate equity exposure for growth with stability, goal-based investing for education expenses.
+
+## Investor Profile 3: Kumar (Age 55, Business Owner)
+**Situation**: High net worth, nearing retirement, capital preservation priority, some growth needed to beat inflation.
+
+**Recommended Strategy**: 40% equity (dividend-focused large-cap funds), 50% debt (high-quality bonds and FDs), 10% gold/real estate. Value investing approach.
+
+**Rationale**: Capital preservation with modest growth, dividend income for cash flow, reduced volatility as retirement approaches.
+
+## Your Turn: Which Profile Matches You?
+Consider your age, income, dependents, risk tolerance, and goals. Your investment strategy should evolve as your life circumstances change.
+        `,
+        keyTakeaways: [
+          "Investment strategy must align with age, income, and life circumstances",
+          "Young investors can afford higher equity allocation for growth",
+          "Strategy should evolve from growth-focused to income-focused over time"
+        ],
+      },
+    ],
+    quiz: {
+      id: "strategy-planning-quiz",
+      passed: false,
+      score: 0,
+      attempts: 0,
+      minPassingScore: 70,
+      questions: [
+        {
+          id: "q1",
+          question: "What is the primary advantage of long-term investing over short-term trading?",
+          options: [
+            "Guaranteed returns with no risk",
+            "Ability to time market perfectly",
+            "Compounding returns and reduced transaction costs",
+            "Higher returns in all market conditions"
+          ],
+          correctAnswer: 2,
+          explanation: "Long-term investing benefits from compounding returns, lower transaction costs, and historically better wealth creation compared to short-term trading.",
+          difficulty: "EASY",
+          type: "COMPREHENSION",
+        },
+        {
+          id: "q2",
+          question: "What does SIP primarily help investors achieve?",
+          options: [
+            "Market timing for maximum returns",
+            "Rupee cost averaging and investment discipline",
+            "Guaranteed profits in all conditions",
+            "Elimination of all investment risks"
+          ],
+          correctAnswer: 1,
+          explanation: "SIPs enable rupee cost averaging by investing fixed amounts regularly, which helps smooth out market volatility and builds investment discipline.",
+          difficulty: "EASY",
+          type: "RECALL",
+        },
+        {
+          id: "q3",
+          question: "Which metric is most important for value investors?",
+          options: [
+            "High revenue growth rate",
+            "Low P/E ratio with strong fundamentals",
+            "Maximum social media mentions",
+            "Highest stock price appreciation"
+          ],
+          correctAnswer: 1,
+          explanation: "Value investors focus on low P/E ratios combined with strong fundamentals, seeking stocks trading below their intrinsic value.",
+          difficulty: "MEDIUM",
+          type: "APPLICATION",
+        },
+        {
+          id: "q4",
+          question: "For a 30-year-old investor, what is the recommended equity allocation using the age-based rule?",
+          options: [
+            "30%",
+            "50%",
+            "70%",
+            "90%"
+          ],
+          correctAnswer: 2,
+          explanation: "The age-based rule suggests Equity % = 100 - Age, so a 30-year-old should have approximately 70% equity allocation.",
+          difficulty: "EASY",
+          type: "APPLICATION",
+        },
+        {
+          id: "q5",
+          question: "What is the main difference between ETFs and regular mutual funds?",
+          options: [
+            "ETFs have higher expense ratios",
+            "ETFs trade on exchanges like stocks",
+            "ETFs guarantee higher returns",
+            "ETFs only invest in bonds"
+          ],
+          correctAnswer: 1,
+          explanation: "ETFs trade on stock exchanges like individual stocks, providing liquidity and transparency, while regular mutual funds are priced once daily.",
+          difficulty: "MEDIUM",
+          type: "COMPREHENSION",
+        },
+        {
+          id: "q6",
+          question: "Which investment approach focuses on companies with above-average earnings growth?",
+          options: [
+            "Value investing",
+            "Growth investing",
+            "Income investing",
+            "Index investing"
+          ],
+          correctAnswer: 1,
+          explanation: "Growth investing targets companies with superior earnings growth potential, even if they appear expensive on traditional valuation metrics.",
+          difficulty: "EASY",
+          type: "RECALL",
+        },
+        {
+          id: "q7",
+          question: "What should be the primary consideration when building an investment plan?",
+          options: [
+            "Following popular stock tips",
+            "Copying successful investors exactly",
+            "Aligning with personal goals and risk tolerance",
+            "Investing only in trending sectors"
+          ],
+          correctAnswer: 2,
+          explanation: "Investment plans should align with individual financial goals, risk tolerance, time horizon, and personal circumstances for optimal success.",
+          difficulty: "MEDIUM",
+          type: "APPLICATION",
+        },
+        {
+          id: "q8",
+          question: "For a 55-year-old nearing retirement, which strategy is most appropriate?",
+          options: [
+            "80% equity for maximum growth",
+            "100% in speculative stocks",
+            "40% equity with focus on capital preservation",
+            "Only fixed deposits for safety"
+          ],
+          correctAnswer: 2,
+          explanation: "Near-retirement investors should focus on capital preservation with modest growth, typically 40% equity and higher debt allocation for stability.",
+          difficulty: "MEDIUM",
+          type: "SCENARIO",
         },
       ],
     },
