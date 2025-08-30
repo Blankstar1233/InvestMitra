@@ -1,10 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
+import {
   Brain,
   TrendingUp,
   TrendingDown,
@@ -17,7 +23,7 @@ import {
   RefreshCw,
   Star,
   Activity,
-  PieChart
+  PieChart,
 } from "lucide-react";
 import { useMarketData } from "@/hooks/use-market-data";
 import { useTrading } from "@/hooks/use-trading";
@@ -26,17 +32,17 @@ import { useAIInsights } from "@/hooks/use-ai-insights";
 export default function AIInsights() {
   const { stocks } = useMarketData();
   const { portfolio, getOrderHistory } = useTrading();
-  const { 
-    insights, 
-    recommendations, 
-    riskAssessment, 
-    performanceAnalysis, 
+  const {
+    insights,
+    recommendations,
+    riskAssessment,
+    performanceAnalysis,
     loading,
     generateInsights,
     generateRecommendations,
     calculateRiskAssessment,
     calculatePerformanceAnalysis,
-    dismissInsight
+    dismissInsight,
   } = useAIInsights();
 
   const [isGenerating, setIsGenerating] = useState(false);
@@ -52,7 +58,15 @@ export default function AIInsights() {
       calculatePerformanceAnalysis(portfolio, orders);
       hasGeneratedInsights.current = true;
     }
-  }, [stocks, portfolio, generateInsights, generateRecommendations, calculateRiskAssessment, calculatePerformanceAnalysis, getOrderHistory]);
+  }, [
+    stocks,
+    portfolio,
+    generateInsights,
+    generateRecommendations,
+    calculateRiskAssessment,
+    calculatePerformanceAnalysis,
+    getOrderHistory,
+  ]);
 
   const handleRefreshInsights = async () => {
     setIsGenerating(true);
@@ -63,142 +77,167 @@ export default function AIInsights() {
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
       maximumFractionDigits: 2,
     }).format(amount);
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'HIGH': return 'text-destructive';
-      case 'MEDIUM': return 'text-warning';
-      case 'LOW': return 'text-muted-foreground';
-      default: return 'text-foreground';
+      case "HIGH":
+        return "text-destructive";
+      case "MEDIUM":
+        return "text-warning";
+      case "LOW":
+        return "text-muted-foreground";
+      default:
+        return "text-foreground";
     }
   };
 
   const getInsightIcon = (type: string) => {
     switch (type) {
-      case 'RISK_ALERT': return <AlertTriangle className="h-4 w-4" />;
-      case 'RECOMMENDATION': return <Target className="h-4 w-4" />;
-      case 'MARKET_ANALYSIS': return <BarChart3 className="h-4 w-4" />;
-      case 'EDUCATIONAL': return <Lightbulb className="h-4 w-4" />;
-      default: return <Brain className="h-4 w-4" />;
+      case "RISK_ALERT":
+        return <AlertTriangle className="h-4 w-4" />;
+      case "RECOMMENDATION":
+        return <Target className="h-4 w-4" />;
+      case "MARKET_ANALYSIS":
+        return <BarChart3 className="h-4 w-4" />;
+      case "EDUCATIONAL":
+        return <Lightbulb className="h-4 w-4" />;
+      default:
+        return <Brain className="h-4 w-4" />;
     }
   };
 
   return (
     <div className="space-y-6">
       {/* Header */}
-<div className="flex flex-col gap-4">
-  <div>
-    <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
-      <Brain className="h-6 w-6 sm:h-8 sm:w-8" />
-      AI Investment Insights
-    </h1>
-    <p className="text-sm sm:text-base text-muted-foreground mt-1">
-      AI-powered analysis of your portfolio
-    </p>
-  </div>
-  <Button 
-    onClick={handleRefreshInsights}
-    disabled={isGenerating || loading}
-    className="w-full sm:w-auto flex items-center justify-center gap-2"
-  >
-    <RefreshCw className={`h-4 w-4 ${isGenerating ? 'animate-spin' : ''}`} />
-    {isGenerating ? 'Analyzing...' : 'Refresh'}
-  </Button>
-</div>
+      <div className="flex flex-col gap-4">
+        <div>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
+            <Brain className="h-6 w-6 sm:h-8 sm:w-8" />
+            AI Investment Insights
+          </h1>
+          <p className="text-sm sm:text-base text-muted-foreground mt-1">
+            AI-powered analysis of your portfolio
+          </p>
+        </div>
+        <Button
+          onClick={handleRefreshInsights}
+          disabled={isGenerating || loading}
+          className="w-full sm:w-auto flex items-center justify-center gap-2"
+        >
+          <RefreshCw
+            className={`h-4 w-4 ${isGenerating ? "animate-spin" : ""}`}
+          />
+          {isGenerating ? "Analyzing..." : "Refresh"}
+        </Button>
+      </div>
 
-<Tabs defaultValue="insights" className="space-y-4">
-  <TabsList className="w-full rounded-lg p-1">
-    <div className="hidden lg:grid lg:grid-cols-4 lg:gap-1 lg:w-full">
-      <TabsTrigger 
-        value="insights" 
-        className="px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out focus:outline-none text-center"
-      >
-        Live Insights
-      </TabsTrigger>
-      <TabsTrigger 
-        value="recommendations" 
-        className="px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out focus:outline-none text-center"
-      >
-        Recommendations
-      </TabsTrigger>
-      <TabsTrigger 
-        value="risk" 
-        className="px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out focus:outline-none text-center"
-      >
-        Risk Analysis
-      </TabsTrigger>
-      <TabsTrigger 
-        value="performance" 
-        className="px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out focus:outline-none text-center"
-      >
-        Performance
-      </TabsTrigger>
-    </div>
-    
-    <div className="flex overflow-x-auto scrollbar-hide lg:hidden snap-x snap-mandatory">
-      <TabsTrigger 
-        value="insights" 
-        className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-start"
-        onClick={(e) => {
-          // Scroll to start for first tab
-          setTimeout(() => {
-            e.target.closest('.flex').scrollTo({ left: 0, behavior: 'smooth' });
-          }, 50);
-        }}
-      >
-        Live Insights
-      </TabsTrigger>
-      <TabsTrigger 
-        value="recommendations" 
-        className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-center"
-        onClick={(e) => {
-          // Center this tab to show context on both sides
-          setTimeout(() => {
-            const container = e.target.closest('.flex');
-            const containerWidth = container.offsetWidth;
-            const scrollLeft = e.target.offsetLeft - (containerWidth / 2) + (e.target.offsetWidth / 2);
-            container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-          }, 50);
-        }}
-      >
-        Recommendations
-      </TabsTrigger>
-      <TabsTrigger 
-        value="risk" 
-        className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-center"
-        onClick={(e) => {
-          // Center this tab to show both neighbors
-          setTimeout(() => {
-            const container = e.target.closest('.flex');
-            const containerWidth = container.offsetWidth;
-            const scrollLeft = e.target.offsetLeft - (containerWidth / 2) + (e.target.offsetWidth / 2);
-            container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-          }, 50);
-        }}
-      >
-        Risk Analysis
-      </TabsTrigger>
-      <TabsTrigger 
-        value="performance" 
-        className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-end"
-        onClick={(e) => {
-          // Scroll to end for last tab
-          setTimeout(() => {
-            const container = e.target.closest('.flex');
-            container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
-          }, 50);
-        }}
-      >
-        Performance
-      </TabsTrigger>
-    </div>
-  </TabsList>
+      <Tabs defaultValue="insights" className="space-y-4">
+        <TabsList className="w-full rounded-lg p-1">
+          <div className="hidden lg:grid lg:grid-cols-4 lg:gap-1 lg:w-full">
+            <TabsTrigger
+              value="insights"
+              className="px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out focus:outline-none text-center"
+            >
+              Live Insights
+            </TabsTrigger>
+            <TabsTrigger
+              value="recommendations"
+              className="px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out focus:outline-none text-center"
+            >
+              Recommendations
+            </TabsTrigger>
+            <TabsTrigger
+              value="risk"
+              className="px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out focus:outline-none text-center"
+            >
+              Risk Analysis
+            </TabsTrigger>
+            <TabsTrigger
+              value="performance"
+              className="px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out focus:outline-none text-center"
+            >
+              Performance
+            </TabsTrigger>
+          </div>
+
+          <div className="flex overflow-x-auto scrollbar-hide lg:hidden snap-x snap-mandatory">
+            <TabsTrigger
+              value="insights"
+              className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-start"
+              onClick={(e) => {
+                // Scroll to start for first tab
+                setTimeout(() => {
+                  (e.target as HTMLElement)
+                    .closest(".flex")
+                    ?.scrollTo({ left: 0, behavior: "smooth" });
+                }, 50);
+              }}
+            >
+              Live Insights
+            </TabsTrigger>
+            <TabsTrigger
+              value="recommendations"
+              className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-center"
+              onClick={(e) => {
+                // Center this tab to show context on both sides
+                setTimeout(() => {
+                  const target = e.target as HTMLElement;
+                  const container = target.closest(".flex") as HTMLElement;
+                  const containerWidth = container.offsetWidth;
+                  const scrollLeft =
+                    target.offsetLeft -
+                    containerWidth / 2 +
+                    target.offsetWidth / 2;
+                  container.scrollTo({ left: scrollLeft, behavior: "smooth" });
+                }, 50);
+              }}
+            >
+              Recommendations
+            </TabsTrigger>
+            <TabsTrigger
+              value="risk"
+              className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-center"
+              onClick={(e) => {
+                // Center this tab to show both neighbors
+                setTimeout(() => {
+                  const target = e.target as HTMLElement;
+                  const container = target.closest(".flex") as HTMLElement;
+                  const containerWidth = container.offsetWidth;
+                  const scrollLeft =
+                    target.offsetLeft -
+                    containerWidth / 2 +
+                    target.offsetWidth / 2;
+                  container.scrollTo({ left: scrollLeft, behavior: "smooth" });
+                }, 50);
+              }}
+            >
+              Risk Analysis
+            </TabsTrigger>
+            <TabsTrigger
+              value="performance"
+              className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-end"
+              onClick={(e) => {
+                // Scroll to end for last tab
+                setTimeout(() => {
+                  const target = e.target as HTMLElement;
+                  const container = target.closest(".flex") as HTMLElement;
+                  container.scrollTo({
+                    left: container.scrollWidth,
+                    behavior: "smooth",
+                  });
+                }, 50);
+              }}
+            >
+              Performance
+            </TabsTrigger>
+          </div>
+        </TabsList>
 
         {/* Live Insights */}
         <TabsContent value="insights">
@@ -219,9 +258,17 @@ export default function AIInsights() {
                     <div className="flex items-start justify-between">
                       <div className="flex items-center gap-2">
                         {getInsightIcon(insight.type)}
-                        <CardTitle className="text-lg">{insight.title}</CardTitle>
-                        <Badge 
-                          variant={insight.priority === 'HIGH' ? 'destructive' : insight.priority === 'MEDIUM' ? 'secondary' : 'outline'}
+                        <CardTitle className="text-lg">
+                          {insight.title}
+                        </CardTitle>
+                        <Badge
+                          variant={
+                            insight.priority === "HIGH"
+                              ? "destructive"
+                              : insight.priority === "MEDIUM"
+                                ? "secondary"
+                                : "outline"
+                          }
                           className="text-xs"
                         >
                           {insight.priority}
@@ -239,7 +286,9 @@ export default function AIInsights() {
                         <X className="h-3 w-3" />
                       </Button>
                     </div>
-                    <CardDescription className="text-sm">{insight.category}</CardDescription>
+                    <CardDescription className="text-sm">
+                      {insight.category}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm mb-3">{insight.description}</p>
@@ -258,9 +307,12 @@ export default function AIInsights() {
               <Card>
                 <CardContent className="text-center py-12">
                   <Brain className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                  <h3 className="text-lg font-semibold mb-2">No Insights Available</h3>
+                  <h3 className="text-lg font-semibold mb-2">
+                    No Insights Available
+                  </h3>
                   <p className="text-muted-foreground">
-                    Start trading to receive AI-powered insights and recommendations.
+                    Start trading to receive AI-powered insights and
+                    recommendations.
                   </p>
                 </CardContent>
               </Card>
@@ -278,8 +330,14 @@ export default function AIInsights() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <CardTitle className="text-lg">{rec.symbol}</CardTitle>
-                        <Badge 
-                          variant={rec.action === 'BUY' ? 'default' : rec.action === 'SELL' ? 'destructive' : 'secondary'}
+                        <Badge
+                          variant={
+                            rec.action === "BUY"
+                              ? "default"
+                              : rec.action === "SELL"
+                                ? "destructive"
+                                : "secondary"
+                          }
                           className="text-xs"
                         >
                           {rec.action}
@@ -293,9 +351,9 @@ export default function AIInsights() {
                       </div>
                       <div className="flex items-center gap-1">
                         {Array.from({ length: 5 }).map((_, i) => (
-                          <Star 
-                            key={i} 
-                            className={`h-3 w-3 ${i < rec.confidence / 20 ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
+                          <Star
+                            key={i}
+                            className={`h-3 w-3 ${i < rec.confidence / 20 ? "text-yellow-400 fill-current" : "text-gray-300"}`}
                           />
                         ))}
                       </div>
@@ -306,18 +364,28 @@ export default function AIInsights() {
                     <div className="space-y-3">
                       <div className="flex items-center justify-between text-sm">
                         <span>Target Price:</span>
-                        <span className="font-semibold">{formatCurrency(rec.targetPrice)}</span>
+                        <span className="font-semibold">
+                          {formatCurrency(rec.targetPrice)}
+                        </span>
                       </div>
                       <div className="flex items-center justify-between text-sm">
                         <span>Risk Level:</span>
-                        <Badge 
-                          variant={rec.riskLevel === 'HIGH' ? 'destructive' : rec.riskLevel === 'MEDIUM' ? 'secondary' : 'outline'}
+                        <Badge
+                          variant={
+                            rec.riskLevel === "HIGH"
+                              ? "destructive"
+                              : rec.riskLevel === "MEDIUM"
+                                ? "secondary"
+                                : "outline"
+                          }
                           className="text-xs"
                         >
                           {rec.riskLevel}
                         </Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground">{rec.reasoning}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {rec.reasoning}
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -326,9 +394,12 @@ export default function AIInsights() {
               <Card>
                 <CardContent className="text-center py-12">
                   <Target className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                  <h3 className="text-lg font-semibold mb-2">No Recommendations Available</h3>
+                  <h3 className="text-lg font-semibold mb-2">
+                    No Recommendations Available
+                  </h3>
                   <p className="text-muted-foreground">
-                    Build your portfolio to receive personalized stock recommendations.
+                    Build your portfolio to receive personalized stock
+                    recommendations.
                   </p>
                 </CardContent>
               </Card>
@@ -351,21 +422,36 @@ export default function AIInsights() {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="text-center">
-                      <div className={`text-2xl font-bold ${
-                        riskAssessment.overallRisk === 'HIGH' ? 'text-destructive' :
-                        riskAssessment.overallRisk === 'MEDIUM' ? 'text-warning' : 'text-success'
-                      }`}>
+                      <div
+                        className={`text-2xl font-bold ${
+                          riskAssessment.overallRisk === "HIGH"
+                            ? "text-destructive"
+                            : riskAssessment.overallRisk === "MEDIUM"
+                              ? "text-warning"
+                              : "text-success"
+                        }`}
+                      >
                         {riskAssessment.overallRisk}
                       </div>
-                      <p className="text-sm text-muted-foreground">Overall Risk</p>
+                      <p className="text-sm text-muted-foreground">
+                        Overall Risk
+                      </p>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold">{riskAssessment.diversificationScore.toFixed(0)}/100</div>
-                      <p className="text-sm text-muted-foreground">Diversification Score</p>
+                      <div className="text-2xl font-bold">
+                        {riskAssessment.diversificationScore.toFixed(0)}/100
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Diversification Score
+                      </p>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold">{riskAssessment.volatilityRisk.toFixed(0)}%</div>
-                      <p className="text-sm text-muted-foreground">Volatility Risk</p>
+                      <div className="text-2xl font-bold">
+                        {riskAssessment.volatilityRisk.toFixed(0)}%
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Volatility Risk
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -384,11 +470,21 @@ export default function AIInsights() {
                     {riskAssessment.sectorRisks.map((sector) => (
                       <div key={sector.sector} className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium">{sector.sector}</span>
+                          <span className="text-sm font-medium">
+                            {sector.sector}
+                          </span>
                           <div className="flex items-center gap-2">
-                            <span className="text-sm">{sector.exposure.toFixed(1)}%</span>
-                            <Badge 
-                              variant={sector.risk === 'HIGH' ? 'destructive' : sector.risk === 'MEDIUM' ? 'secondary' : 'outline'}
+                            <span className="text-sm">
+                              {sector.exposure.toFixed(1)}%
+                            </span>
+                            <Badge
+                              variant={
+                                sector.risk === "HIGH"
+                                  ? "destructive"
+                                  : sector.risk === "MEDIUM"
+                                    ? "secondary"
+                                    : "outline"
+                              }
                               className="text-xs"
                             >
                               {sector.risk}
@@ -409,12 +505,17 @@ export default function AIInsights() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    {riskAssessment.recommendations.map((recommendation, index) => (
-                      <div key={index} className="flex items-center gap-2 p-3 bg-accent/50 rounded-lg">
-                        <Lightbulb className="h-4 w-4 text-primary" />
-                        <span className="text-sm">{recommendation}</span>
-                      </div>
-                    ))}
+                    {riskAssessment.recommendations.map(
+                      (recommendation, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center gap-2 p-3 bg-accent/50 rounded-lg"
+                        >
+                          <Lightbulb className="h-4 w-4 text-primary" />
+                          <span className="text-sm">{recommendation}</span>
+                        </div>
+                      ),
+                    )}
                   </div>
                 </CardContent>
               </Card>
@@ -423,7 +524,9 @@ export default function AIInsights() {
             <Card>
               <CardContent className="text-center py-12">
                 <Shield className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-lg font-semibold mb-2">No Risk Data Available</h3>
+                <h3 className="text-lg font-semibold mb-2">
+                  No Risk Data Available
+                </h3>
                 <p className="text-muted-foreground">
                   Build your portfolio to receive detailed risk analysis.
                 </p>
@@ -447,20 +550,34 @@ export default function AIInsights() {
                 <CardContent>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div className="text-center p-4 bg-accent/50 rounded-lg">
-                      <div className="text-xl font-bold">{performanceAnalysis.sharpeRatio.toFixed(2)}</div>
-                      <p className="text-sm text-muted-foreground">Sharpe Ratio</p>
+                      <div className="text-xl font-bold">
+                        {performanceAnalysis.sharpeRatio.toFixed(2)}
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Sharpe Ratio
+                      </p>
                     </div>
                     <div className="text-center p-4 bg-accent/50 rounded-lg">
-                      <div className="text-xl font-bold">{performanceAnalysis.winRate.toFixed(0)}%</div>
+                      <div className="text-xl font-bold">
+                        {performanceAnalysis.winRate.toFixed(0)}%
+                      </div>
                       <p className="text-sm text-muted-foreground">Win Rate</p>
                     </div>
                     <div className="text-center p-4 bg-accent/50 rounded-lg">
-                      <div className="text-xl font-bold">{performanceAnalysis.maxDrawdown.toFixed(1)}%</div>
-                      <p className="text-sm text-muted-foreground">Max Drawdown</p>
+                      <div className="text-xl font-bold">
+                        {performanceAnalysis.maxDrawdown.toFixed(1)}%
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Max Drawdown
+                      </p>
                     </div>
                     <div className="text-center p-4 bg-accent/50 rounded-lg">
-                      <div className="text-xl font-bold">{performanceAnalysis.profitFactor.toFixed(2)}</div>
-                      <p className="text-sm text-muted-foreground">Profit Factor</p>
+                      <div className="text-xl font-bold">
+                        {performanceAnalysis.profitFactor.toFixed(2)}
+                      </div>
+                      <p className="text-sm text-muted-foreground">
+                        Profit Factor
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -476,11 +593,15 @@ export default function AIInsights() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <span className="text-sm">Trading Frequency</span>
-                        <Badge variant="outline">{performanceAnalysis.tradingFrequency}</Badge>
+                        <Badge variant="outline">
+                          {performanceAnalysis.tradingFrequency}
+                        </Badge>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm">Risk Tolerance</span>
-                        <Badge variant="outline">{performanceAnalysis.riskTolerance}</Badge>
+                        <Badge variant="outline">
+                          {performanceAnalysis.riskTolerance}
+                        </Badge>
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-sm">Average Gain</span>
@@ -507,23 +628,31 @@ export default function AIInsights() {
                       <div className="p-3 bg-success/10 border border-success/20 rounded-lg">
                         <div className="flex items-center gap-2 mb-1">
                           <TrendingUp className="h-4 w-4 text-success" />
-                          <span className="text-sm font-medium">Best Performer</span>
+                          <span className="text-sm font-medium">
+                            Best Performer
+                          </span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm">{performanceAnalysis.bestTrade.symbol || 'N/A'}</span>
+                          <span className="text-sm">
+                            {performanceAnalysis.bestTrade.symbol || "N/A"}
+                          </span>
                           <span className="text-sm font-semibold text-success">
                             +{formatCurrency(performanceAnalysis.bestTrade.pnl)}
                           </span>
                         </div>
                       </div>
-                      
+
                       <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
                         <div className="flex items-center gap-2 mb-1">
                           <TrendingDown className="h-4 w-4 text-destructive" />
-                          <span className="text-sm font-medium">Worst Performer</span>
+                          <span className="text-sm font-medium">
+                            Worst Performer
+                          </span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm">{performanceAnalysis.worstTrade.symbol || 'N/A'}</span>
+                          <span className="text-sm">
+                            {performanceAnalysis.worstTrade.symbol || "N/A"}
+                          </span>
                           <span className="text-sm font-semibold text-destructive">
                             {formatCurrency(performanceAnalysis.worstTrade.pnl)}
                           </span>
@@ -538,7 +667,9 @@ export default function AIInsights() {
             <Card>
               <CardContent className="text-center py-12">
                 <BarChart3 className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-lg font-semibold mb-2">No Performance Data Available</h3>
+                <h3 className="text-lg font-semibold mb-2">
+                  No Performance Data Available
+                </h3>
                 <p className="text-muted-foreground">
                   Complete some trades to see detailed performance analysis.
                 </p>
