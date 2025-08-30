@@ -18,6 +18,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
@@ -465,7 +471,7 @@ export default function Learn() {
 
                           {selectedModule && (
                             <div className="space-y-6">
-                              {/* Enhanced Lessons */}
+                              {/* Enhanced Lessons with Accordion */}
                               <div className="space-y-4">
                                 <h3 className="text-lg font-semibold flex items-center gap-2">
                                   <BookOpen className="h-5 w-5" />
@@ -477,71 +483,153 @@ export default function Learn() {
                                   }
                                   /{selectedModule.lessons.length})
                                 </h3>
-                                {selectedModule.lessons.map(
-                                  (lesson: any, index: number) => (
-                                    <Card
-                                      key={lesson.id}
-                                      className={`p-4 ${lesson.completed ? "bg-green-50 dark:bg-green-950/20 border-green-200" : ""}`}
-                                    >
-                                      <div className="flex items-start justify-between">
-                                        <div className="flex-1">
-                                          <h4 className="font-medium flex items-center gap-2">
-                                            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold">
-                                              {index + 1}
-                                            </span>
-                                            {lesson.title}
-                                            {lesson.completed && (
-                                              <CheckCircle className="h-4 w-4 text-green-600" />
-                                            )}
-                                          </h4>
-                                          <div className="flex items-center gap-2 mt-1">
-                                            <Badge
-                                              variant="outline"
-                                              className="text-xs"
-                                            >
-                                              {lesson.type}
-                                            </Badge>
-                                            {lesson.duration && (
-                                              <span className="text-xs text-muted-foreground flex items-center gap-1">
-                                                <Timer className="h-3 w-3" />
-                                                {lesson.duration}m
-                                              </span>
-                                            )}
-                                          </div>
-                                          <div className="mt-2 prose prose-sm max-w-none text-sm text-muted-foreground line-clamp-3">
-                                            {lesson.content.substring(0, 200)}
-                                            ...
-                                          </div>
 
-                                          {/* Key Takeaways Preview */}
-                                          {lesson.keyTakeaways &&
-                                            lesson.keyTakeaways.length > 0 && (
-                                              <div className="mt-2">
-                                                <p className="text-xs font-medium text-muted-foreground flex items-center gap-1">
-                                                  <Lightbulb className="h-3 w-3" />
-                                                  {lesson.keyTakeaways.length}{" "}
-                                                  key takeaways included
-                                                </p>
+                                <Accordion
+                                  type="single"
+                                  collapsible
+                                  className="w-full space-y-4"
+                                >
+                                  {selectedModule.lessons.map(
+                                    (lesson: any, index: number) => (
+                                      <AccordionItem
+                                        key={lesson.id}
+                                        value={lesson.id}
+                                        className="border-0"
+                                      >
+                                        <Card
+                                          className={`rounded-lg shadow-sm hover:shadow-md transition-shadow ${lesson.completed ? "bg-green-50 dark:bg-green-950/20 border-green-200" : ""}`}
+                                        >
+                                          <AccordionTrigger className="hover:no-underline px-4 py-3">
+                                            <div className="flex items-center gap-3 text-left w-full">
+                                              <span className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold">
+                                                {index + 1}
+                                              </span>
+                                              <div className="flex-1">
+                                                <div className="font-medium flex items-center gap-2">
+                                                  {lesson.title}
+                                                  {lesson.completed && (
+                                                    <CheckCircle className="h-4 w-4 text-green-600" />
+                                                  )}
+                                                </div>
+                                                <div className="flex items-center gap-2 mt-1">
+                                                  <Badge
+                                                    variant="outline"
+                                                    className="text-xs"
+                                                  >
+                                                    {lesson.type}
+                                                  </Badge>
+                                                  {lesson.duration && (
+                                                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                                      <Timer className="h-3 w-3" />
+                                                      {lesson.duration}m
+                                                    </span>
+                                                  )}
+                                                </div>
                                               </div>
-                                            )}
-                                        </div>
-                                        {!lesson.completed && (
-                                          <Button
-                                            size="sm"
-                                            onClick={() =>
-                                              handleLessonComplete(
-                                                selectedModule.id,
-                                                lesson.id,
-                                              )
-                                            }
-                                          >
-                                            Complete
-                                          </Button>
-                                        )}
-                                      </div>
-                                    </Card>
-                                  ),
-                                )}
+                                            </div>
+                                          </AccordionTrigger>
+
+                                          <AccordionContent className="px-4 pb-4">
+                                            <div className="space-y-4">
+                                              {/* Lesson Content */}
+                                              <div className="prose prose-sm max-w-none text-muted-foreground">
+                                                {lesson.content
+                                                  .split("\n\n")
+                                                  .map(
+                                                    (
+                                                      paragraph: string,
+                                                      idx: number,
+                                                    ) => (
+                                                      <p
+                                                        key={idx}
+                                                        className="mb-3"
+                                                      >
+                                                        {paragraph}
+                                                      </p>
+                                                    ),
+                                                  )}
+                                              </div>
+
+                                              {/* Key Takeaways Box */}
+                                              {lesson.keyTakeaways &&
+                                                lesson.keyTakeaways.length >
+                                                  0 && (
+                                                  <div className="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-400 p-4 rounded-r-lg">
+                                                    <h4 className="font-semibold text-blue-900 dark:text-blue-100 mb-2 flex items-center gap-2">
+                                                      <Lightbulb className="h-4 w-4" />
+                                                      Key Takeaways
+                                                    </h4>
+                                                    <ul className="list-disc list-inside space-y-1 text-blue-800 dark:text-blue-200 text-sm">
+                                                      {lesson.keyTakeaways.map(
+                                                        (
+                                                          takeaway: string,
+                                                          idx: number,
+                                                        ) => (
+                                                          <li key={idx}>
+                                                            {takeaway}
+                                                          </li>
+                                                        ),
+                                                      )}
+                                                    </ul>
+                                                  </div>
+                                                )}
+
+                                              {/* Action Items Box */}
+                                              {lesson.actionItems &&
+                                                lesson.actionItems.length >
+                                                  0 && (
+                                                  <div className="bg-green-50 dark:bg-green-950/20 border-l-4 border-green-400 p-4 rounded-r-lg">
+                                                    <h4 className="font-semibold text-green-900 dark:text-green-100 mb-2 flex items-center gap-2">
+                                                      <Target className="h-4 w-4" />
+                                                      Action Items
+                                                    </h4>
+                                                    <ul className="list-disc list-inside space-y-1 text-green-800 dark:text-green-200 text-sm">
+                                                      {lesson.actionItems.map(
+                                                        (
+                                                          item: string,
+                                                          idx: number,
+                                                        ) => (
+                                                          <li key={idx}>
+                                                            {item}
+                                                          </li>
+                                                        ),
+                                                      )}
+                                                    </ul>
+                                                  </div>
+                                                )}
+
+                                              {/* Mark Complete Button */}
+                                              <div className="flex justify-end pt-2">
+                                                {!lesson.completed ? (
+                                                  <Button
+                                                    onClick={() =>
+                                                      handleLessonComplete(
+                                                        selectedModule.id,
+                                                        lesson.id,
+                                                      )
+                                                    }
+                                                    className="bg-green-600 hover:bg-green-700"
+                                                  >
+                                                    <CheckCircle className="h-4 w-4 mr-2" />
+                                                    Mark as Complete
+                                                  </Button>
+                                                ) : (
+                                                  <Badge
+                                                    variant="secondary"
+                                                    className="bg-green-100 text-green-800"
+                                                  >
+                                                    <CheckCircle className="h-4 w-4 mr-1" />
+                                                    Completed
+                                                  </Badge>
+                                                )}
+                                              </div>
+                                            </div>
+                                          </AccordionContent>
+                                        </Card>
+                                      </AccordionItem>
+                                    ),
+                                  )}
+                                </Accordion>
                               </div>
 
                               {/* Enhanced Quiz */}

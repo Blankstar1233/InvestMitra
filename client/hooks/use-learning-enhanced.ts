@@ -893,13 +893,13 @@ Calculate intrinsic value using DCF, P/E multiples, and peer comparison.
           "Key ratios include P/E (valuation), ROE (profitability), and D/E (leverage) for comprehensive assessment",
           "Industry comparison is crucial - same P/E ratio means different things in different sectors",
           "Quality companies with strong moats can justify premium valuations over time",
-          "Combine quantitative metrics with qualitative factors like management quality and competitive position"
+          "Combine quantitative metrics with qualitative factors like management quality and competitive position",
         ],
         actionItems: [
           "Practice calculating P/E, ROE, and D/E ratios for 3 companies in different sectors",
           "Read the annual report of one company you're interested in investing in",
           "Compare financial ratios of 3 companies within the same industry",
-          "Set up stock screeners to filter companies based on fundamental criteria"
+          "Set up stock screeners to filter companies based on fundamental criteria",
         ],
       },
       {
@@ -1040,13 +1040,13 @@ Never risk more than 2% of your portfolio on a single trade.
           "Chart patterns like Head & Shoulders and Double Bottom offer high-probability trading setups",
           "Support and resistance levels act as key decision points for entry and exit",
           "Volume confirmation is crucial for validating breakouts and pattern reliability",
-          "Proper risk management with stop-losses is essential for technical trading success"
+          "Proper risk management with stop-losses is essential for technical trading success",
         ],
         actionItems: [
           "Practice identifying support and resistance levels on 5 different stock charts",
           "Set up moving average crossover alerts for stocks in your watchlist",
           "Study one major chart pattern formation in recent Indian market history",
-          "Calculate position sizes using the 2% risk rule for your portfolio"
+          "Calculate position sizes using the 2% risk rule for your portfolio",
         ],
       },
       {
@@ -1231,13 +1231,13 @@ Increase investments when markets fall, reduce when markets rise.
           "Economic indicators help identify current cycle phase and predict transitions",
           "Investor psychology drives market extremes - fear at bottoms, greed at tops",
           "Sector rotation patterns are predictable across different market cycle phases",
-          "Global factors like Fed policy and oil prices significantly impact Indian market cycles"
+          "Global factors like Fed policy and oil prices significantly impact Indian market cycles",
         ],
         actionItems: [
           "Track Nifty PE ratio monthly to assess market valuation levels",
           "Create watchlists of quality stocks to buy during market corrections",
           "Monitor key economic indicators like GDP growth, inflation, and credit growth",
-          "Implement systematic investment plans to benefit from market volatility"
+          "Implement systematic investment plans to benefit from market volatility",
         ],
       },
       {
@@ -1461,13 +1461,13 @@ Over time, winning assets grow to become larger portions of your portfolio, incr
           "Core-satellite approach balances stability with growth opportunities",
           "15-20 stocks can eliminate 90% of company-specific risk through diversification",
           "Regular rebalancing maintains target allocation and manages concentration risk",
-          "Avoid over-diversification and false diversification that add complexity without benefits"
+          "Avoid over-diversification and false diversification that add complexity without benefits",
         ],
         actionItems: [
           "Analyze your current portfolio for sector and asset class concentration",
           "Calculate correlation between your top holdings to identify overlap",
           "Set up a rebalancing schedule (quarterly or semi-annually)",
-          "Allocate 10-15% to international markets for geographic diversification"
+          "Allocate 10-15% to international markets for geographic diversification",
         ],
       },
     ],
@@ -1655,7 +1655,11 @@ Over time, winning assets grow to become larger portions of your portfolio, incr
     completed: false,
     progress: 0,
     unlocked: false,
-    prerequisites: ["investing-fundamentals", "indian-markets-mastery", "market-analysis"],
+    prerequisites: [
+      "investing-fundamentals",
+      "indian-markets-mastery",
+      "market-analysis",
+    ],
     tier: "INTERMEDIATE",
     lessons: [
       {
@@ -1686,7 +1690,7 @@ Short-term trading involves frequent buying and selling to profit from price flu
         keyTakeaways: [
           "Long-term investing leverages compounding and reduces the impact of market volatility",
           "Short-term trading requires exceptional skill and most retail traders lose money",
-          "Time in the market generally beats timing the market for wealth creation"
+          "Time in the market generally beats timing the market for wealth creation",
         ],
       },
       {
@@ -1717,7 +1721,7 @@ ETFs are mutual funds that trade like stocks on exchanges. They typically track 
         keyTakeaways: [
           "SIPs enable rupee cost averaging and build investing discipline automatically",
           "ETFs provide low-cost, diversified market exposure with high liquidity",
-          "Both tools make investing accessible to retail investors with small amounts"
+          "Both tools make investing accessible to retail investors with small amounts",
         ],
       },
       {
@@ -1752,7 +1756,7 @@ Growth investing focuses on companies with above-average earnings growth potenti
         keyTakeaways: [
           "Value investing focuses on buying underpriced assets with strong fundamentals",
           "Growth investing targets companies with superior earnings growth potential",
-          "Both approaches have created substantial wealth when applied with discipline"
+          "Both approaches have created substantial wealth when applied with discipline",
         ],
       },
       {
@@ -1788,7 +1792,7 @@ Start SIPs, set automatic investments, review quarterly, rebalance annually, inc
         keyTakeaways: [
           "Investment plans should align with specific financial goals and timelines",
           "Risk tolerance determines appropriate asset allocation between equity and debt",
-          "Regular review and rebalancing ensures the plan stays on track"
+          "Regular review and rebalancing ensures the plan stays on track",
         ],
       },
       {
@@ -1829,7 +1833,7 @@ Consider your age, income, dependents, risk tolerance, and goals. Your investmen
         keyTakeaways: [
           "Investment strategy must align with age, income, and life circumstances",
           "Young investors can afford higher equity allocation for growth",
-          "Strategy should evolve from growth-focused to income-focused over time"
+          "Strategy should evolve from growth-focused to income-focused over time",
         ],
       },
     ],
@@ -1842,15 +1846,17 @@ Consider your age, income, dependents, risk tolerance, and goals. Your investmen
       questions: [
         {
           id: "q1",
-          question: "What is the primary advantage of long-term investing over short-term trading?",
+          question:
+            "What is the primary advantage of long-term investing over short-term trading?",
           options: [
             "Guaranteed returns with no risk",
             "Ability to time market perfectly",
             "Compounding returns and reduced transaction costs",
-            "Higher returns in all market conditions"
+            "Higher returns in all market conditions",
           ],
           correctAnswer: 2,
-          explanation: "Long-term investing benefits from compounding returns, lower transaction costs, and historically better wealth creation compared to short-term trading.",
+          explanation:
+            "Long-term investing benefits from compounding returns, lower transaction costs, and historically better wealth creation compared to short-term trading.",
           difficulty: "EASY",
           type: "COMPREHENSION",
         },
@@ -1861,10 +1867,11 @@ Consider your age, income, dependents, risk tolerance, and goals. Your investmen
             "Market timing for maximum returns",
             "Rupee cost averaging and investment discipline",
             "Guaranteed profits in all conditions",
-            "Elimination of all investment risks"
+            "Elimination of all investment risks",
           ],
           correctAnswer: 1,
-          explanation: "SIPs enable rupee cost averaging by investing fixed amounts regularly, which helps smooth out market volatility and builds investment discipline.",
+          explanation:
+            "SIPs enable rupee cost averaging by investing fixed amounts regularly, which helps smooth out market volatility and builds investment discipline.",
           difficulty: "EASY",
           type: "RECALL",
         },
@@ -1875,80 +1882,86 @@ Consider your age, income, dependents, risk tolerance, and goals. Your investmen
             "High revenue growth rate",
             "Low P/E ratio with strong fundamentals",
             "Maximum social media mentions",
-            "Highest stock price appreciation"
+            "Highest stock price appreciation",
           ],
           correctAnswer: 1,
-          explanation: "Value investors focus on low P/E ratios combined with strong fundamentals, seeking stocks trading below their intrinsic value.",
+          explanation:
+            "Value investors focus on low P/E ratios combined with strong fundamentals, seeking stocks trading below their intrinsic value.",
           difficulty: "MEDIUM",
           type: "APPLICATION",
         },
         {
           id: "q4",
-          question: "For a 30-year-old investor, what is the recommended equity allocation using the age-based rule?",
-          options: [
-            "30%",
-            "50%",
-            "70%",
-            "90%"
-          ],
+          question:
+            "For a 30-year-old investor, what is the recommended equity allocation using the age-based rule?",
+          options: ["30%", "50%", "70%", "90%"],
           correctAnswer: 2,
-          explanation: "The age-based rule suggests Equity % = 100 - Age, so a 30-year-old should have approximately 70% equity allocation.",
+          explanation:
+            "The age-based rule suggests Equity % = 100 - Age, so a 30-year-old should have approximately 70% equity allocation.",
           difficulty: "EASY",
           type: "APPLICATION",
         },
         {
           id: "q5",
-          question: "What is the main difference between ETFs and regular mutual funds?",
+          question:
+            "What is the main difference between ETFs and regular mutual funds?",
           options: [
             "ETFs have higher expense ratios",
             "ETFs trade on exchanges like stocks",
             "ETFs guarantee higher returns",
-            "ETFs only invest in bonds"
+            "ETFs only invest in bonds",
           ],
           correctAnswer: 1,
-          explanation: "ETFs trade on stock exchanges like individual stocks, providing liquidity and transparency, while regular mutual funds are priced once daily.",
+          explanation:
+            "ETFs trade on stock exchanges like individual stocks, providing liquidity and transparency, while regular mutual funds are priced once daily.",
           difficulty: "MEDIUM",
           type: "COMPREHENSION",
         },
         {
           id: "q6",
-          question: "Which investment approach focuses on companies with above-average earnings growth?",
+          question:
+            "Which investment approach focuses on companies with above-average earnings growth?",
           options: [
             "Value investing",
             "Growth investing",
             "Income investing",
-            "Index investing"
+            "Index investing",
           ],
           correctAnswer: 1,
-          explanation: "Growth investing targets companies with superior earnings growth potential, even if they appear expensive on traditional valuation metrics.",
+          explanation:
+            "Growth investing targets companies with superior earnings growth potential, even if they appear expensive on traditional valuation metrics.",
           difficulty: "EASY",
           type: "RECALL",
         },
         {
           id: "q7",
-          question: "What should be the primary consideration when building an investment plan?",
+          question:
+            "What should be the primary consideration when building an investment plan?",
           options: [
             "Following popular stock tips",
             "Copying successful investors exactly",
             "Aligning with personal goals and risk tolerance",
-            "Investing only in trending sectors"
+            "Investing only in trending sectors",
           ],
           correctAnswer: 2,
-          explanation: "Investment plans should align with individual financial goals, risk tolerance, time horizon, and personal circumstances for optimal success.",
+          explanation:
+            "Investment plans should align with individual financial goals, risk tolerance, time horizon, and personal circumstances for optimal success.",
           difficulty: "MEDIUM",
           type: "APPLICATION",
         },
         {
           id: "q8",
-          question: "For a 55-year-old nearing retirement, which strategy is most appropriate?",
+          question:
+            "For a 55-year-old nearing retirement, which strategy is most appropriate?",
           options: [
             "80% equity for maximum growth",
             "100% in speculative stocks",
             "40% equity with focus on capital preservation",
-            "Only fixed deposits for safety"
+            "Only fixed deposits for safety",
           ],
           correctAnswer: 2,
-          explanation: "Near-retirement investors should focus on capital preservation with modest growth, typically 40% equity and higher debt allocation for stability.",
+          explanation:
+            "Near-retirement investors should focus on capital preservation with modest growth, typically 40% equity and higher debt allocation for stability.",
           difficulty: "MEDIUM",
           type: "SCENARIO",
         },
@@ -1956,7 +1969,7 @@ Consider your age, income, dependents, risk tolerance, and goals. Your investmen
     },
   },
 
-  // TIER 3: ADVANCED MODULES  
+  // TIER 3: ADVANCED MODULES
   {
     id: "risk-advanced",
     title: "Risk & Advanced Applications",
@@ -1969,7 +1982,12 @@ Consider your age, income, dependents, risk tolerance, and goals. Your investmen
     completed: false,
     progress: 0,
     unlocked: false,
-    prerequisites: ["investing-fundamentals", "indian-markets-mastery", "market-analysis", "strategy-planning"],
+    prerequisites: [
+      "investing-fundamentals",
+      "indian-markets-mastery",
+      "market-analysis",
+      "strategy-planning",
+    ],
     tier: "ADVANCED",
     lessons: [
       {
@@ -1996,7 +2014,7 @@ Risk specific to individual companies or sectors that can be reduced through div
         keyTakeaways: [
           "Systematic risk affects entire markets and cannot be diversified away",
           "Unsystematic risk is company-specific and can be reduced through diversification",
-          "Understanding risk types helps in building appropriate investment strategies"
+          "Understanding risk types helps in building appropriate investment strategies",
         ],
       },
       {
@@ -2027,7 +2045,7 @@ Using financial instruments to offset potential losses in existing positions. Co
         keyTakeaways: [
           "Stop-loss orders automatically limit losses at predetermined levels",
           "Hedging uses derivatives to protect against adverse price movements",
-          "Risk management tools cost money but provide valuable downside protection"
+          "Risk management tools cost money but provide valuable downside protection",
         ],
       },
       {
@@ -2059,7 +2077,7 @@ Set investment rules and stick to them, use systematic investment plans (SIPs), 
         keyTakeaways: [
           "Behavioral biases like loss aversion and herd mentality hurt investment returns",
           "Systematic approaches like SIPs help overcome emotional decision-making",
-          "Successful investing requires discipline to act contrary to natural instincts"
+          "Successful investing requires discipline to act contrary to natural instincts",
         ],
       },
       {
@@ -2094,7 +2112,7 @@ Give the right (not obligation) to buy (call) or sell (put) asset at specific pr
         keyTakeaways: [
           "Futures obligate both parties while options provide rights without obligations",
           "Derivatives can be used for speculation, hedging, or arbitrage strategies",
-          "Options offer asymmetric risk-reward with limited downside and unlimited upside"
+          "Options offer asymmetric risk-reward with limited downside and unlimited upside",
         ],
       },
       {
@@ -2127,7 +2145,7 @@ Computer algorithms analyze market data, identify opportunities, and execute tra
         keyTakeaways: [
           "Algorithmic trading removes emotions and enables systematic strategy execution",
           "Modern technology democratizes access to sophisticated investment strategies",
-          "Robo-advisors and smart beta ETFs bring professional-grade tools to retail investors"
+          "Robo-advisors and smart beta ETFs bring professional-grade tools to retail investors",
         ],
       },
       {
@@ -2166,7 +2184,7 @@ US housing bubble burst triggered global financial meltdown. Banks collapsed, st
         keyTakeaways: [
           "Financial crises create both massive risks and exceptional opportunities",
           "Diversification and liquidity management are crucial during extreme market stress",
-          "Quality investments purchased at crisis valuations often deliver superior long-term returns"
+          "Quality investments purchased at crisis valuations often deliver superior long-term returns",
         ],
       },
       {
@@ -2210,7 +2228,7 @@ Create your personalized portfolio using this framework. Document your reasoning
         keyTakeaways: [
           "Successful portfolios require clear goals, appropriate allocation, and systematic implementation",
           "Regular monitoring and rebalancing maintain portfolio alignment with objectives",
-          "Risk management integration protects capital while pursuing long-term growth"
+          "Risk management integration protects capital while pursuing long-term growth",
         ],
       },
     ],
@@ -2223,15 +2241,17 @@ Create your personalized portfolio using this framework. Document your reasoning
       questions: [
         {
           id: "q1",
-          question: "Which type of risk cannot be eliminated through diversification?",
+          question:
+            "Which type of risk cannot be eliminated through diversification?",
           options: [
             "Company-specific risk",
             "Systematic risk",
             "Unsystematic risk",
-            "Management risk"
+            "Management risk",
           ],
           correctAnswer: 1,
-          explanation: "Systematic risk affects the entire market and cannot be diversified away, while unsystematic risks are company-specific and can be reduced through diversification.",
+          explanation:
+            "Systematic risk affects the entire market and cannot be diversified away, while unsystematic risks are company-specific and can be reduced through diversification.",
           difficulty: "MEDIUM",
           type: "RECALL",
         },
@@ -2242,122 +2262,134 @@ Create your personalized portfolio using this framework. Document your reasoning
             "To guarantee profits on investments",
             "To automatically limit losses at predetermined levels",
             "To increase position sizes during rallies",
-            "To eliminate all investment risks"
+            "To eliminate all investment risks",
           ],
           correctAnswer: 1,
-          explanation: "Stop-loss orders automatically sell positions when prices fall to predetermined levels, helping limit losses and protect capital.",
+          explanation:
+            "Stop-loss orders automatically sell positions when prices fall to predetermined levels, helping limit losses and protect capital.",
           difficulty: "EASY",
           type: "COMPREHENSION",
         },
         {
           id: "q3",
-          question: "Which behavioral bias leads investors to hold losing stocks too long?",
+          question:
+            "Which behavioral bias leads investors to hold losing stocks too long?",
           options: [
             "Overconfidence bias",
             "Confirmation bias",
             "Loss aversion",
-            "Herd mentality"
+            "Herd mentality",
           ],
           correctAnswer: 2,
-          explanation: "Loss aversion causes investors to feel the pain of losses more than the pleasure of gains, leading them to hold losing positions hoping to break even.",
+          explanation:
+            "Loss aversion causes investors to feel the pain of losses more than the pleasure of gains, leading them to hold losing positions hoping to break even.",
           difficulty: "MEDIUM",
           type: "COMPREHENSION",
         },
         {
           id: "q4",
-          question: "What distinguishes futures contracts from options contracts?",
+          question:
+            "What distinguishes futures contracts from options contracts?",
           options: [
             "Futures are more expensive than options",
             "Futures obligate both parties, options provide rights without obligations",
             "Options are only for stocks, futures are for commodities",
-            "Futures expire monthly, options expire weekly"
+            "Futures expire monthly, options expire weekly",
           ],
           correctAnswer: 1,
-          explanation: "Futures contracts obligate both parties to complete the transaction, while options give the holder the right but not the obligation to buy or sell.",
+          explanation:
+            "Futures contracts obligate both parties to complete the transaction, while options give the holder the right but not the obligation to buy or sell.",
           difficulty: "MEDIUM",
           type: "COMPREHENSION",
         },
         {
           id: "q5",
-          question: "What is the main advantage of algorithmic trading over manual trading?",
+          question:
+            "What is the main advantage of algorithmic trading over manual trading?",
           options: [
             "Guarantees higher returns in all markets",
             "Removes emotions and enables systematic execution",
             "Eliminates all trading risks completely",
-            "Only works during bull markets"
+            "Only works during bull markets",
           ],
           correctAnswer: 1,
-          explanation: "Algorithmic trading removes human emotions from decision-making and enables systematic execution of predefined strategies without psychological biases.",
+          explanation:
+            "Algorithmic trading removes human emotions from decision-making and enables systematic execution of predefined strategies without psychological biases.",
           difficulty: "EASY",
           type: "COMPREHENSION",
         },
         {
           id: "q6",
-          question: "During the 2008 financial crisis, Indian markets (Sensex) fell approximately:",
+          question:
+            "During the 2008 financial crisis, Indian markets (Sensex) fell approximately:",
           options: [
             "25% from peak to trough",
-            "40% from peak to trough", 
+            "40% from peak to trough",
             "62% from peak to trough",
-            "80% from peak to trough"
+            "80% from peak to trough",
           ],
           correctAnswer: 2,
-          explanation: "The Sensex fell from about 21,000 in January 2008 to around 8,000 in March 2009, representing a decline of approximately 62%.",
+          explanation:
+            "The Sensex fell from about 21,000 in January 2008 to around 8,000 in March 2009, representing a decline of approximately 62%.",
           difficulty: "MEDIUM",
           type: "RECALL",
         },
         {
           id: "q7",
-          question: "Which strategy helps overcome herd mentality in investing?",
+          question:
+            "Which strategy helps overcome herd mentality in investing?",
           options: [
             "Following popular stock recommendations",
             "Buying when markets are euphoric",
             "Systematic investment plans (SIPs)",
-            "Trading based on news headlines"
+            "Trading based on news headlines",
           ],
           correctAnswer: 2,
-          explanation: "SIPs help overcome herd mentality by investing fixed amounts regularly regardless of market conditions, reducing the impact of emotional decisions.",
+          explanation:
+            "SIPs help overcome herd mentality by investing fixed amounts regularly regardless of market conditions, reducing the impact of emotional decisions.",
           difficulty: "MEDIUM",
           type: "APPLICATION",
         },
         {
           id: "q8",
-          question: "What type of option would you buy to profit from a falling stock price?",
+          question:
+            "What type of option would you buy to profit from a falling stock price?",
           options: [
             "Call option",
             "Put option",
             "Future contract",
-            "Forward contract"
+            "Forward contract",
           ],
           correctAnswer: 1,
-          explanation: "Put options give you the right to sell at a specific price, making them profitable when the underlying stock price falls below the strike price.",
+          explanation:
+            "Put options give you the right to sell at a specific price, making them profitable when the underlying stock price falls below the strike price.",
           difficulty: "EASY",
           type: "APPLICATION",
         },
         {
           id: "q9",
-          question: "What is the key lesson about portfolio construction from the 2008 crisis?",
+          question:
+            "What is the key lesson about portfolio construction from the 2008 crisis?",
           options: [
             "Concentrate in the best performing sector",
             "Avoid all equity investments during uncertainty",
             "Diversification and liquidity management are crucial",
-            "Only invest in government bonds for safety"
+            "Only invest in government bonds for safety",
           ],
           correctAnswer: 2,
-          explanation: "The 2008 crisis highlighted the importance of diversification across sectors and geographies, plus maintaining liquidity for opportunities and survival.",
+          explanation:
+            "The 2008 crisis highlighted the importance of diversification across sectors and geographies, plus maintaining liquidity for opportunities and survival.",
           difficulty: "MEDIUM",
           type: "SCENARIO",
         },
         {
           id: "q10",
-          question: "In the capstone portfolio for a 30-year-old, what should be the approximate equity allocation?",
-          options: [
-            "30-40%",
-            "50-60%",
-            "70-80%",
-            "90-100%"
-          ],
+          question:
+            "In the capstone portfolio for a 30-year-old, what should be the approximate equity allocation?",
+          options: ["30-40%", "50-60%", "70-80%", "90-100%"],
           correctAnswer: 2,
-          explanation: "Young investors with long investment horizons can typically allocate 70-80% to equity for growth potential, balanced with some debt for stability.",
+          explanation:
+            "Young investors with long investment horizons can typically allocate 70-80% to equity for growth potential, balanced with some debt for stability.",
           difficulty: "MEDIUM",
           type: "APPLICATION",
         },
