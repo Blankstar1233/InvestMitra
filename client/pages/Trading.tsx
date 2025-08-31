@@ -192,21 +192,21 @@ export default function Trading() {
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-foreground flex items-center gap-2">
-            <TrendingUp className="h-8 w-8" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground flex items-center gap-2">
+            <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8" />
             Trading Terminal
           </h1>
-          <p className="text-muted-foreground mt-1">
+          <p className="text-sm sm:text-base text-muted-foreground mt-1">
             Buy and sell stocks with real-time market simulation
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <Badge variant={isMarketOpen ? "default" : "secondary"}>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge variant={isMarketOpen ? "default" : "secondary"} className="text-xs">
             {isMarketOpen ? "Market Open" : "Market Closed"}
           </Badge>
-          <Badge variant="outline" className="bg-success/10 text-success border-success/20">
+          <Badge variant="outline" className="bg-success/10 text-success border-success/20 text-xs">
             Cash: {formatCurrency(portfolio.availableCash)}
           </Badge>
         </div>
@@ -214,26 +214,24 @@ export default function Trading() {
 
       {/* Search and Filters */}
       <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center gap-2 text-lg">
             <Search className="h-5 w-5" />
             Stock Search & Filters
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
-              <Input
-                ref={searchRef}
-                placeholder="Search stocks by symbol or name… (press / to focus)"
-                aria-label="Search stocks"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full"
-              />
-            </div>
+          <div className="space-y-3">
+            <Input
+              ref={searchRef}
+              placeholder="Search stocks... (press / to focus)"
+              aria-label="Search stocks"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full"
+            />
             <Select value={selectedSector} onValueChange={setSelectedSector}>
-              <SelectTrigger className="w-full sm:w-[200px]">
+              <SelectTrigger className="w-full">
                 <Filter className="h-4 w-4 mr-2" />
                 <SelectValue placeholder="Select sector" />
               </SelectTrigger>
@@ -249,25 +247,36 @@ export default function Trading() {
         </CardContent>
       </Card>
 
+      {/* Fixed Tabs with proper mobile layout */}
       <Tabs defaultValue="stocks" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4">
-          <TabsTrigger value="stocks">All Stocks</TabsTrigger>
-          <TabsTrigger value="watchlist">Watchlist</TabsTrigger>
-          <TabsTrigger value="positions">My Positions</TabsTrigger>
-          <TabsTrigger value="orders">Order History</TabsTrigger>
-        </TabsList>
+        <div className="overflow-x-auto">
+          <TabsList className="grid grid-cols-4 min-w-full w-max sm:w-full">
+            <TabsTrigger value="stocks" className="text-xs sm:text-sm px-2 sm:px-4">
+              All Stocks
+            </TabsTrigger>
+            <TabsTrigger value="watchlist" className="text-xs sm:text-sm px-2 sm:px-4">
+              Watchlist
+            </TabsTrigger>
+            <TabsTrigger value="positions" className="text-xs sm:text-sm px-2 sm:px-4">
+              Positions
+            </TabsTrigger>
+            <TabsTrigger value="orders" className="text-xs sm:text-sm px-2 sm:px-4">
+              History
+            </TabsTrigger>
+          </TabsList>
+        </div>
 
         {/* All Stocks */}
         <TabsContent value="stocks">
           <Card>
-            <CardHeader>
-              <CardTitle>NSE Stocks</CardTitle>
-              <CardDescription>
+            <CardHeader className="pb-4">
+              <CardTitle className="text-lg">NSE Stocks</CardTitle>
+              <CardDescription className="text-sm">
                 Real-time prices with 15-minute delay simulation
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {filteredStocks.map((stock) => {
                   const position = getPosition(stock.symbol);
                   const isInWatchlist = watchlist.includes(stock.symbol);
@@ -275,67 +284,70 @@ export default function Trading() {
                   return (
                     <div
                       key={stock.symbol}
-                      className="flex items-center justify-between p-4 rounded-lg border hover:bg-accent/50 transition-colors"
+                      className="flex flex-col sm:flex-row sm:items-center gap-3 p-3 sm:p-4 rounded-lg border hover:bg-accent/50 transition-colors"
                     >
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold">{stock.symbol}</span>
-                          <Badge variant="outline" className="text-xs">
+                      {/* Stock Info - Full width on mobile */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-1">
+                          <span className="font-semibold text-sm sm:text-base">{stock.symbol}</span>
+                          <Badge variant="outline" className="text-xs px-1 py-0">
                             {stock.sector}
                           </Badge>
                           {position && (
-                            <Badge variant="secondary" className="text-xs">
+                            <Badge variant="secondary" className="text-xs px-1 py-0">
                               {position.quantity} shares
                             </Badge>
                           )}
                         </div>
-                        <p className="text-sm text-muted-foreground truncate">
+                        <p className="text-xs sm:text-sm text-muted-foreground truncate">
                           {stock.name}
                         </p>
                         <p className="text-xs text-muted-foreground">
                           Vol: {formatNumber(stock.volume)} | H: {formatCurrency(stock.high)} | L: {formatCurrency(stock.low)}
                         </p>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <div className="text-right">
-                          <p className="font-semibold">{formatCurrency(stock.price)}</p>
-                          <div className={`flex items-center gap-1 text-sm ${
-                            stock.change >= 0 ? 'text-success' : 'text-destructive'
-                          }`}>
+
+                      {/* Price and Actions - Stack on mobile */}
+                      <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4">
+                        <div className="text-left sm:text-right">
+                          <p className="font-semibold text-sm sm:text-base">{formatCurrency(stock.price)}</p>
+                          <div className={`flex items-center gap-1 text-xs sm:text-sm ${stock.change >= 0 ? 'text-success' : 'text-destructive'
+                            }`}>
                             {stock.change >= 0 ? (
                               <ArrowUpRight className="h-3 w-3" />
                             ) : (
                               <ArrowDownRight className="h-3 w-3" />
                             )}
                             <span>
-                              {stock.change >= 0 ? '+' : ''}{formatCurrency(stock.change)} ({stock.changePercent}%)
+                              {stock.change >= 0 ? '+' : ''}{stock.changePercent}%
                             </span>
                           </div>
                         </div>
-                        <div className="flex flex-col gap-1">
+
+                        <div className="flex items-center gap-2">
                           <Button
                             size="sm"
                             variant="ghost"
                             aria-pressed={isInWatchlist}
                             onClick={() => toggleWatchlist(stock.symbol)}
-                            className="h-8 w-8 p-0"
+                            className="h-8 w-8 p-0 flex-shrink-0"
                           >
-                            <Eye className={`h-4 w-4 ${isInWatchlist ? 'text-primary' : 'text-muted-foreground'}`} />
+                            <Eye className={`h-3 w-3 sm:h-4 sm:w-4 ${isInWatchlist ? 'text-primary' : 'text-muted-foreground'}`} />
                           </Button>
                           <Dialog>
                             <DialogTrigger asChild>
                               <Button
                                 size="sm"
                                 onClick={() => setSelectedStock(stock)}
-                                className="h-8 px-3"
+                                className="h-8 px-3 text-xs flex-shrink-0"
                               >
                                 Trade
                               </Button>
                             </DialogTrigger>
-                            <DialogContent className="sm:max-w-[420px] max-h-[90vh] overflow-y-auto p-4 sm:p-6">
+                            <DialogContent className="w-[95vw] max-w-[420px] max-h-[90vh] overflow-y-auto p-4">
                               <DialogHeader>
-                                <DialogTitle>Trade {stock.symbol}</DialogTitle>
-                                <DialogDescription>
+                                <DialogTitle className="text-lg">{stock.symbol}</DialogTitle>
+                                <DialogDescription className="text-sm">
                                   Current Price: {formatCurrency(stock.price)}
                                 </DialogDescription>
                               </DialogHeader>
@@ -344,24 +356,26 @@ export default function Trading() {
                                   <Button
                                     variant={orderType === "BUY" ? "default" : "outline"}
                                     onClick={() => setOrderType("BUY")}
-                                    className="flex items-center gap-2"
+                                    className="flex items-center gap-2 text-sm"
+                                    size="sm"
                                   >
-                                    <Plus className="h-4 w-4" />
+                                    <Plus className="h-3 w-3" />
                                     Buy
                                   </Button>
                                   <Button
                                     variant={orderType === "SELL" ? "default" : "outline"}
                                     onClick={() => setOrderType("SELL")}
-                                    className="flex items-center gap-2"
+                                    className="flex items-center gap-2 text-sm"
+                                    size="sm"
                                     disabled={!position || position.quantity === 0}
                                   >
-                                    <Minus className="h-4 w-4" />
+                                    <Minus className="h-3 w-3" />
                                     Sell
                                   </Button>
                                 </div>
 
                                 <div className="space-y-2">
-                                  <Label htmlFor="quantity">Quantity</Label>
+                                  <Label htmlFor="quantity" className="text-sm">Quantity</Label>
                                   <Input
                                     id="quantity"
                                     type="number"
@@ -371,6 +385,7 @@ export default function Trading() {
                                     aria-invalid={Boolean(errors.quantity) || undefined}
                                     aria-describedby={errors.quantity ? 'quantity-error' : undefined}
                                     onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+                                    className="text-sm"
                                   />
                                   {errors.quantity && (
                                     <p id="quantity-error" className="text-xs text-destructive">{errors.quantity}</p>
@@ -387,6 +402,7 @@ export default function Trading() {
                                     variant={priceType === "MARKET" ? "default" : "outline"}
                                     onClick={() => setPriceType("MARKET")}
                                     size="sm"
+                                    className="text-xs"
                                   >
                                     Market
                                   </Button>
@@ -394,6 +410,7 @@ export default function Trading() {
                                     variant={priceType === "LIMIT" ? "default" : "outline"}
                                     onClick={() => setPriceType("LIMIT")}
                                     size="sm"
+                                    className="text-xs"
                                   >
                                     Limit
                                   </Button>
@@ -401,7 +418,7 @@ export default function Trading() {
 
                                 {priceType === "LIMIT" && (
                                   <div className="space-y-2">
-                                    <Label htmlFor="limitPrice">Limit Price</Label>
+                                    <Label htmlFor="limitPrice" className="text-sm">Limit Price</Label>
                                     <Input
                                       id="limitPrice"
                                       type="number"
@@ -411,6 +428,7 @@ export default function Trading() {
                                       aria-describedby={errors.limitPrice ? 'limit-error' : undefined}
                                       onChange={(e) => setLimitPrice(e.target.value)}
                                       placeholder={stock.price.toString()}
+                                      className="text-sm"
                                     />
                                     {errors.limitPrice && (
                                       <p id="limit-error" className="text-xs text-destructive">{errors.limitPrice}</p>
@@ -419,23 +437,23 @@ export default function Trading() {
                                 )}
 
                                 <div className="space-y-2 p-3 bg-accent/50 rounded-lg">
-                                  <div className="flex justify-between text-sm">
+                                  <div className="flex justify-between text-xs sm:text-sm">
                                     <span>Quantity:</span>
                                     <span>{quantity}</span>
                                   </div>
-                                  <div className="flex justify-between text-sm">
+                                  <div className="flex justify-between text-xs sm:text-sm">
                                     <span>Price:</span>
                                     <span>{formatCurrency(priceType === "MARKET" ? stock.price : parseFloat(limitPrice) || stock.price)}</span>
                                   </div>
-                                  <div className="flex justify-between text-sm">
-                                    <span>Gross Amount:</span>
+                                  <div className="flex justify-between text-xs sm:text-sm">
+                                    <span>Gross:</span>
                                     <span>{formatCurrency(quantity * (priceType === "MARKET" ? stock.price : parseFloat(limitPrice) || stock.price))}</span>
                                   </div>
-                                  <div className="flex justify-between text-sm">
+                                  <div className="flex justify-between text-xs sm:text-sm">
                                     <span>Brokerage:</span>
                                     <span>{formatCurrency(Math.max(quantity * (priceType === "MARKET" ? stock.price : parseFloat(limitPrice) || stock.price) * 0.0003, 20))}</span>
                                   </div>
-                                  <div className="flex justify-between font-semibold border-t pt-2">
+                                  <div className="flex justify-between font-semibold border-t pt-2 text-xs sm:text-sm">
                                     <span>Total:</span>
                                     <span>{formatCurrency(quantity * (priceType === "MARKET" ? stock.price : parseFloat(limitPrice) || stock.price) + Math.max(quantity * (priceType === "MARKET" ? stock.price : parseFloat(limitPrice) || stock.price) * 0.0003, 20))}</span>
                                   </div>
@@ -443,7 +461,7 @@ export default function Trading() {
 
                                 <Button
                                   onClick={handlePlaceOrder}
-                                  className="w-full"
+                                  className="w-full text-sm"
                                   disabled={Boolean(Object.keys(errors).length)}
                                 >
                                   Place {orderType} Order
@@ -464,27 +482,27 @@ export default function Trading() {
         {/* Watchlist */}
         <TabsContent value="watchlist">
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg">
                 <Eye className="h-5 w-5" />
                 My Watchlist
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-sm">
                 Stocks you're tracking
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {stocks
                   .filter(stock => watchlist.includes(stock.symbol))
                   .map((stock) => (
                     <div
                       key={stock.symbol}
-                      className="flex items-center justify-between p-4 rounded-lg border"
+                      className="flex flex-col sm:flex-row sm:items-center gap-3 p-3 rounded-lg border"
                     >
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold">{stock.symbol}</span>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="font-semibold text-sm sm:text-base">{stock.symbol}</span>
                           <Button
                             size="sm"
                             variant="ghost"
@@ -494,13 +512,12 @@ export default function Trading() {
                             <Minus className="h-3 w-3" />
                           </Button>
                         </div>
-                        <p className="text-sm text-muted-foreground">{stock.name}</p>
+                        <p className="text-xs sm:text-sm text-muted-foreground truncate">{stock.name}</p>
                       </div>
-                      <div className="text-right">
-                        <p className="font-semibold">{formatCurrency(stock.price)}</p>
-                        <div className={`flex items-center gap-1 text-sm ${
-                          stock.change >= 0 ? 'text-success' : 'text-destructive'
-                        }`}>
+                      <div className="text-left sm:text-right">
+                        <p className="font-semibold text-sm sm:text-base">{formatCurrency(stock.price)}</p>
+                        <div className={`flex items-center gap-1 text-xs sm:text-sm ${stock.change >= 0 ? 'text-success' : 'text-destructive'
+                          }`}>
                           {stock.change >= 0 ? (
                             <ArrowUpRight className="h-3 w-3" />
                           ) : (
@@ -512,7 +529,7 @@ export default function Trading() {
                     </div>
                   ))}
                 {watchlist.length === 0 && (
-                  <p className="text-center text-muted-foreground py-8">
+                  <p className="text-center text-muted-foreground py-8 text-sm">
                     No stocks in watchlist. Add stocks by clicking the eye icon.
                   </p>
                 )}
@@ -524,39 +541,38 @@ export default function Trading() {
         {/* Positions */}
         <TabsContent value="positions">
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg">
                 <Wallet className="h-5 w-5" />
                 My Positions
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-sm">
                 Your current stock holdings
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {portfolio.positions.map((position) => (
                   <div
                     key={position.symbol}
-                    className="flex items-center justify-between p-4 rounded-lg border"
+                    className="flex flex-col sm:flex-row sm:items-center gap-3 p-3 rounded-lg border"
                   >
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-semibold">{position.symbol}</span>
-                        <Badge variant="outline" className="text-xs">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-1">
+                        <span className="font-semibold text-sm sm:text-base">{position.symbol}</span>
+                        <Badge variant="outline" className="text-xs px-1 py-0">
                           {position.quantity} shares
                         </Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground">{position.name}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground truncate">{position.name}</p>
                       <p className="text-xs text-muted-foreground">
                         Avg: {formatCurrency(position.avgPrice)} | Current: {formatCurrency(position.currentPrice)}
                       </p>
                     </div>
-                    <div className="text-right">
-                      <p className="font-semibold">{formatCurrency(position.currentValue)}</p>
-                      <div className={`flex items-center gap-1 text-sm ${
-                        position.pnl >= 0 ? 'text-success' : 'text-destructive'
-                      }`}>
+                    <div className="text-left sm:text-right">
+                      <p className="font-semibold text-sm sm:text-base">{formatCurrency(position.currentValue)}</p>
+                      <div className={`flex items-center gap-1 text-xs sm:text-sm ${position.pnl >= 0 ? 'text-success' : 'text-destructive'
+                        }`}>
                         {position.pnl >= 0 ? (
                           <ArrowUpRight className="h-3 w-3" />
                         ) : (
@@ -570,7 +586,7 @@ export default function Trading() {
                   </div>
                 ))}
                 {portfolio.positions.length === 0 && (
-                  <p className="text-center text-muted-foreground py-8">
+                  <p className="text-center text-muted-foreground py-8 text-sm">
                     No positions yet. Start trading to build your portfolio!
                   </p>
                 )}
@@ -582,44 +598,44 @@ export default function Trading() {
         {/* Order History */}
         <TabsContent value="orders">
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg">
                 <Clock className="h-5 w-5" />
                 Order History
               </CardTitle>
-              <CardDescription>
+              <CardDescription className="text-sm">
                 Your recent trading activity
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {getOrderHistory().map((order) => (
                   <div
                     key={order.id}
-                    className="flex items-center justify-between p-4 rounded-lg border"
+                    className="flex flex-col sm:flex-row sm:items-center gap-3 p-3 rounded-lg border"
                   >
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-semibold">{order.symbol}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-1">
+                        <span className="font-semibold text-sm sm:text-base">{order.symbol}</span>
                         <Badge
                           variant={order.type === "BUY" ? "default" : "secondary"}
-                          className="text-xs"
+                          className="text-xs px-1 py-0"
                         >
                           {order.type}
                         </Badge>
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="text-xs px-1 py-0">
                           {order.status}
                         </Badge>
                       </div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-xs sm:text-sm text-muted-foreground">
                         {order.quantity} shares @ {formatCurrency(order.price)}
                       </p>
                       <p className="text-xs text-muted-foreground">
                         {new Date(order.timestamp).toLocaleString()}
                       </p>
                     </div>
-                    <div className="text-right">
-                      <p className="font-semibold">{formatCurrency(order.totalAmount)}</p>
+                    <div className="text-left sm:text-right">
+                      <p className="font-semibold text-sm sm:text-base">{formatCurrency(order.totalAmount)}</p>
                       <p className="text-xs text-muted-foreground">
                         Brokerage: {formatCurrency(order.brokerage)}
                       </p>
@@ -627,7 +643,7 @@ export default function Trading() {
                   </div>
                 ))}
                 {portfolio.orders.length === 0 && (
-                  <p className="text-center text-muted-foreground py-8">
+                  <p className="text-center text-muted-foreground py-8 text-sm">
                     No orders yet. Start trading to see your order history!
                   </p>
                 )}
