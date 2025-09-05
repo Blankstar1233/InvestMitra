@@ -131,32 +131,45 @@ export default function AIInsights() {
     <Tabs defaultValue="insights" className="space-y-4">
   <TabsList className="w-full p-1 h-auto bg-muted">
     <div 
-      className="flex overflow-x-auto scrollbar-hide w-full md:grid md:grid-cols-4 md:gap-1 md:overflow-visible md:snap-none"
+      className="flex overflow-x-auto scrollbar-hide w-full md:grid md:grid-cols-4 md:gap-1 md:overflow-visible scroll-smooth"
       style={{
-        scrollSnapType: window.innerWidth < 768 ? 'x mandatory' : 'none',
-        scrollBehavior: 'smooth'
+        scrollSnapType: 'x mandatory',
+      }}
+      onTouchStart={(e) => {
+        // Disable scroll snap temporarily during touch to prevent conflicts
+        const container = e.currentTarget;
+        container.style.scrollSnapType = 'none';
+      }}
+      onTouchEnd={(e) => {
+        // Re-enable scroll snap after touch
+        const container = e.currentTarget;
+        setTimeout(() => {
+          container.style.scrollSnapType = 'x mandatory';
+        }, 100);
       }}
     >
       <TabsTrigger
         value="insights"
-        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none"
-        style={{
-          scrollSnapAlign: window.innerWidth < 768 ? 'start' : 'none'
+        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
+        style={{ scrollSnapAlign: 'start' }}
+        onMouseDown={(e) => {
+          // Prevent text selection on mobile taps
+          e.preventDefault();
         }}
         onClick={(e) => {
-          // Enhanced scroll behavior for mobile
-          if (window.innerWidth < 768) {
-            e.preventDefault();
-            const container = (e.target as HTMLElement).closest(".flex") as HTMLElement;
-            const target = e.target as HTMLElement;
+          const isMobile = window.innerWidth < 768;
+          if (isMobile) {
+            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+            const target = e.currentTarget as HTMLElement;
             
-            // Small delay to ensure tab state changes first
-            requestAnimationFrame(() => {
-              container.scrollTo({ 
-                left: target.offsetLeft - 16, // 16px padding from container edge
-                behavior: "smooth" 
-              });
-            });
+            // Force immediate scroll without waiting for CSS transitions
+            container.style.scrollBehavior = 'smooth';
+            container.scrollLeft = Math.max(0, target.offsetLeft - 16);
+            
+            // Reset scroll behavior after animation
+            setTimeout(() => {
+              container.style.scrollBehavior = '';
+            }, 500);
           }
         }}
       >
@@ -167,21 +180,25 @@ export default function AIInsights() {
       </TabsTrigger>
       <TabsTrigger
         value="recommendations"
-        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none"
-        style={{
-          scrollSnapAlign: window.innerWidth < 768 ? 'center' : 'none'
+        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
+        style={{ scrollSnapAlign: 'center' }}
+        onMouseDown={(e) => {
+          e.preventDefault();
         }}
         onClick={(e) => {
-          if (window.innerWidth < 768) {
-            e.preventDefault();
-            const container = (e.target as HTMLElement).closest(".flex") as HTMLElement;
-            const target = e.target as HTMLElement;
+          const isMobile = window.innerWidth < 768;
+          if (isMobile) {
+            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+            const target = e.currentTarget as HTMLElement;
             const containerWidth = container.offsetWidth;
             
-            requestAnimationFrame(() => {
-              const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
-              container.scrollTo({ left: scrollLeft, behavior: "smooth" });
-            });
+            container.style.scrollBehavior = 'smooth';
+            const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
+            container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
+            
+            setTimeout(() => {
+              container.style.scrollBehavior = '';
+            }, 500);
           }
         }}
       >
@@ -192,21 +209,25 @@ export default function AIInsights() {
       </TabsTrigger>
       <TabsTrigger
         value="risk"
-        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none"
-        style={{
-          scrollSnapAlign: window.innerWidth < 768 ? 'center' : 'none'
+        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
+        style={{ scrollSnapAlign: 'center' }}
+        onMouseDown={(e) => {
+          e.preventDefault();
         }}
         onClick={(e) => {
-          if (window.innerWidth < 768) {
-            e.preventDefault();
-            const container = (e.target as HTMLElement).closest(".flex") as HTMLElement;
-            const target = e.target as HTMLElement;
+          const isMobile = window.innerWidth < 768;
+          if (isMobile) {
+            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+            const target = e.currentTarget as HTMLElement;
             const containerWidth = container.offsetWidth;
             
-            requestAnimationFrame(() => {
-              const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
-              container.scrollTo({ left: scrollLeft, behavior: "smooth" });
-            });
+            container.style.scrollBehavior = 'smooth';
+            const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
+            container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
+            
+            setTimeout(() => {
+              container.style.scrollBehavior = '';
+            }, 500);
           }
         }}
       >
@@ -217,21 +238,22 @@ export default function AIInsights() {
       </TabsTrigger>
       <TabsTrigger
         value="performance"
-        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none"
-        style={{
-          scrollSnapAlign: window.innerWidth < 768 ? 'end' : 'none'
+        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
+        style={{ scrollSnapAlign: 'end' }}
+        onMouseDown={(e) => {
+          e.preventDefault();
         }}
         onClick={(e) => {
-          if (window.innerWidth < 768) {
-            e.preventDefault();
-            const container = (e.target as HTMLElement).closest(".flex") as HTMLElement;
+          const isMobile = window.innerWidth < 768;
+          if (isMobile) {
+            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
             
-            requestAnimationFrame(() => {
-              container.scrollTo({
-                left: container.scrollWidth - container.offsetWidth,
-                behavior: "smooth"
-              });
-            });
+            container.style.scrollBehavior = 'smooth';
+            container.scrollLeft = container.scrollWidth - container.offsetWidth;
+            
+            setTimeout(() => {
+              container.style.scrollBehavior = '';
+            }, 500);
           }
         }}
       >
@@ -242,7 +264,6 @@ export default function AIInsights() {
       </TabsTrigger>
     </div>
   </TabsList>
-
       {/* Live Insights */}
           <TabsContent value="insights" className="mt-4">
             <div className="space-y-3 sm:space-y-4">
