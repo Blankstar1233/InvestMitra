@@ -46,7 +46,6 @@ export const register: RequestHandler = async (req, res) => {
       ON CONFLICT (email) DO NOTHING
     `;
 
-    // create default portfolio row
     const portfolioId = randomUUID();
     await sql`INSERT INTO portfolios (id, user_id) VALUES (${portfolioId}, ${userId}) ON CONFLICT DO NOTHING`;
 

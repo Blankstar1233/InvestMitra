@@ -60,7 +60,6 @@ export default function Trading() {
   const [errors, setErrors] = useState<{ quantity?: string; limitPrice?: string }>({});
   const searchRef = useRef<HTMLInputElement | null>(null);
 
-  // Keyboard shortcut to focus search
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "/") {
@@ -72,14 +71,12 @@ export default function Trading() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Update portfolio with current prices
   useEffect(() => {
     if (stocks.length > 0) {
       updatePortfolioWithCurrentPrices(stocks);
     }
   }, [stocks, updatePortfolioWithCurrentPrices]);
 
-  // Filter stocks based on search and sector
   useEffect(() => {
     let filtered = searchStocks(searchQuery);
     filtered = filterBySector(selectedSector);

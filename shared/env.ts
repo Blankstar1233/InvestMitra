@@ -1,4 +1,3 @@
-// Loads environment variables from environment/.env
 import * as fs from 'fs';
 import * as path from 'path';
 

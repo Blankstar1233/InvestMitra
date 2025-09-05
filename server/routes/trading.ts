@@ -5,7 +5,7 @@ import { requireUser } from "./auth";
 import { randomUUID } from "crypto";
 
 const INITIAL_CASH = 100000;
-const BROKERAGE_RATE = 0.0003; // 0.03%
+const BROKERAGE_RATE = 0.0003;
 const MIN_BROKERAGE = 20;
 
 function calculateBrokerage(amount: number) {
@@ -99,14 +99,13 @@ export const placeOrder: RequestHandler = async (req: any, res) => {
       const totalAmount = grossAmount + brokerage;
       if (totalAmount > availableCash) return res.status(400).json({ ok: false, error: "insufficient_funds" });
 
-      // Upsert position
       const existing = (await sql`SELECT * FROM positions WHERE user_id = ${userId} AND symbol = ${body.symbol}`) as any[];
       if (existing.length > 0) {
         const pos = existing[0];
         const newQty = Number(pos.quantity) + body.quantity;
         const newInvested = Number(pos.invested_value) + grossAmount;
         const newAvg = newInvested / newQty;
-        const newCurrent = body.price; // use last trade price as current
+        const newCurrent = body.price;
         await sql`
           UPDATE positions
           SET quantity = ${newQty}, invested_value = ${newInvested}, avg_price = ${newAvg}, current_price = ${newCurrent}, updated_at = now()
@@ -129,7 +128,6 @@ export const placeOrder: RequestHandler = async (req: any, res) => {
 
       return res.json({ ok: true });
     } else {
-      // SELL
       const existing = (await sql`SELECT * FROM positions WHERE user_id = ${userId} AND symbol = ${body.symbol}`) as any[];
       if (existing.length === 0 || Number(existing[0].quantity) < body.quantity) {
         return res.status(400).json({ ok: false, error: "insufficient_shares" });

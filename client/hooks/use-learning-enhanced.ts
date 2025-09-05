@@ -1,9 +1,8 @@
 import { useState, useCallback } from "react";
 
-// Utility to fetch Gemini API key from server
 async function fetchGeminiApiKey(): Promise<string | undefined> {
   try {
-    const res = await fetch('/api/gemini-key');
+    const res = await fetch("/api/gemini-key");
     if (!res.ok) return undefined;
     const data = await res.json();
     return data.geminiApiKey;
@@ -24,15 +23,15 @@ export interface LearningModule {
     | "INDIAN_MARKETS"
     | "ADVANCED";
   difficulty: "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
-  duration: number; // minutes
-  reward: number; // coins
+  duration: number;
+  reward: number;
   lessons: Lesson[];
   quiz: Quiz;
   completed: boolean;
-  progress: number; // 0-100
+  progress: number;
   unlocked: boolean;
-  prerequisites?: string[]; // IDs of modules that must be completed first
-  tier: "FOUNDATIONAL" | "INTERMEDIATE" | "ADVANCED"; // Learning path tier
+  prerequisites?: string[];
+  tier: "FOUNDATIONAL" | "INTERMEDIATE" | "ADVANCED";
 }
 
 export interface Lesson {
@@ -41,9 +40,9 @@ export interface Lesson {
   content: string;
   type: "TEXT" | "VIDEO" | "INTERACTIVE" | "CASE_STUDY" | "SIMULATION";
   completed: boolean;
-  duration: number; // minutes
-  keyTakeaways?: string[]; // Key points to remember
-  actionItems?: string[]; // Action items for practical application
+  duration: number;
+  keyTakeaways?: string[];
+  actionItems?: string[];
 }
 
 export interface Quiz {
@@ -52,7 +51,7 @@ export interface Quiz {
   passed: boolean;
   score: number;
   attempts: number;
-  minPassingScore: number; // Minimum score needed to pass (percent)
+  minPassingScore: number;
 }
 
 export interface QuizQuestion {
@@ -61,9 +60,9 @@ export interface QuizQuestion {
   options: string[];
   correctAnswer: number;
   explanation: string;
-  difficulty: "EASY" | "MEDIUM" | "HARD"; // Question difficulty level
-  type: "RECALL" | "COMPREHENSION" | "APPLICATION" | "SCENARIO"; // Type of cognitive skill tested
-  scenario?: string; // Optional scenario context for application questions
+  difficulty: "EASY" | "MEDIUM" | "HARD";
+  type: "RECALL" | "COMPREHENSION" | "APPLICATION" | "SCENARIO";
+  scenario?: string;
 }
 
 export interface Achievement {
@@ -74,15 +73,15 @@ export interface Achievement {
   reward: {
     coins: number;
     xp: number;
-    bonusUnlock?: string; // ID of bonus content unlocked
+    bonusUnlock?: string;
   };
   unlocked: boolean;
   unlockedAt?: number;
   category: "BEGINNER" | "INTERMEDIATE" | "ADVANCED" | "MASTERY" | "SPECIAL";
   progress: number;
   target: number;
-  tier: number; // 1-5 tier level for badge display
-  displayBadge: string; // Badge image or emoji to display
+  tier: number;
+  displayBadge: string;
   milestoneType: "COMPLETION" | "ACCURACY" | "STREAK" | "TIME" | "SPECIAL";
 }
 
@@ -92,11 +91,11 @@ export interface LearningProgress {
   quizzesPassed: number;
   currentStreak: number;
   longestStreak: number;
-  totalTimeSpent: number; // minutes
+  totalTimeSpent: number;
   achievements: Achievement[];
   level: number;
   experiencePoints: number;
-  lastActiveDate?: number; // Timestamp for streak tracking
+  lastActiveDate?: number;
   moduleCompletionsByCategory: {
     BASICS: number;
     ANALYSIS: number;
@@ -105,16 +104,15 @@ export interface LearningProgress {
     INDIAN_MARKETS: number;
     ADVANCED: number;
   };
-  unlockedBonusContent: string[]; // IDs of unlocked bonus content
+  unlockedBonusContent: string[];
   learningPath: {
-    current: string; // ID of current recommended module
-    next: string; // ID of next recommended module
-    completed: string[]; // IDs of completed modules in sequence
+    current: string;
+    next: string;
+    completed: string[];
   };
 }
 
 const COMPREHENSIVE_LEARNING_MODULES: LearningModule[] = [
-  // TIER 1: FOUNDATIONAL MODULES (Beginner)
   {
     id: "investing-fundamentals",
     title: "Investing Fundamentals",
@@ -580,7 +578,6 @@ The principle applies to:
     },
   },
 
-  // Continue with more comprehensive modules...
   {
     id: "indian-markets-mastery",
     title: "Indian Financial Markets Deep Dive",
@@ -735,7 +732,6 @@ Indian markets are connected globally through:
           "Monitor circuit breaker triggers and their market impact",
         ],
       },
-      // More lessons would continue here...
     ],
     quiz: {
       id: "indian-markets-quiz",
@@ -786,12 +782,10 @@ Indian markets are connected globally through:
           difficulty: "MEDIUM",
           type: "COMPREHENSION",
         },
-        // More questions would continue...
       ],
     },
   },
 
-  // TIER 2: INTERMEDIATE MODULES
   {
     id: "market-analysis",
     title: "Market Analysis",
@@ -1654,7 +1648,6 @@ Over time, winning assets grow to become larger portions of your portfolio, incr
     },
   },
 
-  // TIER 2: INTERMEDIATE/ADVANCED MODULES
   {
     id: "strategy-planning",
     title: "Strategy & Planning",
@@ -1981,7 +1974,6 @@ Consider your age, income, dependents, risk tolerance, and goals. Your investmen
     },
   },
 
-  // TIER 3: ADVANCED MODULES
   {
     id: "risk-advanced",
     title: "Risk & Advanced Applications",
@@ -2408,11 +2400,9 @@ Create your personalized portfolio using this framework. Document your reasoning
       ],
     },
   },
-  // Additional modules would continue here following the same comprehensive pattern...
 ];
 
 const ENHANCED_ACHIEVEMENTS: Achievement[] = [
-  // Beginner Tier Achievements
   {
     id: "first-lesson",
     title: "Knowledge Seeker",
@@ -2465,7 +2455,6 @@ const ENHANCED_ACHIEVEMENTS: Achievement[] = [
     displayBadge: "🏛️",
     milestoneType: "COMPLETION",
   },
-  // Intermediate Tier Achievements
   {
     id: "analysis-expert",
     title: "Analysis Expert",
@@ -2501,7 +2490,6 @@ const ENHANCED_ACHIEVEMENTS: Achievement[] = [
     displayBadge: "🏆",
     milestoneType: "ACCURACY",
   },
-  // Advanced Tier Achievements
   {
     id: "investment-guru",
     title: "Investment Guru",
@@ -2520,7 +2508,6 @@ const ENHANCED_ACHIEVEMENTS: Achievement[] = [
     displayBadge: "👑",
     milestoneType: "COMPLETION",
   },
-  // Special Achievements
   {
     id: "streak-master",
     title: "Consistency Champion",
@@ -2581,7 +2568,7 @@ export function useEnhancedLearning() {
           const completedLessons = updatedLessons.filter(
             (l) => l.completed,
           ).length;
-          const newProgress = (completedLessons / updatedLessons.length) * 70; // 70% for lessons, 30% for quiz
+          const newProgress = (completedLessons / updatedLessons.length) * 70;
 
           return {
             ...module,
@@ -2593,7 +2580,6 @@ export function useEnhancedLearning() {
       }),
     );
 
-    // Update streak and check achievements
     updateStreak();
     checkAchievements("lesson_completed");
   }, []);
@@ -2629,9 +2615,8 @@ export function useEnhancedLearning() {
 
             let newProgress = module.progress;
             if (passed) {
-              newProgress = 100; // Module completed
+              newProgress = 100;
 
-              // Unlock next module based on prerequisites
               const nextModule = prev.find((m) =>
                 m.prerequisites?.includes(moduleId),
               );
@@ -2652,7 +2637,6 @@ export function useEnhancedLearning() {
       );
 
       if (result.passed) {
-        // Update progress
         setProgress((prev) => ({
           ...prev,
           modulesCompleted: prev.modulesCompleted + 1,
@@ -2663,7 +2647,6 @@ export function useEnhancedLearning() {
               modules.find((m) => m.id === moduleId)?.reward || 0,
         }));
 
-        // Check for achievements
         checkAchievements("quiz_passed", result.score);
       }
 
@@ -2766,7 +2749,7 @@ export function useEnhancedLearning() {
   );
 
   const calculateLevel = useCallback((experiencePoints: number) => {
-    return Math.floor(experiencePoints / 500) + 1; // 500 XP per level
+    return Math.floor(experiencePoints / 500) + 1;
   }, []);
 
   const getUnlockedAchievements = useCallback(() => {

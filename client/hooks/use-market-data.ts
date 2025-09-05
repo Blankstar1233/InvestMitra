@@ -132,11 +132,10 @@ export function useMarketData() {
     return () => clearInterval(interval);
   }, [isMarketOpen, stocks.length]);
 
-  // Optional live updates via Netlify function and Alpha Vantage
   useEffect(() => {
     let liveInterval: number | undefined;
     if (!USE_LIVE) return;
-    const symbols = NSE_STOCKS.slice(0, 5).map(s => s.symbol); // limit to avoid rate limits
+    const symbols = NSE_STOCKS.slice(0, 5).map(s => s.symbol);
 
     const updateLive = async () => {
       try {

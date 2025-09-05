@@ -1,6 +1,5 @@
 import { neon } from "@neondatabase/serverless";
 
-// Lazy singleton for SQL client
 let _sql: ReturnType<typeof neon> | null = null;
 
 export function getDatabaseUrl() {
@@ -32,7 +31,6 @@ export function getSql() {
 
 export async function ensureSchema() {
   const sql = getSql();
-  // Users
   await sql`
     CREATE TABLE IF NOT EXISTS users (
       id UUID PRIMARY KEY,
@@ -42,7 +40,6 @@ export async function ensureSchema() {
     )
   `;
 
-  // Portfolio cash per user
   await sql`
     CREATE TABLE IF NOT EXISTS portfolios (
       id UUID PRIMARY KEY,
@@ -52,7 +49,6 @@ export async function ensureSchema() {
     )
   `;
 
-  // Positions
   await sql`
     CREATE TABLE IF NOT EXISTS positions (
       id UUID PRIMARY KEY,
@@ -68,7 +64,6 @@ export async function ensureSchema() {
   `;
   await sql`CREATE INDEX IF NOT EXISTS idx_positions_user_symbol ON positions(user_id, symbol)`;
 
-  // Orders
   await sql`
     CREATE TABLE IF NOT EXISTS orders (
       id UUID PRIMARY KEY,

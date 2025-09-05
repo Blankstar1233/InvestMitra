@@ -142,12 +142,10 @@ export default function AIInsights() {
         scrollSnapType: 'x mandatory',
       }}
       onTouchStart={(e) => {
-        // Disable scroll snap temporarily during touch to prevent conflicts
         const container = e.currentTarget;
         container.style.scrollSnapType = 'none';
       }}
       onTouchEnd={(e) => {
-        // Re-enable scroll snap after touch
         const container = e.currentTarget;
         setTimeout(() => {
           container.style.scrollSnapType = 'x mandatory';
@@ -165,11 +163,9 @@ export default function AIInsights() {
             const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
             const target = e.currentTarget as HTMLElement;
             
-            // Force immediate scroll without waiting for CSS transitions
             container.style.scrollBehavior = 'smooth';
             container.scrollLeft = Math.max(0, target.offsetLeft - 16);
             
-            // Reset scroll behavior after animation
             setTimeout(() => {
               container.style.scrollBehavior = '';
             }, 500);

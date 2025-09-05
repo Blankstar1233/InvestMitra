@@ -270,7 +270,6 @@ export default function EnhancedLeaderboard() {
 
   const currentUser = users.find(user => user.id === 'current-user');
 
-  // Filter users based on activeFilter
   const getFilteredUsers = () => {
     let filtered = users.filter(user => {
       if (activeFilter === 'all') return true;
@@ -281,7 +280,6 @@ export default function EnhancedLeaderboard() {
       return true;
     });
 
-    // Sort by rank
     return filtered.sort((a, b) => a.rank - b.rank);
   };
 

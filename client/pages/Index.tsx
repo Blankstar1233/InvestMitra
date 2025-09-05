@@ -19,7 +19,6 @@ import {
 import { Link } from "react-router-dom";
 import { useTrading } from "@/hooks/use-trading";
 
-// Mock data for Indian stocks
 const topStocks = [
   { symbol: "RELIANCE.NS", name: "Reliance Industries", price: 2486.75, change: 23.40, changePercent: 0.95, trend: "up" },
   { symbol: "TCS.NS", name: "Tata Consultancy Services", price: 3924.15, change: -45.30, changePercent: -1.14, trend: "down" },
@@ -67,7 +66,6 @@ export default function Index() {
 
   return (
     <div className="space-y-6">
-      {/* Welcome Section */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-foreground">
@@ -87,7 +85,6 @@ export default function Index() {
         </div>
       </div>
 
-      {/* Market Status */}
       <Card>
         <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
@@ -130,7 +127,6 @@ export default function Index() {
         </CardContent>
       </Card>
 
-      {/* Portfolio Summary */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -164,7 +160,6 @@ export default function Index() {
         </CardContent>
       </Card>
 
-      {/* Top Stocks */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -202,7 +197,6 @@ export default function Index() {
         </CardContent>
       </Card>
 
-      {/* Quick Actions & Achievements */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
@@ -263,7 +257,6 @@ export default function Index() {
         </Card>
       </div>
 
-      {/* AI Insights */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">

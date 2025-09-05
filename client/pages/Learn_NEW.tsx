@@ -51,7 +51,6 @@ import {
 } from "lucide-react";
 import { useEnhancedLearning } from "@/hooks/use-learning-enhanced";
 
-// Helper component for lesson content with Key Takeaways
 function LessonContent({
   lesson,
   onComplete,
@@ -190,7 +189,6 @@ export default function Learn() {
 
   const recommendedModule = getRecommendedNextModule();
 
-  // Module category icons and colors
   const moduleConfig = {
     BASICS: {
       icon: GraduationCap,

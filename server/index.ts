@@ -10,7 +10,6 @@ import { handleGeminiKey } from "./routes/gemini";
 export function createServer() {
   const app = express();
 
-  // Middleware
   app.use(cors({ origin: true, credentials: true }));
   app.use(express.json({ type: "*/*" }));
   app.use(express.urlencoded({ extended: true }));
@@ -25,7 +24,6 @@ export function createServer() {
   });
   app.use(cookieParser());
 
-  // Ensure DB schema once and block first request until ready
   let schemaReady: Promise<void> | null = null;
   async function ensureSchemaOnce() {
     if (!schemaReady) schemaReady = ensureSchema().catch((e) => { schemaReady = null; throw e; });
@@ -35,18 +33,14 @@ export function createServer() {
     try {
       if (isDbConfigured()) await ensureSchemaOnce();
     } catch (e: any) {
-      // eslint-disable-next-line no-console
       console.error("Schema init failed:", e?.message || e);
     }
     next();
   });
 
-  // Build API router once
   const api = express.Router();
-  // Gemini API key endpoint
   api.get('/gemini-key', handleGeminiKey);
 
-  // Example API routes
   api.get("/ping", (_req, res) => {
     const ping = process.env.PING_MESSAGE ?? "ping";
     res.json({ message: ping });
@@ -54,24 +48,20 @@ export function createServer() {
 
   api.get("/demo", handleDemo);
 
-  // Echo endpoint for debugging body parsing
   api.post("/echo", (req, res) => {
     res.json({ ok: true, headers: req.headers, body: (req as any).body ?? null });
   });
 
-  // Auth
   api.post("/auth/register", register);
   api.post("/auth/login", login);
   api.get("/auth/me", me);
   api.post("/auth/logout", logout);
 
-  // Trading (auth required)
   api.get("/portfolio", requireUser, getPortfolio);
   api.post("/orders", requireUser, placeOrder);
   api.get("/orders", requireUser, getOrders);
   api.post("/portfolio/reset", requireUser, resetPortfolio);
 
-  // Mount at both local and Netlify function base paths
   app.use("/api", api);
   app.use("/.netlify/functions/api", api);
 

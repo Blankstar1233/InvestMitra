@@ -1,6 +1,5 @@
 import { useState, useCallback } from "react";
 
-// Utility to fetch Gemini API key from server
 async function fetchGeminiApiKey(): Promise<string | undefined> {
   try {
     const res = await fetch('/api/gemini-key');
@@ -18,12 +17,12 @@ export interface LearningModule {
   description: string;
   category: "BASICS" | "ANALYSIS" | "STRATEGY" | "RISK" | "INDIAN_MARKETS";
   difficulty: "BEGINNER" | "INTERMEDIATE" | "ADVANCED";
-  duration: number; // minutes
-  reward: number; // coins
+  duration: number;
+  reward: number;
   lessons: Lesson[];
   quiz: Quiz;
   completed: boolean;
-  progress: number; // 0-100
+  progress: number;
   unlocked: boolean;
 }
 
@@ -70,14 +69,13 @@ export interface LearningProgress {
   quizzesPassed: number;
   currentStreak: number;
   longestStreak: number;
-  totalTimeSpent: number; // minutes
+  totalTimeSpent: number;
   achievements: Achievement[];
   level: number;
   experiencePoints: number;
 }
 
 const LEARNING_MODULES: LearningModule[] = [
-  // TIER 1: FOUNDATIONAL MODULES (Beginner)
   {
     id: "investing-basics",
     title: "Investing Fundamentals",
@@ -512,7 +510,7 @@ export function useLearning() {
           const completedLessons = updatedLessons.filter(
             (l) => l.completed,
           ).length;
-          const newProgress = (completedLessons / updatedLessons.length) * 50; // 50% for lessons, 50% for quiz
+          const newProgress = (completedLessons / updatedLessons.length) * 50;
 
           return {
             ...module,
@@ -524,7 +522,6 @@ export function useLearning() {
       }),
     );
 
-    // Check for achievements
     checkAchievements("lesson_completed");
   }, []);
 
@@ -546,7 +543,7 @@ export function useLearning() {
             const score = Math.round(
               (correctAnswers / quiz.questions.length) * 100,
             );
-            const passed = score >= 70; // 70% passing grade
+            const passed = score >= 70;
 
             result = { passed, score };
 
@@ -559,9 +556,8 @@ export function useLearning() {
 
             let newProgress = module.progress;
             if (passed) {
-              newProgress = 100; // Module completed
+              newProgress = 100;
 
-              // Unlock next module
               const moduleIndex = prev.findIndex((m) => m.id === moduleId);
               if (moduleIndex < prev.length - 1) {
                 prev[moduleIndex + 1].unlocked = true;
@@ -580,7 +576,6 @@ export function useLearning() {
       );
 
       if (result.passed) {
-        // Update progress
         setProgress((prev) => ({
           ...prev,
           modulesCompleted: prev.modulesCompleted + 1,
@@ -588,7 +583,6 @@ export function useLearning() {
           experiencePoints: prev.experiencePoints + 100,
         }));
 
-        // Check for achievements
         checkAchievements("quiz_passed", result.score);
       }
 
@@ -662,7 +656,7 @@ export function useLearning() {
   );
 
   const calculateLevel = useCallback((experiencePoints: number) => {
-    return Math.floor(experiencePoints / 500) + 1; // 500 XP per level
+    return Math.floor(experiencePoints / 500) + 1;
   }, []);
 
   const getUnlockedAchievements = useCallback(() => {

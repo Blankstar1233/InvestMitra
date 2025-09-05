@@ -51,7 +51,6 @@ export interface CompetitionEntry {
   change: number;
 }
 
-// Mock data for demonstration
 const MOCK_USERS: LeaderboardUser[] = [
   {
     id: 'user1',
@@ -193,7 +192,6 @@ const MOCK_USERS: LeaderboardUser[] = [
     followers: 267,
     following: 134,
   },
-  // Add current user at rank 47
   {
     id: 'current-user',
     username: 'You',

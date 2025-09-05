@@ -78,7 +78,6 @@ export default function EnhancedLearn() {
   const handleLessonComplete = (moduleId: string, lessonId: string) => {
     completeLesson(moduleId, lessonId);
 
-    // Enhanced completion feedback
     const lesson = selectedModule?.lessons.find((l: any) => l.id === lessonId);
     toast({
       title: "🎉 Lesson Completed!",
