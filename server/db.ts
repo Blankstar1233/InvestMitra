@@ -5,8 +5,6 @@ let _sql: ReturnType<typeof neon> | null = null;
 
 export function getDatabaseUrl() {
   const candidates = [
-    "DATABASE_URL",
-    "NEON_DATABASE_URL",
     "NETLIFY_DATABASE_URL",
     "NETLIFY_DATABASE_URL_UNPOOLED",
     "POSTGRES_URL",
