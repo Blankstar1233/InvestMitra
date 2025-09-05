@@ -351,50 +351,50 @@ export default function EnhancedLeaderboard() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-slate-900 text-gray-900 dark:text-white">
-      <div className="max-w-7xl mx-auto p-6 space-y-8">
-        {/* Enhanced Header - Theme Responsive */}
-        <div className="relative overflow-hidden rounded-2xl bg-slate-800 p-8 text-white border border-slate-700">
+      <div className="max-w-7xl mx-auto p-3 sm:p-6 space-y-4 sm:space-y-8">
+        {/* Enhanced Header - Mobile Optimized */}
+        <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-slate-800 p-4 sm:p-8 text-white border border-slate-700">
           <div className="relative z-10">
-            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-              <div>
-                <h1 className="text-4xl font-bold mb-2 flex items-center gap-3">
-                  <Trophy className="h-10 w-10 text-green-600" />
-                  InvestMitra Leaderboard
+            <div className="flex flex-col items-start justify-between gap-4 sm:gap-6">
+              <div className="w-full">
+                <h1 className="text-2xl sm:text-4xl font-bold mb-2 flex items-center gap-2 sm:gap-3">
+                  <Trophy className="h-6 w-6 sm:h-10 sm:w-10 text-green-600" />
+                  <span className="leading-tight">InvestMitra Leaderboard</span>
                 </h1>
-                <p className="text-xl text-slate-300">
+                <p className="text-base sm:text-xl text-slate-300">
                   Compete globally • Earn rewards • Grow together
                 </p>
                 {currentUser && (
-                  <div className="mt-4 flex items-center gap-4">
-                    <Badge className="bg-green-600 text-white border-green-500 text-lg px-4 py-2">
-                      <Medal className="h-4 w-4 mr-2" />
+                  <div className="mt-3 sm:mt-4 flex flex-wrap items-center gap-2 sm:gap-4">
+                    <Badge className="bg-green-600 text-white border-green-500 text-sm sm:text-lg px-3 py-1 sm:px-4 sm:py-2">
+                      <Medal className="h-3 w-3 sm:h-4 sm:w-4 mr-1 sm:mr-2" />
                       Rank #{currentUser.rank}
                     </Badge>
-                    <div className="flex items-center gap-2">
-                      <Flame className="h-4 w-4 text-orange-500" />
-                      <span className="text-sm text-slate-300">Streak: {currentUser.streak} days</span>
+                    <div className="flex items-center gap-1 sm:gap-2">
+                      <Flame className="h-3 w-3 sm:h-4 sm:w-4 text-orange-500" />
+                      <span className="text-xs sm:text-sm text-slate-300">Streak: {currentUser.streak} days</span>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* AI Assistant Button */}
-              <div className="flex flex-col sm:flex-row gap-3">
+              {/* AI Assistant Button - Mobile Optimized */}
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
                 <Button
                   onClick={generateAiInsights}
-                  className="bg-green-600 hover:bg-green-700 text-white"
-                  size="lg"
+                  className="bg-green-600 hover:bg-green-700 text-white text-sm sm:text-base py-2 px-3 sm:py-2 sm:px-4"
+                  size="sm"
                 >
-                  <Bot className="h-5 w-5 mr-2" />
-                  AI Trading Assistant
+                  <Bot className="h-4 w-4 mr-2" />
+                  AI Assistant
                 </Button>
                 <Button
                   variant="outline"
-                  className="bg-transparent border-slate-500 text-slate-300 hover:bg-slate-700"
-                  size="lg"
+                  className="bg-transparent border-slate-500 text-slate-300 hover:bg-slate-700 text-sm sm:text-base py-2 px-3 sm:py-2 sm:px-4"
+                  size="sm"
                 >
-                  <Gift className="h-5 w-5 mr-2" />
-                  Claim Rewards
+                  <Gift className="h-4 w-4 mr-2" />
+                  Rewards
                 </Button>
               </div>
             </div>
@@ -404,24 +404,24 @@ export default function EnhancedLeaderboard() {
         {/* AI Insights Panel */}
         {showAiPanel && aiInsights && (
           <Card className="border border-green-500/50 bg-white dark:bg-slate-800">
-            <CardHeader className="flex flex-row items-center justify-between">
+            <CardHeader className="flex flex-row items-center justify-between p-4 sm:p-6">
               <div className="flex items-center gap-2">
-                <Brain className="h-6 w-6 text-green-600" />
-                <CardTitle className="text-green-600">AI Trading Insights</CardTitle>
+                <Brain className="h-5 w-5 sm:h-6 sm:w-6 text-green-600" />
+                <CardTitle className="text-green-600 text-lg sm:text-xl">AI Trading Insights</CardTitle>
               </div>
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setShowAiPanel(false)}
-                className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:hover:bg-green-900/20"
+                className="text-green-600 hover:text-green-700 hover:bg-green-50 dark:hover:bg-green-900/20 p-1"
               >
                 ×
               </Button>
             </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <CardContent className="p-4 sm:p-6">
+              <div className="grid grid-cols-1 gap-4">
                 {aiInsights.map((insight, index) => (
-                  <div key={index} className="bg-gray-50 dark:bg-slate-700 p-4 rounded-lg border border-gray-200 dark:border-slate-600">
+                  <div key={index} className="bg-gray-50 dark:bg-slate-700 p-3 sm:p-4 rounded-lg border border-gray-200 dark:border-slate-600">
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-green-600">{insight.icon}</span>
                       <h4 className="font-semibold text-sm text-gray-900 dark:text-slate-200">{insight.title}</h4>
@@ -443,8 +443,8 @@ export default function EnhancedLeaderboard() {
           </Card>
         )}
 
-        {/* Enhanced Stats Grid - Theme Responsive */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Enhanced Stats Grid - Mobile Optimized */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-6">
           {[
             {
               title: 'Global Rank',
@@ -476,50 +476,52 @@ export default function EnhancedLeaderboard() {
             }
           ].map((stat, index) => (
             <Card key={index} className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600 hover:shadow-lg hover:shadow-green-500/10 transition-all duration-300">
-              <CardContent className="p-6">
+              <CardContent className="p-3 sm:p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <stat.icon className={`h-8 w-8 ${stat.color}`} />
-                  <Badge className="text-xs bg-green-600 text-white">
+                  <stat.icon className={`h-5 w-5 sm:h-8 sm:w-8 ${stat.color}`} />
+                  <Badge className="text-xs bg-green-600 text-white px-1 sm:px-2 py-0.5">
                     {stat.change}
                   </Badge>
                 </div>
                 <div className="space-y-1">
-                  <p className="text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
-                  <p className="text-sm text-gray-500 dark:text-slate-400">{stat.title}</p>
+                  <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white">{stat.value}</p>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-slate-400">{stat.title}</p>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Enhanced Tabs - Theme Responsive */}
-        <Tabs defaultValue="global" className="space-y-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-            <TabsList className="grid grid-cols-5 bg-gray-100 dark:bg-slate-800 p-1 rounded-xl border border-gray-300 dark:border-slate-600">
-              <TabsTrigger value="global" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400">
-                Global
-              </TabsTrigger>
-              <TabsTrigger value="ai-competitions" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400">
-                AI Contests
-              </TabsTrigger>
-              <TabsTrigger value="achievements" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400">
-                Achievements
-              </TabsTrigger>
-              <TabsTrigger value="analytics" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400">
-                Analytics
-              </TabsTrigger>
-              <TabsTrigger value="social" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400">
-                Social
-              </TabsTrigger>
-            </TabsList>
+        {/* Enhanced Tabs - Mobile Optimized */}
+        <Tabs defaultValue="global" className="space-y-4 sm:space-y-6">
+          <div className="flex flex-col gap-3 sm:gap-4">
+            <div className="overflow-x-auto">
+              <TabsList className="grid grid-cols-5 bg-gray-100 dark:bg-slate-800 p-1 rounded-xl border border-gray-300 dark:border-slate-600 min-w-max sm:min-w-0">
+                <TabsTrigger value="global" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400 text-xs sm:text-sm px-2 sm:px-4 py-2">
+                  Global
+                </TabsTrigger>
+                <TabsTrigger value="ai-competitions" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400 text-xs sm:text-sm px-2 sm:px-4 py-2">
+                  AI Contests
+                </TabsTrigger>
+                <TabsTrigger value="achievements" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400 text-xs sm:text-sm px-2 sm:px-4 py-2">
+                  Achievements
+                </TabsTrigger>
+                <TabsTrigger value="analytics" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400 text-xs sm:text-sm px-2 sm:px-4 py-2">
+                  Analytics
+                </TabsTrigger>
+                <TabsTrigger value="social" className="data-[state=active]:bg-green-600 data-[state=active]:text-white text-gray-600 dark:text-slate-400 text-xs sm:text-sm px-2 sm:px-4 py-2">
+                  Social
+                </TabsTrigger>
+              </TabsList>
+            </div>
 
-            {/* Filter Controls */}
+            {/* Filter Controls - Mobile Optimized */}
             <div className="flex items-center gap-2">
               <Filter className="h-4 w-4 text-gray-500 dark:text-slate-400" />
               <select
                 value={activeFilter}
                 onChange={(e) => setActiveFilter(e.target.value)}
-                className="px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="flex-1 sm:flex-initial px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               >
                 <option value="all">All Traders</option>
                 <option value="conservative">Conservative</option>
@@ -531,18 +533,18 @@ export default function EnhancedLeaderboard() {
           </div>
 
           {/* Global Rankings Tab */}
-          <TabsContent value="global" className="space-y-6">
-            {/* Hall of Fame - Theme Responsive */}
+          <TabsContent value="global" className="space-y-4 sm:space-y-6">
+            {/* Hall of Fame - Mobile Optimized */}
             <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/40 dark:to-indigo-900/40 border-b border-gray-200 dark:border-slate-600">
-                <CardTitle className="flex items-center gap-2 text-2xl text-blue-600 dark:text-blue-400">
-                  <Crown className="h-6 w-6" />
+              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/40 dark:to-indigo-900/40 border-b border-gray-200 dark:border-slate-600 p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl text-blue-600 dark:text-blue-400">
+                  <Crown className="h-5 w-5 sm:h-6 sm:w-6" />
                   Hall of Fame
                 </CardTitle>
-                <CardDescription className="text-gray-600 dark:text-slate-300">Champions of InvestMitra trading platform</CardDescription>
+                <CardDescription className="text-gray-600 dark:text-slate-300 text-sm sm:text-base">Champions of InvestMitra trading platform</CardDescription>
               </CardHeader>
-              <CardContent className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <CardContent className="p-4 sm:p-6">
+                <div className="grid grid-cols-1 gap-4 sm:gap-6">
                   {topTraders.slice(0, 3).map((trader, index) => (
                     <Card
                       key={trader.id}
@@ -553,37 +555,37 @@ export default function EnhancedLeaderboard() {
                           : 'bg-gradient-to-br from-cyan-50 to-cyan-100 dark:from-cyan-600/25 dark:to-cyan-800/25 border-cyan-300 dark:border-cyan-500/50'
                         }`}
                     >
-                      <CardContent className="p-6 text-center">
-                        <div className="space-y-4">
+                      <CardContent className="p-4 sm:p-6 text-center">
+                        <div className="space-y-3 sm:space-y-4">
                           {/* Rank Icon */}
                           <div className="flex items-center justify-center">
                             {index === 0 ? (
-                              <Crown className="h-16 w-16 text-blue-600 dark:text-blue-400" />
+                              <Crown className="h-12 w-12 sm:h-16 sm:w-16 text-blue-600 dark:text-blue-400" />
                             ) : index === 1 ? (
-                              <Medal className="h-14 w-14 text-indigo-600 dark:text-indigo-300" />
+                              <Medal className="h-10 w-10 sm:h-14 sm:w-14 text-indigo-600 dark:text-indigo-300" />
                             ) : (
-                              <Award className="h-12 w-12 text-cyan-600 dark:text-cyan-400" />
+                              <Award className="h-8 w-8 sm:h-12 sm:w-12 text-cyan-600 dark:text-cyan-400" />
                             )}
                           </div>
 
                           {/* Trader Info */}
                           <div>
                             <div className="flex items-center justify-center gap-2 mb-1">
-                              <span className="text-2xl">{trader.avatar}</span>
-                              <h3 className="text-xl font-bold text-gray-900 dark:text-white">{trader.username}</h3>
+                              <span className="text-xl sm:text-2xl">{trader.avatar}</span>
+                              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{trader.username}</h3>
                             </div>
                             <p className="text-sm text-gray-600 dark:text-slate-300">Rank #{trader.rank}</p>
                           </div>
 
                           {/* Performance */}
                           <div className="space-y-2">
-                            <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">
+                            <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">
                               +{trader.totalReturnPercent}%
                             </div>
-                            <div className="text-sm text-gray-700 dark:text-slate-200">
+                            <div className="text-xs sm:text-sm text-gray-700 dark:text-slate-200">
                               {formatCurrency(trader.portfolioValue)}
                             </div>
-                            <div className="flex justify-center gap-4 text-xs text-gray-600 dark:text-slate-300">
+                            <div className="flex justify-center gap-3 sm:gap-4 text-xs text-gray-600 dark:text-slate-300">
                               <span>Win: {trader.winRate}%</span>
                               <span>AI: {trader.aiScore}</span>
                             </div>
@@ -593,7 +595,7 @@ export default function EnhancedLeaderboard() {
                           <Button
                             size="sm"
                             onClick={() => handleFollow(trader.id, trader.username)}
-                            className={`w-full ${followedUsers.includes(trader.id)
+                            className={`w-full text-xs sm:text-sm py-2 ${followedUsers.includes(trader.id)
                               ? 'bg-gray-500 text-white hover:bg-gray-600 dark:bg-slate-600 dark:text-slate-300 dark:hover:bg-slate-700'
                               : 'bg-blue-600 text-white hover:bg-blue-700'
                               }`}
@@ -618,60 +620,62 @@ export default function EnhancedLeaderboard() {
               </CardContent>
             </Card>
 
-            {/* Enhanced Full Rankings - Theme Responsive */}
+            {/* Enhanced Full Rankings - Mobile Optimized */}
             <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-              <CardHeader>
-                <CardTitle className="flex items-center justify-between text-gray-900 dark:text-white">
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-gray-900 dark:text-white">
                   <span className="flex items-center gap-2">
                     <BarChart3 className="h-5 w-5" />
                     Global Rankings
                     {activeFilter !== 'all' && (
-                      <Badge className="bg-green-600 text-white ml-2">
+                      <Badge className="bg-green-600 text-white ml-2 text-xs">
                         {activeFilter.charAt(0).toUpperCase() + activeFilter.slice(1)} Filter
                       </Badge>
                     )}
                   </span>
-                  <Badge variant="outline" className="border-gray-300 dark:border-slate-500 text-gray-600 dark:text-slate-300">{filteredUsers.length} traders</Badge>
+                  <Badge variant="outline" className="border-gray-300 dark:border-slate-500 text-gray-600 dark:text-slate-300 text-xs">{filteredUsers.length} traders</Badge>
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 sm:p-6">
                 <div className="space-y-3">
                   {filteredUsers.slice(0, 10).map((trader) => (
                     <div
                       key={trader.id}
-                      className={`flex items-center gap-4 p-4 rounded-xl transition-all duration-200 border ${trader.id === 'current-user'
+                      className={`flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl transition-all duration-200 border ${trader.id === 'current-user'
                         ? 'bg-green-50 dark:bg-green-600/10 border-green-300 dark:border-green-500/50 shadow-lg shadow-green-500/10'
                         : 'bg-gray-50 dark:bg-slate-700/80 border-gray-200 dark:border-slate-600 hover:bg-gray-100 dark:hover:bg-slate-700 hover:border-gray-300 dark:hover:border-slate-500'
                         }`}
                     >
-                      {/* Rank & Avatar */}
-                      <div className="text-center min-w-[60px]">
-                        <div className={`text-xl font-bold ${trader.id === 'current-user' ? 'text-green-600' : 'text-gray-700 dark:text-slate-200'}`}>
+                      {/* Rank & Avatar - Mobile Optimized */}
+                      <div className="text-center min-w-[50px] sm:min-w-[60px]">
+                        <div className={`text-lg sm:text-xl font-bold ${trader.id === 'current-user' ? 'text-green-600' : 'text-gray-700 dark:text-slate-200'}`}>
                           #{trader.rank}
                         </div>
-                        <span className="text-2xl">{trader.avatar}</span>
+                        <span className="text-xl sm:text-2xl">{trader.avatar}</span>
                       </div>
 
-                      {/* Trader Info */}
+                      {/* Trader Info - Mobile Optimized */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h3 className={`font-bold text-lg truncate ${trader.id === 'current-user' ? 'text-green-600' : 'text-gray-900 dark:text-white'}`}>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-1">
+                          <h3 className={`font-bold text-base sm:text-lg truncate ${trader.id === 'current-user' ? 'text-green-600' : 'text-gray-900 dark:text-white'}`}>
                             {trader.username}
                           </h3>
-                          {trader.badges.length > 0 && (
-                            <span className="text-lg">{trader.badges[0].icon}</span>
-                          )}
-                          <Badge
-                            variant="outline"
-                            className={`text-xs ${trader.riskProfile === 'CONSERVATIVE' ? 'border-blue-300 text-blue-700 bg-blue-50 dark:border-blue-500/50 dark:text-blue-300 dark:bg-blue-900/30' :
-                              trader.riskProfile === 'MODERATE' ? 'border-yellow-300 text-yellow-700 bg-yellow-50 dark:border-yellow-500/50 dark:text-yellow-300 dark:bg-yellow-900/30' :
-                                'border-red-300 text-red-700 bg-red-50 dark:border-red-500/50 dark:text-red-300 dark:bg-red-900/30'
-                              }`}
-                          >
-                            {trader.riskProfile}
-                          </Badge>
+                          <div className="flex items-center gap-1 sm:gap-2">
+                            {trader.badges.length > 0 && (
+                              <span className="text-base sm:text-lg">{trader.badges[0].icon}</span>
+                            )}
+                            <Badge
+                              variant="outline"
+                              className={`text-xs ${trader.riskProfile === 'CONSERVATIVE' ? 'border-blue-300 text-blue-700 bg-blue-50 dark:border-blue-500/50 dark:text-blue-300 dark:bg-blue-900/30' :
+                                trader.riskProfile === 'MODERATE' ? 'border-yellow-300 text-yellow-700 bg-yellow-50 dark:border-yellow-500/50 dark:text-yellow-300 dark:bg-yellow-900/30' :
+                                  'border-red-300 text-red-700 bg-red-50 dark:border-red-500/50 dark:text-red-300 dark:bg-red-900/30'
+                                }`}
+                            >
+                              {trader.riskProfile}
+                            </Badge>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-slate-300">
+                        <div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600 dark:text-slate-300">
                           <span className="flex items-center gap-1">
                             <Target className="h-3 w-3" />
                             Win: {trader.winRate}%
@@ -687,9 +691,9 @@ export default function EnhancedLeaderboard() {
                         </div>
                       </div>
 
-                      {/* Performance & Actions */}
+                      {/* Performance & Actions - Mobile Optimized */}
                       <div className="text-right">
-                        <div className={`text-lg font-bold ${trader.totalReturnPercent >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        <div className={`text-base sm:text-lg font-bold ${trader.totalReturnPercent >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                           {trader.totalReturnPercent >= 0 ? '+' : ''}{trader.totalReturnPercent}%
                         </div>
                         <div className="text-xs text-gray-500 dark:text-slate-400 mb-2">
@@ -700,7 +704,7 @@ export default function EnhancedLeaderboard() {
                             size="sm"
                             variant="outline"
                             onClick={() => handleFollow(trader.id, trader.username)}
-                            className={`text-xs ${followedUsers.includes(trader.id)
+                            className={`text-xs px-2 py-1 ${followedUsers.includes(trader.id)
                               ? 'border-gray-300 text-gray-600 hover:bg-gray-100 dark:border-slate-500 dark:text-slate-400 dark:hover:bg-slate-600'
                               : 'border-green-300 text-green-600 hover:bg-green-50 dark:border-green-500/50 dark:text-green-400 dark:hover:bg-green-900/20'
                               }`}
@@ -717,75 +721,73 @@ export default function EnhancedLeaderboard() {
           </TabsContent>
 
           {/* AI Competitions Tab */}
-          <TabsContent value="ai-competitions" className="space-y-6">
+          <TabsContent value="ai-competitions" className="space-y-4 sm:space-y-6">
             <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-              <CardHeader className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/40 dark:to-blue-900/40 border-b border-gray-200 dark:border-slate-600">
-                <CardTitle className="flex items-center gap-2 text-2xl text-purple-600 dark:text-purple-400">
-                  <Bot className="h-6 w-6" />
+              <CardHeader className="bg-gradient-to-r from-purple-50 to-blue-50 dark:from-purple-900/40 dark:to-blue-900/40 border-b border-gray-200 dark:border-slate-600 p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl text-purple-600 dark:text-purple-400">
+                  <Bot className="h-5 w-5 sm:h-6 sm:w-6" />
                   AI Trading Competitions
                 </CardTitle>
-                <CardDescription className="text-gray-600 dark:text-slate-300">
+                <CardDescription className="text-gray-600 dark:text-slate-300 text-sm sm:text-base">
                   Compete using AI-powered strategies and win exclusive prizes
                 </CardDescription>
               </CardHeader>
-              <CardContent className="p-6">
+              <CardContent className="p-4 sm:p-6">
                 {competitions.map((competition) => (
-                  <div key={competition.id} className="space-y-6">
-                    <div className="flex flex-col lg:flex-row gap-6">
-                      {/* Competition Details */}
-                      <div className="flex-1 space-y-4">
-                        <div className="flex items-center gap-3">
-                          <Badge className="bg-purple-600 text-white px-3 py-1">
+                  <div key={competition.id} className="space-y-4 sm:space-y-6">
+                    <div className="flex flex-col gap-4 sm:gap-6">
+                      {/* Competition Details - Mobile Optimized */}
+                      <div className="flex-1 space-y-3 sm:space-y-4">
+                        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                          <Badge className="bg-purple-600 text-white px-2 py-1 sm:px-3 sm:py-1 text-xs sm:text-sm">
                             ACTIVE
                           </Badge>
-                          <Badge variant="outline" className="border-purple-300 text-purple-700 dark:border-purple-500/50 dark:text-purple-300">
+                          <Badge variant="outline" className="border-purple-300 text-purple-700 dark:border-purple-500/50 dark:text-purple-300 text-xs sm:text-sm">
                             {competition.participants.toLocaleString()} participants
                           </Badge>
                         </div>
 
                         <div>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                          <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2">
                             {competition.title}
                           </h3>
-                          <p className="text-gray-600 dark:text-slate-300 mb-4">
+                          <p className="text-sm sm:text-base text-gray-600 dark:text-slate-300 mb-4">
                             {competition.description}
                           </p>
 
-                          <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/30 dark:to-orange-900/30 p-4 rounded-lg border border-yellow-200 dark:border-yellow-500/30">
+                          <div className="bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/30 dark:to-orange-900/30 p-3 sm:p-4 rounded-lg border border-yellow-200 dark:border-yellow-500/30">
                             <div className="flex items-center gap-2 mb-2">
-                              <Gift className="h-5 w-5 text-yellow-600" />
-                              <span className="font-semibold text-yellow-800 dark:text-yellow-300">Prize Pool</span>
+                              <Gift className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-600" />
+                              <span className="font-semibold text-sm sm:text-base text-yellow-800 dark:text-yellow-300">Prize Pool</span>
                             </div>
-                            <p className="text-lg font-bold text-yellow-800 dark:text-yellow-300">
+                            <p className="text-base sm:text-lg font-bold text-yellow-800 dark:text-yellow-300">
                               {competition.prize}
                             </p>
                           </div>
                         </div>
 
                         <div className="space-y-2">
-                          <h4 className="font-medium text-gray-900 dark:text-white">Competition Rules:</h4>
+                          <h4 className="font-medium text-sm sm:text-base text-gray-900 dark:text-white">Competition Rules:</h4>
                           <ul className="space-y-1">
                             {competition.rules.map((rule, index) => (
-                              <li key={index} className="flex items-start gap-2 text-sm text-gray-600 dark:text-slate-300">
+                              <li key={index} className="flex items-start gap-2 text-xs sm:text-sm text-gray-600 dark:text-slate-300">
                                 <span className="w-1.5 h-1.5 bg-purple-600 rounded-full mt-2 flex-shrink-0"></span>
                                 {rule}
                               </li>
                             ))}
                           </ul>
                         </div>
-                      </div>
 
-                      {/* Competition Timer */}
-                      <div className="lg:w-80">
+                        {/* Competition Timer - Mobile Optimized */}
                         <Card className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-900/30 dark:to-blue-900/30 border-purple-200 dark:border-purple-500/50">
-                          <CardContent className="p-6 text-center">
-                            <Timer className="h-8 w-8 text-purple-600 mx-auto mb-3" />
+                          <CardContent className="p-4 sm:p-6 text-center">
+                            <Timer className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600 mx-auto mb-3" />
                             <div className="space-y-2">
-                              <p className="text-sm text-gray-600 dark:text-slate-300">Time Remaining</p>
-                              <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
+                              <p className="text-xs sm:text-sm text-gray-600 dark:text-slate-300">Time Remaining</p>
+                              <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">
                                 24 Days 16 Hours
                               </div>
-                              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white mt-4">
+                              <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white mt-4 text-sm sm:text-base py-2">
                                 Join Competition
                               </Button>
                             </div>
@@ -794,23 +796,23 @@ export default function EnhancedLeaderboard() {
                       </div>
                     </div>
 
-                    {/* Competition Leaderboard */}
+                    {/* Competition Leaderboard - Mobile Optimized */}
                     <div>
-                      <h4 className="font-semibold text-lg text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                        <Trophy className="h-5 w-5 text-yellow-600" />
+                      <h4 className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                        <Trophy className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-600" />
                         Competition Leaderboard
                       </h4>
                       <div className="space-y-3">
                         {competition.leaderboard.map((entry, index) => (
                           <div
                             key={entry.userId}
-                            className={`flex items-center gap-4 p-4 rounded-lg border ${entry.userId === 'current-user'
+                            className={`flex items-center gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg border ${entry.userId === 'current-user'
                               ? 'bg-green-50 dark:bg-green-600/10 border-green-300 dark:border-green-500/50'
                               : 'bg-gray-50 dark:bg-slate-700/80 border-gray-200 dark:border-slate-600'
                               }`}
                           >
                             <div className="text-center min-w-[40px]">
-                              <div className={`font-bold ${index < 3 ? 'text-yellow-600' : 'text-gray-700 dark:text-slate-200'}`}>
+                              <div className={`font-bold text-sm sm:text-base ${index < 3 ? 'text-yellow-600' : 'text-gray-700 dark:text-slate-200'}`}>
                                 #{entry.rank}
                               </div>
                               {entry.change > 0 && <ArrowUp className="h-3 w-3 text-green-600 mx-auto" />}
@@ -818,15 +820,15 @@ export default function EnhancedLeaderboard() {
                               {entry.change === 0 && <Minus className="h-3 w-3 text-gray-400 mx-auto" />}
                             </div>
 
-                            <div className="flex-1">
-                              <div className="font-medium text-gray-900 dark:text-white">{entry.username}</div>
-                              <div className="text-sm text-gray-600 dark:text-slate-300">
+                            <div className="flex-1 min-w-0">
+                              <div className="font-medium text-sm sm:text-base text-gray-900 dark:text-white truncate">{entry.username}</div>
+                              <div className="text-xs sm:text-sm text-gray-600 dark:text-slate-300">
                                 AI Usage: {entry.aiUsage}%
                               </div>
                             </div>
 
                             <div className="text-right">
-                              <div className={`font-bold ${entry.score >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                              <div className={`font-bold text-sm sm:text-base ${entry.score >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                                 {entry.score >= 0 ? '+' : ''}{entry.score}%
                               </div>
                             </div>
@@ -839,16 +841,16 @@ export default function EnhancedLeaderboard() {
               </CardContent>
             </Card>
 
-            {/* AI Trading Tips */}
+            {/* AI Trading Tips - Mobile Optimized */}
             <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Lightbulb className="h-5 w-5 text-yellow-600 dark:text-yellow-400" />
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-lg sm:text-xl">
+                  <Lightbulb className="h-4 w-4 sm:h-5 sm:w-5 text-yellow-600 dark:text-yellow-400" />
                   AI Trading Tips
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <CardContent className="p-4 sm:p-6">
+                <div className="grid grid-cols-1 gap-3 sm:gap-4">
                   {[
                     {
                       tip: "Use AI sentiment analysis to gauge market mood before making trades",
@@ -867,8 +869,8 @@ export default function EnhancedLeaderboard() {
                       confidence: "Best Practice"
                     }
                   ].map((item, index) => (
-                    <div key={index} className="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border-l-4 border-yellow-600 dark:border-yellow-400">
-                      <p className="text-sm mb-2 text-gray-700 dark:text-slate-200">{item.tip}</p>
+                    <div key={index} className="p-3 sm:p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border-l-4 border-yellow-600 dark:border-yellow-400">
+                      <p className="text-xs sm:text-sm mb-2 text-gray-700 dark:text-slate-200">{item.tip}</p>
                       <Badge variant="outline" className="text-xs text-yellow-600 dark:text-yellow-400 bg-yellow-100 dark:bg-yellow-900/30 border-yellow-600 dark:border-yellow-400/50">
                         {item.confidence}
                       </Badge>
@@ -879,18 +881,18 @@ export default function EnhancedLeaderboard() {
             </Card>
           </TabsContent>
 
-          {/* Achievements Tab */}
-          <TabsContent value="achievements" className="space-y-6">
+          {/* Achievements Tab - Mobile Optimized */}
+          <TabsContent value="achievements" className="space-y-4 sm:space-y-6">
             <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-orange-600 dark:text-orange-400">
-                  <Award className="h-6 w-6" />
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-lg sm:text-xl text-orange-600 dark:text-orange-400">
+                  <Award className="h-5 w-5 sm:h-6 sm:w-6" />
                   Achievement Gallery
                 </CardTitle>
-                <CardDescription className="text-gray-600 dark:text-slate-300">Rare achievements and badges from the community</CardDescription>
+                <CardDescription className="text-gray-600 dark:text-slate-300 text-sm sm:text-base">Rare achievements and badges from the community</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <CardContent className="p-4 sm:p-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   {[
                     {
                       name: "AI Master",
@@ -942,18 +944,18 @@ export default function EnhancedLeaderboard() {
                     }
                   ].map((achievement, index) => (
                     <Card key={index} className={`relative overflow-hidden ${getRarityColor(achievement.rarity)}`}>
-                      <CardContent className="p-6">
-                        <div className="text-center space-y-3">
-                          <div className="text-4xl">{achievement.icon}</div>
-                          <h3 className="font-bold text-lg">{achievement.name}</h3>
-                          <p className="text-sm opacity-90">{achievement.description}</p>
-                          <Badge className="bg-white/20 text-current border-white/30">
+                      <CardContent className="p-4 sm:p-6">
+                        <div className="text-center space-y-2 sm:space-y-3">
+                          <div className="text-3xl sm:text-4xl">{achievement.icon}</div>
+                          <h3 className="font-bold text-base sm:text-lg">{achievement.name}</h3>
+                          <p className="text-xs sm:text-sm opacity-90">{achievement.description}</p>
+                          <Badge className="bg-white/20 text-current border-white/30 text-xs">
                             {achievement.rarity}
                           </Badge>
                           <div className="text-xs opacity-75">
                             {achievement.holders} holders
                           </div>
-                          <div className="mt-4 text-left">
+                          <div className="mt-3 sm:mt-4 text-left">
                             <p className="text-xs font-medium mb-2">Requirements:</p>
                             <ul className="text-xs space-y-1 opacity-90">
                               {achievement.requirements.map((req, i) => (
@@ -973,17 +975,17 @@ export default function EnhancedLeaderboard() {
             </Card>
           </TabsContent>
 
-          {/* Analytics Tab */}
-          <TabsContent value="analytics" className="space-y-6">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Performance Distribution */}
+          {/* Analytics Tab - Mobile Optimized */}
+          <TabsContent value="analytics" className="space-y-4 sm:space-y-6">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6">
+              {/* Performance Distribution - Mobile Optimized */}
               <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 dark:text-white">Performance Distribution</CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-slate-400">How traders are performing across different ranges</CardDescription>
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="text-base sm:text-lg text-gray-900 dark:text-white">Performance Distribution</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm text-gray-600 dark:text-slate-400">How traders are performing across different ranges</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
+                <CardContent className="p-4 sm:p-6">
+                  <div className="space-y-3 sm:space-y-4">
                     {[
                       { range: "25%+", count: 5, percentage: 8.3, color: "bg-green-500" },
                       { range: "15-25%", count: 12, percentage: 20, color: "bg-green-400" },
@@ -991,9 +993,9 @@ export default function EnhancedLeaderboard() {
                       { range: "0-5%", count: 15, percentage: 25, color: "bg-yellow-300" },
                       { range: "Below 0%", count: 10, percentage: 16.7, color: "bg-red-400" }
                     ].map((item, index) => (
-                      <div key={index} className="flex items-center gap-4">
-                        <div className="w-20 text-sm font-medium text-gray-700 dark:text-slate-300">{item.range}</div>
-                        <div className="flex-1 bg-gray-200 dark:bg-slate-700 rounded-full h-6 relative overflow-hidden">
+                      <div key={index} className="flex items-center gap-3 sm:gap-4">
+                        <div className="w-16 sm:w-20 text-xs sm:text-sm font-medium text-gray-700 dark:text-slate-300">{item.range}</div>
+                        <div className="flex-1 bg-gray-200 dark:bg-slate-700 rounded-full h-5 sm:h-6 relative overflow-hidden">
                           <div
                             className={`${item.color} h-full transition-all duration-1000`}
                             style={{ width: `${item.percentage}%` }}
@@ -1008,14 +1010,14 @@ export default function EnhancedLeaderboard() {
                 </CardContent>
               </Card>
 
-              {/* Trading Styles */}
+              {/* Trading Styles - Mobile Optimized */}
               <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-                <CardHeader>
-                  <CardTitle className="text-gray-900 dark:text-white">Popular Trading Styles</CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-slate-400">Distribution of risk profiles in the community</CardDescription>
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="text-base sm:text-lg text-gray-900 dark:text-white">Popular Trading Styles</CardTitle>
+                  <CardDescription className="text-xs sm:text-sm text-gray-600 dark:text-slate-400">Distribution of risk profiles in the community</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
+                <CardContent className="p-4 sm:p-6">
+                  <div className="space-y-3 sm:space-y-4">
                     {[
                       { style: "Conservative", count: 25, percentage: 41.7, color: "bg-blue-500", description: "Low risk, steady returns" },
                       { style: "Moderate", count: 20, percentage: 33.3, color: "bg-yellow-500", description: "Balanced approach" },
@@ -1024,12 +1026,12 @@ export default function EnhancedLeaderboard() {
                       <div key={index} className="space-y-2">
                         <div className="flex items-center justify-between">
                           <div>
-                            <span className="font-medium text-gray-900 dark:text-white">{item.style}</span>
+                            <span className="font-medium text-sm sm:text-base text-gray-900 dark:text-white">{item.style}</span>
                             <p className="text-xs text-gray-600 dark:text-slate-400">{item.description}</p>
                           </div>
-                          <span className="text-sm font-medium text-gray-700 dark:text-slate-300">{item.count} traders</span>
+                          <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-slate-300">{item.count} traders</span>
                         </div>
-                        <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-3">
+                        <div className="w-full bg-gray-200 dark:bg-slate-700 rounded-full h-2 sm:h-3">
                           <div
                             className={`${item.color} h-full rounded-full transition-all duration-1000`}
                             style={{ width: `${item.percentage}%` }}
@@ -1042,68 +1044,70 @@ export default function EnhancedLeaderboard() {
               </Card>
             </div>
 
-            {/* AI Performance Metrics */}
+            {/* AI Performance Metrics - Mobile Optimized */}
             <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Brain className="h-5 w-5 text-purple-600 dark:text-purple-400" />
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <Brain className="h-4 w-4 sm:h-5 sm:w-5 text-purple-600 dark:text-purple-400" />
                   AI Performance Analytics
                 </CardTitle>
-                <CardDescription className="text-gray-600 dark:text-slate-400">How AI-assisted trading performs vs manual trading</CardDescription>
+                <CardDescription className="text-xs sm:text-sm text-gray-600 dark:text-slate-400">How AI-assisted trading performs vs manual trading</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/30 rounded-lg border border-purple-200 dark:border-purple-500/30">
-                    <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">+18.5%</div>
-                    <p className="text-sm text-gray-600 dark:text-slate-400">Avg AI-assisted return</p>
+              <CardContent className="p-4 sm:p-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+                  <div className="text-center p-3 sm:p-4 bg-purple-50 dark:bg-purple-900/30 rounded-lg border border-purple-200 dark:border-purple-500/30">
+                    <div className="text-xl sm:text-2xl font-bold text-purple-600 dark:text-purple-400">+18.5%</div>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-slate-400">Avg AI-assisted return</p>
                   </div>
-                  <div className="text-center p-4 bg-gray-50 dark:bg-slate-700/50 rounded-lg border border-gray-200 dark:border-slate-600">
-                    <div className="text-2xl font-bold text-gray-700 dark:text-slate-300">+12.3%</div>
-                    <p className="text-sm text-gray-600 dark:text-slate-400">Avg manual return</p>
+                  <div className="text-center p-3 sm:p-4 bg-gray-50 dark:bg-slate-700/50 rounded-lg border border-gray-200 dark:border-slate-600">
+                    <div className="text-xl sm:text-2xl font-bold text-gray-700 dark:text-slate-300">+12.3%</div>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-slate-400">Avg manual return</p>
                   </div>
-                  <div className="text-center p-4 bg-green-50 dark:bg-green-900/30 rounded-lg border border-green-200 dark:border-green-500/30">
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400">+50%</div>
-                    <p className="text-sm text-gray-600 dark:text-slate-400">AI advantage</p>
+                  <div className="text-center p-3 sm:p-4 bg-green-50 dark:bg-green-900/30 rounded-lg border border-green-200 dark:border-green-500/30">
+                    <div className="text-xl sm:text-2xl font-bold text-green-600 dark:text-green-400">+50%</div>
+                    <p className="text-xs sm:text-sm text-gray-600 dark:text-slate-400">AI advantage</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
 
-          {/* Social Tab - Theme Responsive */}
-          <TabsContent value="social" className="space-y-6">
-            {/* Search Users */}
+          {/* Social Tab - Mobile Optimized */}
+          <TabsContent value="social" className="space-y-4 sm:space-y-6">
+            {/* Search Users - Mobile Optimized */}
             <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
-                  <Search className="h-5 w-5" />
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg text-cyan-600 dark:text-cyan-400">
+                  <Search className="h-4 w-4 sm:h-5 sm:w-5" />
                   Discover Traders
                 </CardTitle>
-                <CardDescription className="text-gray-600 dark:text-slate-200">Find and connect with successful traders</CardDescription>
+                <CardDescription className="text-xs sm:text-sm text-gray-600 dark:text-slate-200">Find and connect with successful traders</CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
+              <CardContent className="p-4 sm:p-6">
+                <div className="space-y-3 sm:space-y-4">
                   <Input
                     placeholder="Search by username, strategy, or performance..."
                     value={searchQuery}
                     onChange={(e) => handleSearch(e.target.value)}
-                    className="w-full bg-white dark:bg-slate-700 border-gray-300 dark:border-slate-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-slate-400 focus:border-green-500"
+                    className="w-full bg-white dark:bg-slate-700 border-gray-300 dark:border-slate-600 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-slate-400 focus:border-green-500 text-sm sm:text-base"
                   />
 
                   {searchResults.length > 0 && (
                     <div className="space-y-3">
                       {searchResults.map((trader) => (
-                        <div key={trader.id} className="flex items-center gap-4 p-4 border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-700/80 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-all">
-                          <div className="text-2xl">{trader.avatar}</div>
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-1">
-                              <span className="font-semibold text-cyan-600 dark:text-cyan-300">{trader.username}</span>
-                              <Badge variant="outline" className="border-gray-300 dark:border-slate-500 text-gray-700 dark:text-slate-200">#{trader.rank}</Badge>
-                              {trader.badges.length > 0 && (
-                                <span>{trader.badges[0].icon}</span>
-                              )}
+                        <div key={trader.id} className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-700/80 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700 transition-all">
+                          <div className="text-xl sm:text-2xl">{trader.avatar}</div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 mb-1">
+                              <span className="font-semibold text-sm sm:text-base text-cyan-600 dark:text-cyan-300 truncate">{trader.username}</span>
+                              <div className="flex items-center gap-1 sm:gap-2">
+                                <Badge variant="outline" className="border-gray-300 dark:border-slate-500 text-gray-700 dark:text-slate-200 text-xs">#{trader.rank}</Badge>
+                                {trader.badges.length > 0 && (
+                                  <span className="text-base">{trader.badges[0].icon}</span>
+                                )}
+                              </div>
                             </div>
-                            <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-slate-300">
+                            <div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-600 dark:text-slate-300">
                               <span className={trader.totalReturnPercent >= 0 ? 'text-green-600' : 'text-red-600'}>
                                 {trader.totalReturnPercent >= 0 ? '+' : ''}{trader.totalReturnPercent}%
                               </span>
@@ -1114,7 +1118,7 @@ export default function EnhancedLeaderboard() {
                           <Button
                             size="sm"
                             onClick={() => handleFollow(trader.id, trader.username)}
-                            className={followedUsers.includes(trader.id) ? 'bg-gray-500 text-white hover:bg-gray-600 dark:bg-slate-600 dark:text-slate-300 dark:hover:bg-slate-700' : 'bg-cyan-600 hover:bg-cyan-700 text-white'}
+                            className={`text-xs px-2 py-1 ${followedUsers.includes(trader.id) ? 'bg-gray-500 text-white hover:bg-gray-600 dark:bg-slate-600 dark:text-slate-300 dark:hover:bg-slate-700' : 'bg-cyan-600 hover:bg-cyan-700 text-white'}`}
                           >
                             {followedUsers.includes(trader.id) ? 'Following' : 'Follow'}
                           </Button>
@@ -1126,25 +1130,25 @@ export default function EnhancedLeaderboard() {
               </CardContent>
             </Card>
 
-            {/* Your Network */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Your Network - Mobile Optimized */}
+            <div className="grid grid-cols-1 gap-4 sm:gap-6">
               <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
-                    <Users className="h-5 w-5" />
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg text-cyan-600 dark:text-cyan-400">
+                    <Users className="h-4 w-4 sm:h-5 sm:w-5" />
                     Following ({followedUsers.length})
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-4 sm:p-6">
                   <div className="space-y-3">
                     {users
                       .filter(user => followedUsers.includes(user.id))
                       .map((trader) => (
                         <div key={trader.id} className="flex items-center justify-between p-3 border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-700/80 rounded-lg">
-                          <div className="flex items-center gap-3">
-                            <span className="text-xl">{trader.avatar}</span>
-                            <div>
-                              <span className="font-medium text-cyan-600 dark:text-cyan-300">{trader.username}</span>
+                          <div className="flex items-center gap-3 min-w-0">
+                            <span className="text-lg sm:text-xl">{trader.avatar}</span>
+                            <div className="min-w-0">
+                              <span className="font-medium text-sm sm:text-base text-cyan-600 dark:text-cyan-300 truncate block">{trader.username}</span>
                               <p className="text-xs text-gray-600 dark:text-slate-200">#{trader.rank} • {trader.totalReturnPercent >= 0 ? '+' : ''}{trader.totalReturnPercent}%</p>
                             </div>
                           </div>
@@ -1152,7 +1156,7 @@ export default function EnhancedLeaderboard() {
                             size="sm"
                             variant="outline"
                             onClick={() => handleFollow(trader.id, trader.username)}
-                            className="border-gray-300 dark:border-slate-500 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-600 hover:text-gray-900 dark:hover:text-white"
+                            className="border-gray-300 dark:border-slate-500 text-gray-700 dark:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-600 hover:text-gray-900 dark:hover:text-white text-xs px-2 py-1 ml-2 flex-shrink-0"
                           >
                             Unfollow
                           </Button>
@@ -1163,29 +1167,29 @@ export default function EnhancedLeaderboard() {
               </Card>
 
               <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400">
-                    <Star className="h-5 w-5" />
+                <CardHeader className="p-4 sm:p-6">
+                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg text-cyan-600 dark:text-cyan-400">
+                    <Star className="h-4 w-4 sm:h-5 sm:w-5" />
                     Trending Traders
                   </CardTitle>
-                  <CardDescription className="text-gray-600 dark:text-slate-200">Most followed traders this week</CardDescription>
+                  <CardDescription className="text-xs sm:text-sm text-gray-600 dark:text-slate-200">Most followed traders this week</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-4 sm:p-6">
                   <div className="space-y-3">
                     {topTraders.slice(0, 5).map((trader, index) => (
                       <div key={trader.id} className="flex items-center justify-between p-3 border border-gray-200 dark:border-slate-600 bg-gray-50 dark:bg-slate-700/80 rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <Badge variant="outline" className="border-gray-300 dark:border-slate-500 text-gray-700 dark:text-slate-200">#{index + 1}</Badge>
-                          <span className="text-xl">{trader.avatar}</span>
-                          <div>
-                            <span className="font-medium text-cyan-600 dark:text-cyan-300">{trader.username}</span>
+                        <div className="flex items-center gap-3 min-w-0">
+                          <Badge variant="outline" className="border-gray-300 dark:border-slate-500 text-gray-700 dark:text-slate-200 text-xs px-1 flex-shrink-0">#{index + 1}</Badge>
+                          <span className="text-lg sm:text-xl">{trader.avatar}</span>
+                          <div className="min-w-0">
+                            <span className="font-medium text-sm sm:text-base text-cyan-600 dark:text-cyan-300 truncate block">{trader.username}</span>
                             <p className="text-xs text-gray-600 dark:text-slate-200">+{Math.floor(Math.random() * 100 + 50)} new followers</p>
                           </div>
                         </div>
                         <Button
                           size="sm"
                           onClick={() => handleFollow(trader.id, trader.username)}
-                          className={followedUsers.includes(trader.id) ? 'bg-gray-500 text-white hover:bg-gray-600 dark:bg-slate-600 dark:text-slate-300 dark:hover:bg-slate-700' : 'bg-cyan-600 hover:bg-cyan-700 text-white'}
+                          className={`text-xs px-2 py-1 ml-2 flex-shrink-0 ${followedUsers.includes(trader.id) ? 'bg-gray-500 text-white hover:bg-gray-600 dark:bg-slate-600 dark:text-slate-300 dark:hover:bg-slate-700' : 'bg-cyan-600 hover:bg-cyan-700 text-white'}`}
                         >
                           {followedUsers.includes(trader.id) ? 'Following' : 'Follow'}
                         </Button>
