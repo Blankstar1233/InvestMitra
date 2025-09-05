@@ -102,7 +102,6 @@ export default function AIInsights() {
   <div className="min-h-screen bg-background p-3 sm:p-4 lg:p-6">
     <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
       {/* Header */}
-// Better approach - Stack on mobile, side-by-side on larger screens
 <div className="space-y-3 sm:space-y-4">
   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
     <div className="text-center sm:text-left">
@@ -132,7 +131,7 @@ export default function AIInsights() {
   </div>
 </div>
 
-// Alternative - More compact mobile version
+{/* 
 <div className="space-y-3 sm:space-y-0">
   <div className="flex flex-col space-y-3 sm:flex-row sm:items-start sm:justify-between sm:space-y-0">
     <div className="text-center sm:text-left">
@@ -158,7 +157,7 @@ export default function AIInsights() {
     </Button>
   </div>
 </div>
-
+ */}
       <Tabs defaultValue="insights" className="space-y-4">
         <TabsList className="w-full p-1 h-auto bg-muted">
           {/* Mobile: Scrollable tabs */}
