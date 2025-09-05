@@ -28,6 +28,7 @@ import {
 import { useMarketData } from "@/hooks/use-market-data";
 import { useTrading } from "@/hooks/use-trading";
 import { useAIInsights } from "@/hooks/use-ai-insights";
+import { useNavigate } from "react-router-dom";
 
 export default function AIInsights() {
   const { stocks } = useMarketData();
@@ -47,6 +48,7 @@ export default function AIInsights() {
 
   const [isGenerating, setIsGenerating] = useState(false);
   const hasGeneratedInsights = useRef(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (stocks.length > 0 && !hasGeneratedInsights.current) {
@@ -73,6 +75,10 @@ export default function AIInsights() {
     generateInsights(portfolio, stocks, orders);
     generateRecommendations(stocks, portfolio);
     setTimeout(() => setIsGenerating(false), 1500);
+  };
+
+  const handleExploreOpportunities = () => {
+    navigate('/trading');
   };
 
   const formatCurrency = (amount: number) => {
@@ -313,7 +319,12 @@ export default function AIInsights() {
                     <CardContent className="space-y-3">
                       <p className="text-sm leading-relaxed">{insight.description}</p>
                       {insight.action && (
-                        <Button variant="outline" size="sm" className="w-full sm:w-auto">
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="w-full sm:w-auto"
+                          onClick={handleExploreOpportunities}
+                        >
                           {insight.action}
                         </Button>
                       )}
