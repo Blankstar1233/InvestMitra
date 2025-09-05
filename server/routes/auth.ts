@@ -76,6 +76,7 @@ export const register: RequestHandler = async (req, res) => {
     details: err instanceof Error ? err.message : String(err),
   });
 }
+};
 
 export const login: RequestHandler = async (req, res) => {
   try {
