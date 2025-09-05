@@ -340,7 +340,7 @@ export default function AIInsights() {
           </TabsContent>
 
           {/* Recommendations */}
-          <TabsContent value="recommendations" className="mt-4">
+<TabsContent value="recommendations" className="mt-4">
             <div className="space-y-3 sm:space-y-4">
               {recommendations.length > 0 ? (
                 recommendations.map((rec, index) => (
@@ -353,21 +353,59 @@ export default function AIInsights() {
                             <CardTitle className="text-base sm:text-lg">{rec.symbol}</CardTitle>
                             <CardDescription className="text-xs sm:text-sm mt-1">{rec.name}</CardDescription>
                           </div>
-                          {/* Star rating - full width on mobile */}
-                          <div className="flex items-center gap-0.5 sm:flex-shrink-0">
-                            <span className="text-xs text-muted-foreground mr-2 sm:hidden">Rating:</span>
+                          {/* Desktop: Badges and star rating in one row */}
+                          <div className="hidden sm:flex sm:items-center sm:gap-3">
+                            <div className="flex gap-1.5">
+                              <Badge
+                                variant={
+                                  rec.action === "BUY"
+                                    ? "default"
+                                    : rec.action === "SELL"
+                                      ? "destructive"
+                                      : "secondary"
+                                }
+                                className="text-xs px-2 py-0.5"
+                              >
+                                {rec.action}
+                              </Badge>
+                              <Badge
+                                variant={
+                                  rec.riskLevel === "HIGH"
+                                    ? "destructive"
+                                    : rec.riskLevel === "MEDIUM"
+                                      ? "secondary"
+                                      : "outline"
+                                }
+                                className="text-xs px-2 py-0.5"
+                              >
+                                {rec.riskLevel}
+                              </Badge>
+                            </div>
+                            <div className="flex items-center gap-0.5 flex-shrink-0">
+                              {Array.from({ length: 5 }).map((_, i) => (
+                                <Star
+                                  key={i}
+                                  className={`h-3.5 w-3.5 ${i < rec.confidence / 20 ? "text-yellow-400 fill-current" : "text-gray-300"}`}
+                                />
+                              ))}
+                              <span className="text-xs text-muted-foreground ml-1">({rec.confidence}%)</span>
+                            </div>
+                          </div>
+                          {/* Mobile: Star rating only (badges shown below) */}
+                          <div className="flex items-center gap-0.5 sm:hidden">
+                            <span className="text-xs text-muted-foreground mr-2">Rating:</span>
                             {Array.from({ length: 5 }).map((_, i) => (
                               <Star
                                 key={i}
-                                className={`h-3 w-3 sm:h-3.5 sm:w-3.5 ${i < rec.confidence / 20 ? "text-yellow-400 fill-current" : "text-gray-300"}`}
+                                className={`h-3 w-3 ${i < rec.confidence / 20 ? "text-yellow-400 fill-current" : "text-gray-300"}`}
                               />
                             ))}
                             <span className="text-xs text-muted-foreground ml-1">({rec.confidence}%)</span>
                           </div>
                         </div>
                         
-                        {/* Badges row */}
-                        <div className="flex flex-wrap gap-1.5">
+                        {/* Badges row - mobile only */}
+                        <div className="flex flex-wrap gap-1.5 sm:hidden">
                           <Badge
                             variant={
                               rec.action === "BUY"
@@ -380,7 +418,7 @@ export default function AIInsights() {
                           >
                             {rec.action}
                           </Badge>
-                          <Badge variant="outline" className="text-xs px-2 py-0.5 sm:hidden">
+                          <Badge variant="outline" className="text-xs px-2 py-0.5">
                             {rec.confidence}% confidence
                           </Badge>
                           <Badge variant="outline" className="text-xs px-2 py-0.5">
@@ -391,14 +429,14 @@ export default function AIInsights() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          <div className="flex items-center justify-between text-sm">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+                          <div className="flex items-center justify-between sm:justify-start sm:gap-3 text-sm">
                             <span>Target Price:</span>
                             <span className="font-semibold">
                               {formatCurrency(rec.targetPrice)}
                             </span>
                           </div>
-                          <div className="flex items-center justify-between text-sm">
+                          <div className="flex items-center justify-between sm:justify-start sm:gap-3 text-sm">
                             <span>Risk Level:</span>
                             <Badge
                               variant={
@@ -408,10 +446,13 @@ export default function AIInsights() {
                                     ? "secondary"
                                     : "outline"
                               }
-                              className="text-xs"
+                              className="text-xs sm:hidden"
                             >
                               {rec.riskLevel}
                             </Badge>
+                            <span className="font-semibold hidden sm:inline">
+                              {rec.riskLevel}
+                            </span>
                           </div>
                         </div>
                         <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
