@@ -98,35 +98,6 @@ export default function AIInsights() {
     }
   };
 
-  // return (
-  //   <div className="min-h-screen bg-background p-3 sm:p-4 lg:p-6">
-  //     <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
-  //       {/* Header */}
-  //       <div className="space-y-3 sm:space-y-4">
-  //         <div className="text-center sm:text-left">
-  //           <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground flex items-center justify-center sm:justify-start gap-2">
-  //             <Brain className="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8" />
-  //             AI Investment Insights
-  //           </h1>
-  //           <p className="text-sm sm:text-base text-muted-foreground mt-1">
-  //             AI-powered analysis of your portfolio
-  //           </p>
-  //         </div>
-  //         <Button
-  //           onClick={handleRefreshInsights}
-  //           disabled={isGenerating || loading}
-  //           className="w-full sm:w-auto flex items-center justify-center gap-2 h-10"
-  //         >
-  //           <RefreshCw
-  //             className={`h-4 w-4 ${isGenerating ? "animate-spin" : ""}`}
-  //           />
-  //           {isGenerating ? "Analyzing..." : "Refresh Insights"}
-  //         </Button>
-  //       </div>
-
-  //       <Tabs defaultValue="insights" className="space-y-4">
-  //         <TabsList className="w-full p-1 h-auto bg-muted">
-  //           {/* Mobile: Scrollable tabs */}
   return (
   <div className="min-h-screen bg-background p-3 sm:p-4 lg:p-6">
     <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
