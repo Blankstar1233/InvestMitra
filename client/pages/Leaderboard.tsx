@@ -525,7 +525,7 @@ export default function EnhancedLeaderboard() {
                 onClick={(e) => {
                   const isMobile = window.innerWidth < 768;
                   if (isMobile) {
-                    const container = e.currentTarget.closest(".flex");
+                    const container = e.currentTarget.closest(".flex") as HTMLElement;
                     const target = e.currentTarget;
                     
                     if (container && target) {
@@ -557,7 +557,7 @@ export default function EnhancedLeaderboard() {
                 onClick={(e) => {
                   const isMobile = window.innerWidth < 768;
                   if (isMobile) {
-                    const container = e.currentTarget.closest(".flex");
+                    const container = e.currentTarget.closest(".flex") as HTMLElement;
                     const target = e.currentTarget;
                     
                     if (container && target) {
@@ -590,7 +590,7 @@ export default function EnhancedLeaderboard() {
                 onClick={(e) => {
                   const isMobile = window.innerWidth < 768;
                   if (isMobile) {
-                    const container = e.currentTarget.closest(".flex");
+                    const container = e.currentTarget.closest(".flex") as HTMLElement;
                     const target = e.currentTarget;
                     
                     if (container && target) {
@@ -623,7 +623,7 @@ export default function EnhancedLeaderboard() {
                 onClick={(e) => {
                   const isMobile = window.innerWidth < 768;
                   if (isMobile) {
-                    const container = e.currentTarget.closest(".flex");
+                    const container = e.currentTarget.closest(".flex") as HTMLElement;
                     const target = e.currentTarget;
                     
                     if (container && target) {
@@ -656,7 +656,7 @@ export default function EnhancedLeaderboard() {
                 onClick={(e) => {
                   const isMobile = window.innerWidth < 768;
                   if (isMobile) {
-                    const container = e.currentTarget.closest(".flex");
+                    const container = e.currentTarget.closest(".flex") as HTMLElement;
                     
                     if (container) {
                       container.style.scrollBehavior = 'smooth';
@@ -677,21 +677,20 @@ export default function EnhancedLeaderboard() {
             </div>
           </TabsList>
 
-            {/* Filter Controls - Mobile Optimized */}
-            <div className="flex items-center gap-2">
-              <Filter className="h-4 w-4 text-gray-500 dark:text-slate-400" />
-              <select
-                value={activeFilter}
-                onChange={(e) => setActiveFilter(e.target.value)}
-                className="flex-1 sm:flex-initial px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-              >
-                <option value="all">All Traders</option>
-                <option value="conservative">Conservative</option>
-                <option value="moderate">Moderate</option>
-                <option value="aggressive">Aggressive</option>
-                <option value="following">Following</option>
-              </select>
-            </div>
+          {/* Filter Controls - Mobile Optimized */}
+          <div className="flex items-center gap-2">
+            <Filter className="h-4 w-4 text-gray-500 dark:text-slate-400" />
+            <select
+              value={activeFilter}
+              onChange={(e) => setActiveFilter(e.target.value)}
+              className="flex-1 sm:flex-initial px-3 py-2 rounded-lg border border-gray-300 dark:border-slate-600 bg-white dark:bg-slate-800 text-gray-900 dark:text-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              <option value="all">All Traders</option>
+              <option value="conservative">Conservative</option>
+              <option value="moderate">Moderate</option>
+              <option value="aggressive">Aggressive</option>
+              <option value="following">Following</option>
+            </select>
           </div>
 
           {/* Global Rankings Tab */}
