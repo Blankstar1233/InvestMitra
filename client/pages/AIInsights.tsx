@@ -103,9 +103,9 @@ export default function AIInsights() {
     <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
       {/* Header */}
 <div className="space-y-3 sm:space-y-4">
-  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-    <div className="text-center sm:text-left">
-      <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground flex items-center justify-center sm:justify-start gap-2">
+  <div className="flex items-center justify-between">
+    <div className="text-left">
+      <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground flex items-center gap-2">
         <Brain className="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8" />
         AI Investment Insights
       </h1>
@@ -116,16 +116,13 @@ export default function AIInsights() {
     <Button
       onClick={handleRefreshInsights}
       disabled={isGenerating || loading}
-      className="w-full sm:w-auto sm:min-w-[140px] flex items-center justify-center gap-2 h-10"
+      className="sm:w-auto flex items-center justify-center gap-2 h-10 w-10 sm:w-auto sm:px-4"
     >
       <RefreshCw
         className={`h-4 w-4 ${isGenerating ? "animate-spin" : ""}`}
       />
-      <span className="hidden xs:inline">
+      <span className="hidden sm:inline">
         {isGenerating ? "Analyzing..." : "Refresh Insights"}
-      </span>
-      <span className="xs:hidden">
-        {isGenerating ? "..." : "Refresh"}
       </span>
     </Button>
   </div>
