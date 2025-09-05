@@ -66,10 +66,16 @@ export const register: RequestHandler = async (req, res) => {
 
     res.status(201).json({ ok: true, user: { id: userId, email: body.email } });
   } catch (err) {
-    if (err instanceof z.ZodError) return res.status(400).json({ ok: false, error: "bad_request", issues: err.issues });
-    res.status(500).json({ ok: false, error: "server_error" });
+  console.error("Register error:", err);
+  if (err instanceof z.ZodError) {
+    return res.status(400).json({ ok: false, error: "bad_request", issues: err.issues });
   }
-};
+  return res.status(500).json({
+    ok: false,
+    error: "server_error",
+    details: err instanceof Error ? err.message : String(err),
+  });
+}
 
 export const login: RequestHandler = async (req, res) => {
   try {
