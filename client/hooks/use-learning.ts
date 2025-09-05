@@ -1,5 +1,17 @@
 import { useState, useCallback } from "react";
 
+// Utility to fetch Gemini API key from server
+async function fetchGeminiApiKey(): Promise<string | undefined> {
+  try {
+    const res = await fetch('/api/gemini-key');
+    if (!res.ok) return undefined;
+    const data = await res.json();
+    return data.geminiApiKey;
+  } catch {
+    return undefined;
+  }
+}
+
 export interface LearningModule {
   id: string;
   title: string;
