@@ -147,7 +147,7 @@ export default function AIInsights() {
       >
         <span className="flex items-center gap-1.5">
           <Brain className="h-3 w-3 sm:h-4 sm:w-4" />
-          <span className="hidden xs:inline">Live </span>Insights
+          Live Insights
         </span>
       </TabsTrigger>
       <TabsTrigger
