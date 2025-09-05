@@ -498,48 +498,10 @@ export default function EnhancedLeaderboard() {
           <TabsList className="w-full p-1 h-auto bg-muted">
             <div 
               className="flex overflow-x-auto scrollbar-hide w-full md:grid md:grid-cols-5 md:gap-1 md:overflow-visible scroll-smooth"
-              style={{
-                scrollSnapType: 'x mandatory',
-              }}
-              onTouchStart={(e) => {
-                // Disable scroll snap temporarily during touch to prevent conflicts
-                const container = e.currentTarget;
-                container.style.scrollSnapType = 'none';
-              }}
-              onTouchEnd={(e) => {
-                // Re-enable scroll snap after touch
-                const container = e.currentTarget;
-                setTimeout(() => {
-                  container.style.scrollSnapType = 'x mandatory';
-                }, 100);
-              }}
             >
               <TabsTrigger
                 value="global"
-                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
-                style={{ scrollSnapAlign: 'start' }}
-                onMouseDown={(e) => {
-                  // Prevent text selection on mobile taps
-                  e.preventDefault();
-                }}
-                onClick={(e) => {
-                  const isMobile = window.innerWidth < 768;
-                  if (isMobile) {
-                    const container = e.currentTarget.closest(".flex") as HTMLElement;
-                    const target = e.currentTarget;
-                    
-                    if (container && target) {
-                      // Force immediate scroll without waiting for CSS transitions
-                      container.style.scrollBehavior = 'smooth';
-                      container.scrollLeft = Math.max(0, target.offsetLeft - 16);
-                      
-                      // Reset scroll behavior after animation
-                      setTimeout(() => {
-                        container.style.scrollBehavior = '';
-                      }, 500);
-                    }
-                  }
-                }}
+                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none"
               >
                 <span className="flex items-center gap-1.5">
                   <Brain className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -549,30 +511,7 @@ export default function EnhancedLeaderboard() {
               
               <TabsTrigger
                 value="ai-competitions"
-                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
-                style={{ scrollSnapAlign: 'center' }}
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                }}
-                onClick={(e) => {
-                  const isMobile = window.innerWidth < 768;
-                  if (isMobile) {
-                    const container = e.currentTarget.closest(".flex") as HTMLElement;
-                    const target = e.currentTarget;
-                    
-                    if (container && target) {
-                      const containerWidth = container.offsetWidth;
-                      
-                      container.style.scrollBehavior = 'smooth';
-                      const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
-                      container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
-                      
-                      setTimeout(() => {
-                        container.style.scrollBehavior = '';
-                      }, 500);
-                    }
-                  }
-                }}
+                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none"
               >
                 <span className="flex items-center gap-1.5">
                   <Target className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -582,30 +521,7 @@ export default function EnhancedLeaderboard() {
               
               <TabsTrigger
                 value="achievements"
-                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
-                style={{ scrollSnapAlign: 'center' }}
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                }}
-                onClick={(e) => {
-                  const isMobile = window.innerWidth < 768;
-                  if (isMobile) {
-                    const container = e.currentTarget.closest(".flex") as HTMLElement;
-                    const target = e.currentTarget;
-                    
-                    if (container && target) {
-                      const containerWidth = container.offsetWidth;
-                      
-                      container.style.scrollBehavior = 'smooth';
-                      const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
-                      container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
-                      
-                      setTimeout(() => {
-                        container.style.scrollBehavior = '';
-                      }, 500);
-                    }
-                  }
-                }}
+                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none"
               >
                 <span className="flex items-center gap-1.5">
                   <Shield className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -615,30 +531,7 @@ export default function EnhancedLeaderboard() {
               
               <TabsTrigger
                 value="analytics"
-                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
-                style={{ scrollSnapAlign: 'center' }}
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                }}
-                onClick={(e) => {
-                  const isMobile = window.innerWidth < 768;
-                  if (isMobile) {
-                    const container = e.currentTarget.closest(".flex") as HTMLElement;
-                    const target = e.currentTarget;
-                    
-                    if (container && target) {
-                      const containerWidth = container.offsetWidth;
-                      
-                      container.style.scrollBehavior = 'smooth';
-                      const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
-                      container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
-                      
-                      setTimeout(() => {
-                        container.style.scrollBehavior = '';
-                      }, 500);
-                    }
-                  }
-                }}
+                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none"
               >
                 <span className="flex items-center gap-1.5">
                   <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -648,26 +541,7 @@ export default function EnhancedLeaderboard() {
 
               <TabsTrigger
                 value="social"
-                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
-                style={{ scrollSnapAlign: 'end' }}
-                onMouseDown={(e) => {
-                  e.preventDefault();
-                }}
-                onClick={(e) => {
-                  const isMobile = window.innerWidth < 768;
-                  if (isMobile) {
-                    const container = e.currentTarget.closest(".flex") as HTMLElement;
-                    
-                    if (container) {
-                      container.style.scrollBehavior = 'smooth';
-                      container.scrollLeft = container.scrollWidth - container.offsetWidth;
-                      
-                      setTimeout(() => {
-                        container.style.scrollBehavior = '';
-                      }, 500);
-                    }
-                  }
-                }}
+                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none"
               >
                 <span className="flex items-center gap-1.5">
                   <Users className="h-3 w-3 sm:h-4 sm:w-4" />
