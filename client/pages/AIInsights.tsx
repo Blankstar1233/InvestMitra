@@ -102,144 +102,167 @@ export default function AIInsights() {
   <div className="min-h-screen bg-background p-3 sm:p-4 lg:p-6">
     <div className="max-w-7xl mx-auto space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="space-y-3 sm:space-y-4 flex items-center justify-between">
-        <div className="text-center sm:text-left">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground flex items-center justify-center sm:justify-start gap-2">
-            <Brain className="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8" />
-            AI Investment Insights
-          </h1>
-          <p className="text-sm sm:text-base text-muted-foreground mt-1">
-            AI-powered analysis of your portfolio
-          </p>
-        </div>
-        <Button
-          onClick={handleRefreshInsights}
-          disabled={isGenerating || loading}
-          className="w-full sm:w-auto flex items-center justify-center gap-2 h-10"
-        >
-          <RefreshCw
-            className={`h-4 w-4 ${isGenerating ? "animate-spin" : ""}`}
-          />
-          {isGenerating ? "Analyzing..." : "Refresh Insights"}
-        </Button>
-      </div>
+<div className="space-y-3 sm:space-y-4">
+  <div className="flex items-center justify-between">
+    <div className="text-left">
+      <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground flex items-center gap-2">
+        <Brain className="h-5 w-5 sm:h-6 sm:w-6 lg:h-8 lg:w-8" />
+        AI Investment Insights
+      </h1>
+      <p className="text-sm sm:text-base text-muted-foreground mt-1">
+        AI-powered analysis of your portfolio
+      </p>
+    </div>
+    <Button
+      onClick={handleRefreshInsights}
+      disabled={isGenerating || loading}
+      className="sm:w-auto flex items-center justify-center gap-2 h-10 w-10 sm:w-auto sm:px-4"
+    >
+      <RefreshCw
+        className={`h-4 w-4 ${isGenerating ? "animate-spin" : ""}`}
+      />
+      <span className="hidden sm:inline">
+        {isGenerating ? "Analyzing..." : "Refresh Insights"}
+      </span>
+    </Button>
+  </div>
+</div>
 
-      <Tabs defaultValue="insights" className="space-y-4">
-        <TabsList className="w-full p-1 h-auto bg-muted">
-          {/* Mobile: Scrollable tabs */}
-            <div className="flex overflow-x-auto scrollbar-hide w-full md:grid md:grid-cols-4 md:gap-1">
-              <TabsTrigger
-                value="insights"
-                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md"
-              >
-                <span className="flex items-center gap-1.5">
-                  <Brain className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span className="hidden xs:inline">Live </span>Insights
-                </span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="recommendations"
-                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md"
-              >
-                <span className="flex items-center gap-1.5">
-                  <Target className="h-3 w-3 sm:h-4 sm:w-4" />
-                  <span className="hidden xs:inline">Recommendations</span>
-                  <span className="xs:hidden">Recommendations</span>
-                </span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="risk"
-                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md"
-              >
-                <span className="flex items-center gap-1.5">
-                  <Shield className="h-3 w-3 sm:h-4 sm:w-4" />
-                  Risk Analysis
-                </span>
-              </TabsTrigger>
-              <TabsTrigger
-                value="performance"
-                className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md"
-              >
-                <span className="flex items-center gap-1.5">
-                  <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4" />
-                  Performance
-                </span>
-              </TabsTrigger>
-            </div>
-             <div className="flex overflow-x-auto scrollbar-hide lg:hidden snap-x snap-mandatory">
-            <TabsTrigger
-              value="insights"
-              className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-start"
-              onClick={(e) => {
-                // Scroll to start for first tab
-                setTimeout(() => {
-                  (e.target as HTMLElement)
-                    .closest(".flex")
-                    ?.scrollTo({ left: 0, behavior: "smooth" });
-                }, 50);
-              }}
-            >
-              Live Insights
-            </TabsTrigger>
-            <TabsTrigger
-              value="recommendations"
-              className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-center"
-              onClick={(e) => {
-                // Center this tab to show context on both sides
-                setTimeout(() => {
-                  const target = e.target as HTMLElement;
-                  const container = target.closest(".flex") as HTMLElement;
-                  const containerWidth = container.offsetWidth;
-                  const scrollLeft =
-                    target.offsetLeft -
-                    containerWidth / 2 +
-                    target.offsetWidth / 2;
-                  container.scrollTo({ left: scrollLeft, behavior: "smooth" });
-                }, 50);
-              }}
-            >
-              Recommendations
-            </TabsTrigger>
-            <TabsTrigger
-              value="risk"
-              className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-center"
-              onClick={(e) => {
-                // Center this tab to show both neighbors
-                setTimeout(() => {
-                  const target = e.target as HTMLElement;
-                  const container = target.closest(".flex") as HTMLElement;
-                  const containerWidth = container.offsetWidth;
-                  const scrollLeft =
-                    target.offsetLeft -
-                    containerWidth / 2 +
-                    target.offsetWidth / 2;
-                  container.scrollTo({ left: scrollLeft, behavior: "smooth" });
-                }, 50);
-              }}
-            >
-              Risk Analysis
-            </TabsTrigger>
-            <TabsTrigger
-              value="performance"
-              className="flex-shrink-0 px-6 py-3 text-sm font-medium rounded-md transition-all duration-200 ease-in-out whitespace-nowrap min-w-max focus:outline-none snap-end"
-              onClick={(e) => {
-                // Scroll to end for last tab
-                setTimeout(() => {
-                  const target = e.target as HTMLElement;
-                  const container = target.closest(".flex") as HTMLElement;
-                  container.scrollTo({
-                    left: container.scrollWidth,
-                    behavior: "smooth",
-                  });
-                }, 50);
-              }}
-            >
-              Performance
-            </TabsTrigger>
-          </div>
-          </TabsList>
+    <Tabs defaultValue="insights" className="space-y-4">
+  <TabsList className="w-full p-1 h-auto bg-muted">
+    <div 
+      className="flex overflow-x-auto scrollbar-hide w-full md:grid md:grid-cols-4 md:gap-1 md:overflow-visible scroll-smooth"
+      style={{
+        scrollSnapType: 'x mandatory',
+      }}
+      onTouchStart={(e) => {
+        // Disable scroll snap temporarily during touch to prevent conflicts
+        const container = e.currentTarget;
+        container.style.scrollSnapType = 'none';
+      }}
+      onTouchEnd={(e) => {
+        // Re-enable scroll snap after touch
+        const container = e.currentTarget;
+        setTimeout(() => {
+          container.style.scrollSnapType = 'x mandatory';
+        }, 100);
+      }}
+    >
+      <TabsTrigger
+        value="insights"
+        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
+        style={{ scrollSnapAlign: 'start' }}
+        onMouseDown={(e) => {
+          // Prevent text selection on mobile taps
+          e.preventDefault();
+        }}
+        onClick={(e) => {
+          const isMobile = window.innerWidth < 768;
+          if (isMobile) {
+            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+            const target = e.currentTarget as HTMLElement;
+            
+            // Force immediate scroll without waiting for CSS transitions
+            container.style.scrollBehavior = 'smooth';
+            container.scrollLeft = Math.max(0, target.offsetLeft - 16);
+            
+            // Reset scroll behavior after animation
+            setTimeout(() => {
+              container.style.scrollBehavior = '';
+            }, 500);
+          }
+        }}
+      >
+        <span className="flex items-center gap-1.5">
+          <Brain className="h-3 w-3 sm:h-4 sm:w-4" />
+          Live Insights
+        </span>
+      </TabsTrigger>
+      <TabsTrigger
+        value="recommendations"
+        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
+        style={{ scrollSnapAlign: 'center' }}
 
-          {/* Live Insights */}
+        onClick={(e) => {
+          const isMobile = window.innerWidth < 768;
+          if (isMobile) {
+            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+            const target = e.currentTarget as HTMLElement;
+            const containerWidth = container.offsetWidth;
+            
+            container.style.scrollBehavior = 'smooth';
+            const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
+            container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
+            
+            setTimeout(() => {
+              container.style.scrollBehavior = '';
+            }, 500);
+          }
+        }}
+      >
+        <span className="flex items-center gap-1.5">
+          <Target className="h-3 w-3 sm:h-4 sm:w-4" />
+          Recommendations
+        </span>
+      </TabsTrigger>
+      <TabsTrigger
+        value="risk"
+        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
+        style={{ scrollSnapAlign: 'center' }}
+        onMouseDown={(e) => {
+          e.preventDefault();
+        }}
+        onClick={(e) => {
+          const isMobile = window.innerWidth < 768;
+          if (isMobile) {
+            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+            const target = e.currentTarget as HTMLElement;
+            const containerWidth = container.offsetWidth;
+            
+            container.style.scrollBehavior = 'smooth';
+            const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
+            container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
+            
+            setTimeout(() => {
+              container.style.scrollBehavior = '';
+            }, 500);
+          }
+        }}
+      >
+        <span className="flex items-center gap-1.5">
+          <Shield className="h-3 w-3 sm:h-4 sm:w-4" />
+          Risk Analysis
+        </span>
+      </TabsTrigger>
+      <TabsTrigger
+        value="performance"
+        className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
+        style={{ scrollSnapAlign: 'end' }}
+        onMouseDown={(e) => {
+          e.preventDefault();
+        }}
+        onClick={(e) => {
+          const isMobile = window.innerWidth < 768;
+          if (isMobile) {
+            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+            
+            container.style.scrollBehavior = 'smooth';
+            container.scrollLeft = container.scrollWidth - container.offsetWidth;
+            
+            setTimeout(() => {
+              container.style.scrollBehavior = '';
+            }, 500);
+          }
+        }}
+      >
+        <span className="flex items-center gap-1.5">
+          <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4" />
+          Performance
+        </span>
+      </TabsTrigger>
+    </div>
+  </TabsList>
+      {/* Live Insights */}
           <TabsContent value="insights" className="mt-4">
             <div className="space-y-3 sm:space-y-4">
               {loading || isGenerating ? (
