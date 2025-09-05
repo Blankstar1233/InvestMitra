@@ -242,18 +242,20 @@ export default function AIInsights() {
           e.preventDefault();
         }}
         onClick={(e) => {
-          const isMobile = window.innerWidth < 768;
-          if (isMobile) {
-            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
-            
-            container.style.scrollBehavior = 'smooth';
-            container.scrollLeft = container.scrollWidth - container.offsetWidth;
-            
-            setTimeout(() => {
-              container.style.scrollBehavior = '';
-            }, 500);
-          }
-        }}
+          setTimeout(() => {
+            const isMobile = window.innerWidth < 768;
+            if (isMobile) {
+              const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+              
+              container.style.scrollBehavior = 'smooth';
+              container.scrollLeft = container.scrollWidth - container.offsetWidth;
+              
+              setTimeout(() => {
+                container.style.scrollBehavior = '';
+              }, 500);
+            }
+          }, 0);
+        }}}
       >
         <span className="flex items-center gap-1.5">
           <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4" />
