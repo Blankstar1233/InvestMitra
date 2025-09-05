@@ -5,6 +5,7 @@ import { handleDemo } from "./routes/demo";
 import { ensureSchema, isDbConfigured } from "./db";
 import { login, register, me, logout } from "./routes/auth";
 import { getPortfolio, placeOrder, getOrders, resetPortfolio, requireUser } from "./routes/trading";
+import { handleGeminiKey } from "./routes/gemini";
 
 export function createServer() {
   const app = express();
@@ -42,6 +43,8 @@ export function createServer() {
 
   // Build API router once
   const api = express.Router();
+  // Gemini API key endpoint
+  api.get('/gemini-key', handleGeminiKey);
 
   // Example API routes
   api.get("/ping", (_req, res) => {
