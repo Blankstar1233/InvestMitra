@@ -493,10 +493,11 @@ export default function EnhancedLeaderboard() {
         </div>
 
         {/* Enhanced Tabs - Mobile Optimized */}
+{/* Enhanced Tabs - Mobile Optimized */}
 <Tabs defaultValue="global" className="space-y-4">
   <TabsList className="w-full p-1 h-auto bg-muted">
     <div 
-      className="flex overflow-x-auto scrollbar-hide w-full md:grid md:grid-cols-4 md:gap-1 md:overflow-visible scroll-smooth"
+      className="flex overflow-x-auto scrollbar-hide w-full md:grid md:grid-cols-5 md:gap-1 md:overflow-visible scroll-smooth"
       style={{
         scrollSnapType: 'x mandatory',
       }}
@@ -524,17 +525,19 @@ export default function EnhancedLeaderboard() {
         onClick={(e) => {
           const isMobile = window.innerWidth < 768;
           if (isMobile) {
-            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
-            const target = e.currentTarget as HTMLElement;
+            const container = e.currentTarget.closest(".flex");
+            const target = e.currentTarget;
             
-            // Force immediate scroll without waiting for CSS transitions
-            container.style.scrollBehavior = 'smooth';
-            container.scrollLeft = Math.max(0, target.offsetLeft - 16);
-            
-            // Reset scroll behavior after animation
-            setTimeout(() => {
-              container.style.scrollBehavior = '';
-            }, 500);
+            if (container && target) {
+              // Force immediate scroll without waiting for CSS transitions
+              container.style.scrollBehavior = 'smooth';
+              container.scrollLeft = Math.max(0, target.offsetLeft - 16);
+              
+              // Reset scroll behavior after animation
+              setTimeout(() => {
+                container.style.scrollBehavior = '';
+              }, 500);
+            }
           }
         }}
       >
@@ -543,25 +546,28 @@ export default function EnhancedLeaderboard() {
           Global
         </span>
       </TabsTrigger>
+      
       <TabsTrigger
         value="ai-competitions"
         className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
         style={{ scrollSnapAlign: 'center' }}
-
         onClick={(e) => {
           const isMobile = window.innerWidth < 768;
           if (isMobile) {
-            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
-            const target = e.currentTarget as HTMLElement;
-            const containerWidth = container.offsetWidth;
+            const container = e.currentTarget.closest(".flex");
+            const target = e.currentTarget;
             
-            container.style.scrollBehavior = 'smooth';
-            const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
-            container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
-            
-            setTimeout(() => {
-              container.style.scrollBehavior = '';
-            }, 500);
+            if (container && target) {
+              const containerWidth = container.offsetWidth;
+              
+              container.style.scrollBehavior = 'smooth';
+              const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
+              container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
+              
+              setTimeout(() => {
+                container.style.scrollBehavior = '';
+              }, 500);
+            }
           }
         }}
       >
@@ -570,6 +576,7 @@ export default function EnhancedLeaderboard() {
           AI-Contests
         </span>
       </TabsTrigger>
+      
       <TabsTrigger
         value="achievements"
         className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
@@ -580,17 +587,20 @@ export default function EnhancedLeaderboard() {
         onClick={(e) => {
           const isMobile = window.innerWidth < 768;
           if (isMobile) {
-            const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
-            const target = e.currentTarget as HTMLElement;
-            const containerWidth = container.offsetWidth;
+            const container = e.currentTarget.closest(".flex");
+            const target = e.currentTarget;
             
-            container.style.scrollBehavior = 'smooth';
-            const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
-            container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
-            
-            setTimeout(() => {
-              container.style.scrollBehavior = '';
-            }, 500);
+            if (container && target) {
+              const containerWidth = container.offsetWidth;
+              
+              container.style.scrollBehavior = 'smooth';
+              const scrollLeft = target.offsetLeft - containerWidth / 2 + target.offsetWidth / 2;
+              container.scrollLeft = Math.max(0, Math.min(scrollLeft, container.scrollWidth - containerWidth));
+              
+              setTimeout(() => {
+                container.style.scrollBehavior = '';
+              }, 500);
+            }
           }
         }}
       >
@@ -599,10 +609,11 @@ export default function EnhancedLeaderboard() {
           Achievements
         </span>
       </TabsTrigger>
+      
       <TabsTrigger
         value="analytics"
         className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
-        style={{ scrollSnapAlign: 'end' }}
+        style={{ scrollSnapAlign: 'center' }}
         onMouseDown={(e) => {
           e.preventDefault();
         }}
@@ -610,14 +621,16 @@ export default function EnhancedLeaderboard() {
           setTimeout(() => {
             const isMobile = window.innerWidth < 768;
             if (isMobile) {
-              const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+              const container = e.currentTarget.closest(".flex");
               
-              container.style.scrollBehavior = 'smooth';
-              container.scrollLeft = container.scrollWidth - container.offsetWidth;
-              
-              setTimeout(() => {
-                container.style.scrollBehavior = '';
-              }, 500);
+              if (container) {
+                container.style.scrollBehavior = 'smooth';
+                container.scrollLeft = container.scrollWidth - container.offsetWidth;
+                
+                setTimeout(() => {
+                  container.style.scrollBehavior = '';
+                }, 500);
+              }
             }
           }, 0);
         }}
@@ -628,7 +641,7 @@ export default function EnhancedLeaderboard() {
         </span>
       </TabsTrigger>
 
-    <TabsTrigger
+      <TabsTrigger
         value="social"
         className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
         style={{ scrollSnapAlign: 'end' }}
@@ -639,26 +652,26 @@ export default function EnhancedLeaderboard() {
           setTimeout(() => {
             const isMobile = window.innerWidth < 768;
             if (isMobile) {
-              const container = (e.currentTarget as HTMLElement).closest(".flex") as HTMLElement;
+              const container = e.currentTarget.closest(".flex");
               
-              container.style.scrollBehavior = 'smooth';
-              container.scrollLeft = container.scrollWidth - container.offsetWidth;
-              
-              setTimeout(() => {
-                container.style.scrollBehavior = '';
-              }, 500);
+              if (container) {
+                container.style.scrollBehavior = 'smooth';
+                container.scrollLeft = container.scrollWidth - container.offsetWidth;
+                
+                setTimeout(() => {
+                  container.style.scrollBehavior = '';
+                }, 500);
+              }
             }
           }, 0);
         }}
       >
         <span className="flex items-center gap-1.5">
-          <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4" />
+          <Users className="h-3 w-3 sm:h-4 sm:w-4" />
           Social
         </span>
       </TabsTrigger>
     </div>
-    </div>
-    </TabsList>
   </TabsList>
 
             {/* Filter Controls - Mobile Optimized */}
