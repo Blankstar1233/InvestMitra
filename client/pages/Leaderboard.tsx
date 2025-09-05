@@ -657,6 +657,8 @@ export default function EnhancedLeaderboard() {
         </span>
       </TabsTrigger>
     </div>
+    </div>
+    </TabsList>
   </TabsList>
 
             {/* Filter Controls - Mobile Optimized */}
