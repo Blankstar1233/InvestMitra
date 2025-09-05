@@ -223,7 +223,6 @@ export default function AIInsights() {
       </TabsTrigger>
     </div>
   </TabsList>
-</Tabs>
 
           {/* Live Insights */}
           <TabsContent value="insights" className="mt-4">
