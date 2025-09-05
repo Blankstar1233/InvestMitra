@@ -35,7 +35,7 @@ import {
   Gift
 } from "lucide-react";
 
-// Mock data - using the same structure as your original
+
 const MOCK_USERS = [
   {
     id: 'user1',
@@ -569,9 +569,9 @@ export default function EnhancedLeaderboard() {
 
           {/* Global Rankings Tab */}
           <TabsContent value="global" className="space-y-4 sm:space-y-6">
-            {/* Hall of Fame - Mobile Optimized */}
+            {/* Hall of Fame - Light/Dark Theme Optimized */}
             <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-600">
-              <CardHeader className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/40 dark:to-indigo-900/40 border-b border-gray-200 dark:border-slate-600 p-4 sm:p-6">
+              <CardHeader className="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-slate-600 p-4 sm:p-6">
                 <CardTitle className="flex items-center gap-2 text-xl sm:text-2xl text-blue-600 dark:text-blue-400">
                   <Crown className="h-5 w-5 sm:h-6 sm:w-6" />
                   Hall of Fame
@@ -579,77 +579,67 @@ export default function EnhancedLeaderboard() {
                 <CardDescription className="text-gray-600 dark:text-slate-300 text-sm sm:text-base">Champions of InvestMitra trading platform</CardDescription>
               </CardHeader>
               <CardContent className="p-4 sm:p-6">
-                <div className="grid grid-cols-1 gap-4 sm:gap-6">
-                  {topTraders.slice(0, 3).map((trader, index) => (
-                    <Card
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                  {topTraders.slice(0, 4).map((trader, index) => (
+                    <div
                       key={trader.id}
-                      className={`border ${index === 0
-                        ? 'bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-600/30 dark:to-blue-800/30 border-blue-300 dark:border-blue-500/60'
+                      className={`relative rounded-xl p-4 sm:p-6 text-center ${index === 0
+                        ? 'bg-gradient-to-br from-yellow-500/90 to-yellow-600/90 dark:from-yellow-600/80 dark:to-yellow-700/80'
                         : index === 1
-                          ? 'bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-indigo-600/25 dark:to-indigo-800/25 border-indigo-300 dark:border-indigo-500/50'
-                          : 'bg-gradient-to-br from-cyan-50 to-cyan-100 dark:from-cyan-600/25 dark:to-cyan-800/25 border-cyan-300 dark:border-cyan-500/50'
+                          ? 'bg-gradient-to-br from-slate-600/80 to-slate-700/80 dark:from-slate-700/80 dark:to-slate-800/80'
+                          : index === 2
+                            ? 'bg-gradient-to-br from-amber-500/70 to-amber-600/70 dark:from-amber-600/60 dark:to-amber-700/60'
+                            : 'bg-gradient-to-br from-blue-500/70 to-blue-600/70 dark:from-blue-600/60 dark:to-blue-700/60'
                         }`}
                     >
-                      <CardContent className="p-4 sm:p-6 text-center">
-                        <div className="space-y-3 sm:space-y-4">
-                          {/* Rank Icon */}
-                          <div className="flex items-center justify-center">
-                            {index === 0 ? (
-                              <Crown className="h-12 w-12 sm:h-16 sm:w-16 text-blue-600 dark:text-blue-400" />
-                            ) : index === 1 ? (
-                              <Medal className="h-10 w-10 sm:h-14 sm:w-14 text-indigo-600 dark:text-indigo-300" />
-                            ) : (
-                              <Award className="h-8 w-8 sm:h-12 sm:w-12 text-cyan-600 dark:text-cyan-400" />
-                            )}
-                          </div>
+                      {/* Top Icon */}
+                      <div className="flex justify-center mb-3">
+                        {index === 0 ? (
+                          <Crown className="h-8 w-8 sm:h-10 sm:w-10 text-yellow-100 dark:text-yellow-200" />
+                        ) : index === 1 ? (
+                          <Medal className="h-8 w-8 sm:h-10 sm:w-10 text-slate-100 dark:text-slate-300" />
+                        ) : index === 2 ? (
+                          <Award className="h-8 w-8 sm:h-10 sm:w-10 text-amber-100 dark:text-amber-200" />
+                        ) : (
+                          <Star className="h-8 w-8 sm:h-10 sm:w-10 text-blue-100 dark:text-blue-200" />
+                        )}
+                      </div>
 
-                          {/* Trader Info */}
-                          <div>
-                            <div className="flex items-center justify-center gap-2 mb-1">
-                              <span className="text-xl sm:text-2xl">{trader.avatar}</span>
-                              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{trader.username}</h3>
-                            </div>
-                            <p className="text-sm text-gray-600 dark:text-slate-300">Rank #{trader.rank}</p>
-                          </div>
+                      {/* Avatar */}
+                      <div className="text-2xl sm:text-3xl mb-2">{trader.avatar}</div>
 
-                          {/* Performance */}
-                          <div className="space-y-2">
-                            <div className="text-2xl sm:text-3xl font-bold text-blue-600 dark:text-blue-400">
-                              +{trader.totalReturnPercent}%
-                            </div>
-                            <div className="text-xs sm:text-sm text-gray-700 dark:text-slate-200">
-                              {formatCurrency(trader.portfolioValue)}
-                            </div>
-                            <div className="flex justify-center gap-3 sm:gap-4 text-xs text-gray-600 dark:text-slate-300">
-                              <span>Win: {trader.winRate}%</span>
-                              <span>AI: {trader.aiScore}</span>
-                            </div>
-                          </div>
+                      {/* Username */}
+                      <h3 className="text-base sm:text-lg font-bold text-white mb-1 truncate">
+                        {trader.username}
+                      </h3>
 
-                          {/* Follow Button */}
-                          <Button
-                            size="sm"
-                            onClick={() => handleFollow(trader.id, trader.username)}
-                            className={`w-full text-xs sm:text-sm py-2 ${followedUsers.includes(trader.id)
-                              ? 'bg-gray-500 text-white hover:bg-gray-600 dark:bg-slate-600 dark:text-slate-300 dark:hover:bg-slate-700'
-                              : 'bg-blue-600 text-white hover:bg-blue-700'
-                              }`}
-                          >
-                            {followedUsers.includes(trader.id) ? (
-                              <>
-                                <UserMinus className="h-3 w-3 mr-1" />
-                                Unfollow
-                              </>
-                            ) : (
-                              <>
-                                <UserPlus className="h-3 w-3 mr-1" />
-                                Follow
-                              </>
-                            )}
-                          </Button>
+                      {/* Rank */}
+                      <p className="text-xs sm:text-sm text-white/80 dark:text-slate-200 mb-3">#{trader.rank}</p>
+
+                      {/* Performance */}
+                      <div className="space-y-1 mb-4">
+                        <div className="text-lg sm:text-xl font-bold text-green-200 dark:text-green-300">
+                          +{trader.totalReturnPercent}%
                         </div>
-                      </CardContent>
-                    </Card>
+                        <div className="text-xs text-white/70 dark:text-slate-300">
+                          {trader.winRate}% Win
+                        </div>
+                      </div>
+
+                      {/* Follow Button */}
+                      <Button
+                        size="sm"
+                        onClick={() => handleFollow(trader.id, trader.username)}
+                        className={`w-full text-xs py-1.5 transition-all ${followedUsers.includes(trader.id)
+                          ? 'bg-slate-600 dark:bg-slate-600 text-slate-100 dark:text-slate-200 hover:bg-slate-500 dark:hover:bg-slate-500 border-0'
+                          : 'bg-white/20 dark:bg-white/20 text-white hover:bg-white/30 dark:hover:bg-white/30 border border-white/30 dark:border-white/30'
+                          }`}
+                        variant={followedUsers.includes(trader.id) ? 'secondary' : 'outline'}
+                      >
+                        <Users className="h-3 w-3 mr-1" />
+                        {followedUsers.includes(trader.id) ? 'Following' : 'Follow'}
+                      </Button>
+                    </div>
                   ))}
                 </div>
               </CardContent>
