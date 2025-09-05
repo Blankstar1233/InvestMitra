@@ -658,7 +658,6 @@ export default function EnhancedLeaderboard() {
       </TabsTrigger>
     </div>
   </TabsList>
-</div>
 
             {/* Filter Controls - Mobile Optimized */}
             <div className="flex items-center gap-2">
