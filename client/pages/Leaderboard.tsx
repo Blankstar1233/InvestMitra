@@ -620,7 +620,7 @@ export default function EnhancedLeaderboard() {
               }, 500);
             }
           }, 0);
-        }}}
+        }}
       >
         <span className="flex items-center gap-1.5">
           <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4" />
@@ -649,7 +649,7 @@ export default function EnhancedLeaderboard() {
               }, 500);
             }
           }, 0);
-        }}}
+        }}
       >
         <span className="flex items-center gap-1.5">
           <BarChart3 className="h-3 w-3 sm:h-4 sm:w-4" />
