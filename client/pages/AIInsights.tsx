@@ -182,9 +182,7 @@ export default function AIInsights() {
         value="recommendations"
         className="flex-shrink-0 px-3 py-2.5 text-xs sm:text-sm font-medium whitespace-nowrap min-w-max rounded-md transition-all duration-200 ease-in-out focus:outline-none md:scroll-snap-align-none"
         style={{ scrollSnapAlign: 'center' }}
-        onMouseDown={(e) => {
-          e.preventDefault();
-        }}
+
         onClick={(e) => {
           const isMobile = window.innerWidth < 768;
           if (isMobile) {
